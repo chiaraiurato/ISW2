@@ -10,7 +10,7 @@ public class Commit {
     public Commit(RevCommit revCommit, Version version) {
         this.revCommit = revCommit;
         this.version = version;
-        ticket = null;
+        this.ticket = null;
     }
 
     public RevCommit getRevCommit() {

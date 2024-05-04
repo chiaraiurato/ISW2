@@ -1,7 +1,6 @@
-package retrivers;
+package retrievers;
 
 import model.SimpleTicket;
-import model.Ticket;
 import model.Version;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,12 +13,13 @@ import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class TicketRetriever {
 
     private final String projName;
-
+    public List<Version> versionList;
     //  List<Ticket> tickets;
 
 
@@ -28,18 +28,19 @@ public class TicketRetriever {
      *
      * @param projectName The project name from which retrieve tickets.
      */
-    public TicketRetriever(String projectName) throws IOException, URISyntaxException {
+    public TicketRetriever(String projectName, List<Version> versionList) throws IOException, URISyntaxException {
         this.projName = projectName;
-        init(projectName);
+        this.versionList = versionList;
+        init();
 
     }
 
 
-    private void init(String projName) throws IOException, URISyntaxException {
+    private void init() throws IOException, URISyntaxException {
         getBugTickets();
 
     }
-
+    //what is the difference with rest/api/2/project?
     public List<Version> extractAllReleases() throws IOException, JSONException, URISyntaxException {
         List<Version> releaseList = new ArrayList<>();
         int i = 0;
@@ -64,9 +65,9 @@ public class TicketRetriever {
         return releaseList;
     }
 
-    public List<SimpleTicket> extractAll(List<Version> releasesList) throws IOException, JSONException, URISyntaxException {
+    public List<SimpleTicket> extractAll() throws IOException, JSONException, URISyntaxException {
 
-        // !TODO = Adesso stai prendendo tutti i ticket, ma ne devi fare proportion dopo
+        // !TODO = Adesso stai prendendo tutti i ticket, ma ne devi fare proportion
 
         return getBugTickets();
     }
