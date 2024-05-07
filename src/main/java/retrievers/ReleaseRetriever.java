@@ -15,20 +15,18 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class ReleaseRetriever {
-    public static final String RELEASE_DATE = "releaseDate";
     public static HashMap<LocalDateTime, String> releaseNames;
     public static HashMap<LocalDateTime, String> releaseID;
     public static ArrayList<LocalDateTime> releases;
-    public static Integer numVersions;
 
-    public ReleaseRetriever(String projName) throws IOException, ParseException {
+    public ReleaseRetriever(String projName) throws IOException{
         //Fills the arraylist with releases dates and orders them
         //Ignores releases with missing dates
         getVersions(projName);
 
     }
 
-    public List<Release> getVersions(String projName) throws IOException, ParseException {
+    public List<Release> getVersions(String projName) throws IOException{
 
         List<Release> releases = new ArrayList<>();
         int i;

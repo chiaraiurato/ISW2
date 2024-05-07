@@ -15,6 +15,7 @@ import java.util.List;
 
 public class Execute {
     private static final Logger logger = LoggerFactory.getLogger(Execute.class);
+    private static final String  done = "Done!";
     private Execute() {
     }
 
@@ -23,29 +24,17 @@ public class Execute {
         logger.info("Retrieving releases...");
         ReleaseRetriever releaseRetriever = new ReleaseRetriever(projName);
         List<Release> releaseList = releaseRetriever.getVersions(projName);
-        logger.info("Done!");
+        logger.info(done);
         logger.info("Retrieving commit...");
         CommitRetriever commitRetriever = new CommitRetriever(projName, projURL, releaseList);
         List<Commit> commitList = commitRetriever.extractAllCommits();
-        logger.info("Done!");
+        logger.info(done);
         logger.info("Retrieving tickets...");
         TicketRetriever ticketRetriever = new TicketRetriever(projName, releaseList);
         ticketRetriever.getBugTickets();
-        logger.info("Done!");
+        logger.info(done);
 
 
     }
 
-//    private static @NotNull List<ReleaseInfo> discardHalfReleases(@NotNull List<ReleaseInfo> releaseInfoList) {
-//
-//        int n = releaseInfoList.size();
-//
-//        releaseInfoList.sort((o1, o2) -> {
-//            Integer i1 = o1.getRelease().getIndex();
-//            Integer i2 = o2.getRelease().getIndex();
-//            return i1.compareTo(i2);
-//        });
-//
-//        return releaseInfoList.subList(0, n/2+1);
-//    }
 }
