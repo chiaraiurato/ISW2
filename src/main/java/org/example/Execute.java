@@ -6,7 +6,7 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.slf4j.LoggerFactory;
 import retrievers.CommitRetriever;
 import retrievers.TicketRetriever;
-import retrievers.VersionRetriever;
+import retrievers.ReleaseRetriever;
 import org.slf4j.Logger;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,8 +21,8 @@ public class Execute {
     public static void collectData(String projName, String projURL) throws IOException, URISyntaxException, GitAPIException, ParseException {
         //Get first all releases
         logger.info("Retrieving releases...");
-        VersionRetriever versionRetriever = new VersionRetriever(projName);
-        List<Release> releaseList = versionRetriever.getVersions(projName);
+        ReleaseRetriever releaseRetriever = new ReleaseRetriever(projName);
+        List<Release> releaseList = releaseRetriever.getVersions(projName);
         logger.info("Done!");
         logger.info("Retrieving commit...");
         CommitRetriever commitRetriever = new CommitRetriever(projName, projURL, releaseList);

@@ -9,49 +9,49 @@ public class Ticket {
 
     private final LocalDate creationDate;
     private final LocalDate resolutionDate;
-    private Version injectedVersion;
-    private final Version openingVersion;
-    private final Version fixedVersion;
-    private List<Version> affectedVersions;
+    private Release injectedRelease;
+    private final Release openingRelease;
+    private final Release fixedRelease;
+    private List<Release> affectedReleases;
     private final List<Commit> commitList;
 
-    public Ticket(String ticketKey, LocalDate creationDate, LocalDate resolutionDate, Version openingVersion, Version fixedVersion, List<Version> affectedVersions) {
+    public Ticket(String ticketKey, LocalDate creationDate, LocalDate resolutionDate, Release openingRelease, Release fixedRelease, List<Release> affectedReleases) {
         this.ticketID = ticketKey;
         this.creationDate = creationDate;
         this.resolutionDate = resolutionDate;
-        if(affectedVersions.isEmpty()){
-            injectedVersion = null;
+        if(affectedReleases.isEmpty()){
+            injectedRelease = null;
         }else{
-            injectedVersion = affectedVersions.get(0);
+            injectedRelease = affectedReleases.get(0);
         }
-        this.openingVersion = openingVersion;
-        this.fixedVersion = fixedVersion;
-        this.affectedVersions = affectedVersions;
+        this.openingRelease = openingRelease;
+        this.fixedRelease = fixedRelease;
+        this.affectedReleases = affectedReleases;
         commitList = new ArrayList<>();
     }
 
-    public Version getInjectedVersion() {
-        return injectedVersion;
+    public Release getInjectedVersion() {
+        return injectedRelease;
     }
 
-    public void setInjectedVersion(Version injectedVersion) {
-        this.injectedVersion = injectedVersion;
+    public void setInjectedVersion(Release injectedRelease) {
+        this.injectedRelease = injectedRelease;
     }
 
-    public Version getOpeningVersion() {
-        return openingVersion;
+    public Release getOpeningVersion() {
+        return openingRelease;
     }
 
-    public Version getFixedVersion() {
-        return fixedVersion;
+    public Release getFixedVersion() {
+        return fixedRelease;
     }
 
-    public List<Version> getAffectedVersions() {
-        return affectedVersions;
+    public List<Release> getAffectedVersions() {
+        return affectedReleases;
     }
 
-    public void setAffectedVersions(List<Version> affectedVersions) {
-        this.affectedVersions = affectedVersions;
+    public void setAffectedVersions(List<Release> affectedReleases) {
+        this.affectedReleases = affectedReleases;
     }
 
     public String getTicketKey() {

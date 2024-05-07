@@ -1,7 +1,7 @@
 package retrievers;
 
 
-import model.Version;
+import model.Release;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,28 +10,27 @@ import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class VersionRetriever {
+public class ReleaseRetriever {
     public static final String RELEASE_DATE = "releaseDate";
     public static HashMap<LocalDateTime, String> releaseNames;
     public static HashMap<LocalDateTime, String> releaseID;
     public static ArrayList<LocalDateTime> releases;
     public static Integer numVersions;
 
-    public VersionRetriever(String projName) throws IOException, ParseException {
+    public ReleaseRetriever(String projName) throws IOException, ParseException {
         //Fills the arraylist with releases dates and orders them
         //Ignores releases with missing dates
         getVersions(projName);
 
     }
 
-    public List<Version> getVersions(String projName) throws IOException, ParseException {
+    public List<Release> getVersions(String projName) throws IOException, ParseException {
 
-        List<Version> releases = new ArrayList<>();
+        List<Release> releases = new ArrayList<>();
         int i;
         String url = "https://issues.apache.org/jira/rest/api/2/project/" + projName;
         JSONObject json = readJsonFromUrl(url);
@@ -48,12 +47,12 @@ public class VersionRetriever {
                     id = versions.getJSONObject(i).get("id").toString();
                 //addRelease(versions.getJSONObject(i).get("releaseDate").toString(),name,id)
                 String dateString = versions.getJSONObject(i).get("releaseDate").toString();
-                releases.add(new Version(name, LocalDate.parse(dateString)));
+                releases.add(new Release(name, LocalDate.parse(dateString)));
             }
         }
-        releases.sort(Comparator.comparing(Version::releaseDate));
+        releases.sort(Comparator.comparing(Release::releaseDate));
         i = 0;
-        for (Version release : releases) {
+        for (Release release : releases) {
             release.setId(++i);
         }
         return releases;
