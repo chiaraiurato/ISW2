@@ -3,8 +3,8 @@ package org.example;
 public class Main {
 
         public static void main(String[] args) throws Exception {
-                Execute.collectData("BOOKKEEPER");
-                //Execute.collectData("ZOOKKEPEER");
+                Execute.collectData("BOOKKEEPER", "https://github.com/chiaraiurato/bookkeeper.git");
+                // Execute.collectData("ZOOKKEPEER");
         }
 }
 

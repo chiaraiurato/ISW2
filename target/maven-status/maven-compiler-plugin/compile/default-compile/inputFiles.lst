@@ -1,1 +1,11 @@
-/home/aries/Documenti/GitHub/ISW2/ISW2/src/main/java/org/example/Main.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/utilities/JSON.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/utilities/CSV.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/retrievers/VersionRetriever.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/org/example/Execute.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/retrievers/TicketRetriever.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/model/Version.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/model/Ticket.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/org/example/Main.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/model/Commit.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/retrievers/CommitRetriever.java
+/home/aries/Documenti/GitHub/ISW2/src/main/java/model/SimpleTicket.java

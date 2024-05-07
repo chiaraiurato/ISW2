@@ -5,11 +5,11 @@ import org.eclipse.jgit.revwalk.RevCommit;
 public class Commit {
     private final RevCommit revCommit;
     private Ticket ticket;
-    private final Version version;
+    private final Release release;
 
-    public Commit(RevCommit revCommit, Version version) {
+    public Commit(RevCommit revCommit, Release release) {
         this.revCommit = revCommit;
-        this.version = version;
+        this.release = release;
         this.ticket = null;
     }
 
@@ -25,7 +25,7 @@ public class Commit {
         this.ticket = ticket;
     }
 
-    public Version getVersion() {
-        return version;
+    public Release getVersion() {
+        return release;
     }
 }

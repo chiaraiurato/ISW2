@@ -2,22 +2,21 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class Version {
+public class Release {
     private Integer id;
     private final String releaseName;
     private final LocalDate releaseDate;
     private final List<Commit> commitList;
 
-    public Version(String releaseName, LocalDate releaseDate) {
+    public Release(String releaseName, LocalDate releaseDate) {
         this.releaseName = releaseName;
         this.releaseDate = releaseDate;
         commitList = new ArrayList<>();
     }
 
-    public Version(int id, String releaseName, LocalDate releaseDate) {
+    public Release(int id, String releaseName, LocalDate releaseDate) {
         this.id = id;
         this.releaseName = releaseName;
         this.releaseDate = releaseDate;

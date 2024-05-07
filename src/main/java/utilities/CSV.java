@@ -1,6 +1,6 @@
 package utilities;
 
-import model.Version;
+import model.Release;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,7 +10,7 @@ public class CSV {
 
     private static FileWriter fileWriter = null;
 
-    public static void createFileCSV(String projName, List<Version> versionList) {
+    public static void createFileCSV(String projName, List<Release> releaseList) {
         try {
             fileWriter = null;
             String outname = projName + "VersionInfo.csv";
@@ -19,15 +19,15 @@ public class CSV {
             fileWriter.append("Index,Version ID,Version Name,Date");
             fileWriter.append("\n");
             int i;
-            for (i = 0; i < versionList.size(); i++) {
+            for (i = 0; i < releaseList.size(); i++) {
                 Integer index = i + 1;
                 fileWriter.append(index.toString());
                 fileWriter.append(",");
-                fileWriter.append(String.valueOf(versionList.get(i).id()));
+                fileWriter.append(String.valueOf(releaseList.get(i).id()));
                 fileWriter.append(",");
-                fileWriter.append(versionList.get(i).releaseName());
+                fileWriter.append(releaseList.get(i).releaseName());
                 fileWriter.append(",");
-                fileWriter.append(versionList.get(i).releaseDate().toString());
+                fileWriter.append(releaseList.get(i).releaseDate().toString());
                 fileWriter.append("\n");
             }
 
@@ -36,6 +36,7 @@ public class CSV {
             e.printStackTrace();
         } finally {
             try {
+                assert fileWriter != null;
                 fileWriter.flush();
                 fileWriter.close();
             } catch (IOException e) {

@@ -1,37 +1,37 @@
 package org.example;
 
 import model.Commit;
-import model.Version;
+import model.Release;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.slf4j.LoggerFactory;
 import retrievers.CommitRetriever;
 import retrievers.TicketRetriever;
 import retrievers.VersionRetriever;
-
+import org.slf4j.Logger;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Execute {
-
+    private static final Logger logger = LoggerFactory.getLogger(Execute.class);
     private Execute() {
     }
 
-    public static void collectData(String projName) throws IOException, URISyntaxException, GitAPIException, ParseException {
+    public static void collectData(String projName, String projURL) throws IOException, URISyntaxException, GitAPIException, ParseException {
         //Get first all releases
-        System.out.println("Retrieving releases...");
+        logger.info("Retrieving releases...");
         VersionRetriever versionRetriever = new VersionRetriever(projName);
-        List<Version> versionList = versionRetriever.getVersions(projName);
-        System.out.println("Done!");
-        System.out.println("Retrieving commit...");
-        CommitRetriever commitRetriever = new CommitRetriever(projName, "https://github.com/chiaraiurato/bookkeeper.git", versionList);
+        List<Release> releaseList = versionRetriever.getVersions(projName);
+        logger.info("Done!");
+        logger.info("Retrieving commit...");
+        CommitRetriever commitRetriever = new CommitRetriever(projName, projURL, releaseList);
         List<Commit> commitList = commitRetriever.extractAllCommits();
-        System.out.println("Done!");
-        System.out.println("Retrieving tickets...");
-        TicketRetriever ticketRetriever = new TicketRetriever(projName, versionList);
+        logger.info("Done!");
+        logger.info("Retrieving tickets...");
+        TicketRetriever ticketRetriever = new TicketRetriever(projName, releaseList);
         ticketRetriever.getBugTickets();
-        System.out.println("Done!");
+        logger.info("Done!");
 
 
     }
