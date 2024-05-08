@@ -61,6 +61,8 @@ public class CommitRetriever {
 
     public List<Commit> extractAllCommits() throws IOException, GitAPIException, ParseException {
         List<RevCommit> revCommitList = new ArrayList<>();
+        List<Commit> commitList = new ArrayList<>();
+        //Iterate through each branch and get all commits
         List<Ref> branchesList = this.git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
         for (Ref branch : branchesList) {
             Iterable<RevCommit> commitsBranchesList = this.git.log().add(this.repo.resolve(branch.getName())).call();
@@ -71,29 +73,28 @@ public class CommitRetriever {
                 }
             }
         }
+        //Sort by date
         revCommitList.sort(Comparator.comparing(o -> o.getCommitterIdent().getWhen()));
-        List<Commit> commitList = new ArrayList<>();
+        //save info into classes
         for (RevCommit revCommit : revCommitList) {
             Date commitDate = revCommit.getCommitterIdent().getWhen();
-            Date lowerBoundDate = new SimpleDateFormat("yyyy-MM-dd").parse("2000-01-01");
+            Date lowerBoundDate = new SimpleDateFormat("yyyy-MM-dd").parse("1979-01-01");
             for(Release release : this.releaseList){
                 //if lowerBoundDate < commitDate <= releaseDate then the revCommit has been done in that release
-                if (commitDate.after(lowerBoundDate) && !commitDate.after(Date.from(release.releaseDate().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
+                if (commitDate.after(lowerBoundDate) && !commitDate.after(Date.from(release.getReleaseDate().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
                     Commit newCommit = new Commit(revCommit, release);
                     commitList.add(newCommit);
                     release.addCommit(newCommit);
                 }
-                lowerBoundDate = Date.from(release.releaseDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
+                lowerBoundDate = Date.from(release.getReleaseDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
             }
 
         }
-        commitList.sort(Comparator.comparing(o -> o.getRevCommit().getCommitterIdent().getWhen()));
+        //remove the release without commit
         releaseList.removeIf(release -> release.getCommitList().isEmpty());
-        int i = 0;
-        for (Release release : releaseList) {
-            release.setId(++i);
-        }
+        //order commitList by new date
         commitList.sort(Comparator.comparing(o -> o.getRevCommit().getCommitterIdent().getWhen()));
         return commitList;
     }
+
 }

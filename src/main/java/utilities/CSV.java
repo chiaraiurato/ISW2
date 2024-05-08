@@ -1,7 +1,7 @@
 package utilities;
 
 import model.Release;
-import org.example.Execute;
+import org.uniroma2.Execute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,9 +29,9 @@ public class CSV {
                 fileWriter.append(",");
                 fileWriter.append(String.valueOf(releaseList.get(i).id()));
                 fileWriter.append(",");
-                fileWriter.append(releaseList.get(i).releaseName());
+                fileWriter.append(releaseList.get(i).getReleaseName());
                 fileWriter.append(",");
-                fileWriter.append(releaseList.get(i).releaseDate().toString());
+                fileWriter.append(releaseList.get(i).getReleaseDate().toString());
                 fileWriter.append("\n");
             }
 

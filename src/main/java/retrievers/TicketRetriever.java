@@ -1,7 +1,7 @@
 package retrievers;
 
 import model.Release;
-import model.SimpleTicket;
+import model.Ticket;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +12,6 @@ import java.net.URISyntaxException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class TicketRetriever {
@@ -25,6 +24,7 @@ public class TicketRetriever {
      * This is the constructor that you have to use for retrieve tickets without applying cold start.
      *
      * @param projectName The project name from which retrieve tickets.
+     * @param releaseList The releases to map into ticket.
      */
     public TicketRetriever(String projectName, List<Release> releaseList) throws IOException, URISyntaxException {
         this.projName = projectName;
@@ -38,44 +38,19 @@ public class TicketRetriever {
         getBugTickets();
 
     }
-    //what is the difference with rest/api/2/project?
-    public List<Release> extractAllReleases() throws IOException, JSONException, URISyntaxException {
-        List<Release> releaseList = new ArrayList<>();
-        int i = 0;
-        String url = "https://issues.apache.org/jira/rest/api/latest/project/" + this.projName;
-        JSONObject json = JSON.readJsonFromUrl(url);
-        JSONArray versions = json.getJSONArray("versions");
-        for (; i < versions.length(); i++) {
-            String releaseName;
-            String releaseDate;
-            JSONObject releaseJsonObject = versions.getJSONObject(i);
-            if (releaseJsonObject.has("releaseDate") && releaseJsonObject.has("name")) {
-                releaseDate = releaseJsonObject.get("releaseDate").toString();
-                releaseName = releaseJsonObject.get("name").toString();
-                releaseList.add(new Release(releaseName, LocalDate.parse(releaseDate)));
-            }
-        }
-        releaseList.sort(Comparator.comparing(Release::releaseDate));
-        i = 0;
-        for (Release release : releaseList) {
-            release.setId(++i);
-        }
-        return releaseList;
-    }
 
-    public List<SimpleTicket> extractAll() throws IOException, JSONException, URISyntaxException {
 
-        // !TODO = Adesso stai prendendo tutti i ticket, ma ne devi fare proportion
+    public List<Ticket> extractAll() throws IOException, JSONException, URISyntaxException {
 
         return getBugTickets();
     }
 
 
-        public List<SimpleTicket> getBugTickets() throws IOException, URISyntaxException {
+        public List<Ticket> getBugTickets() throws IOException, URISyntaxException {
             int j;
             int i = 0;
             int total;
-            List<SimpleTicket> ticketsList = new ArrayList<>();
+            List<Ticket> ticketsList = new ArrayList<>();
             do {
                 j = i + 1000;
                 String url = "https://issues.apache.org/jira/rest/api/2/search?jql=project=%22"
@@ -86,15 +61,47 @@ public class TicketRetriever {
                 JSONObject json = JSON.readJsonFromUrl(url);
                 JSONArray issues = json.getJSONArray("issues");
                 total = json.getInt("total");
+                //Iterate through each bug
                 for (; i < total && i < j; i++) {
-                    //Iterate through each bug
+                    // First we get key
                     String key = issues.getJSONObject(i % 1000).get("key").toString();
-                    ticketsList.add(new SimpleTicket(key));
+                    // Next, we get the creation and resolution date
+                    JSONObject fields = issues.getJSONObject(i%1000).getJSONObject("fields");
+                    String creationDateString = fields.get("created").toString();
+                    String resolutionDateString = fields.get("resolutiondate").toString();
+                    LocalDate creationDate = LocalDate.parse(creationDateString.substring(0,10));
+                    LocalDate resolutionDate = LocalDate.parse(resolutionDateString.substring(0,10));
+
+                    // Get the versions affected by the issue
+                    JSONArray affectedVersionsArray = fields.getJSONArray("versions");
+
+                    // Get the OV
+                    Release openingVersion = Release.getReleaseAfterOrEqualDate(creationDate, this.releaseList);
+
+                    // Get the FV
+                    Release fixedVersion = Release.getReleaseAfterOrEqualDate(resolutionDate, this.releaseList);
+
+                    List<Release> affectedVersionsList = Release.getValidAffectedVersions(affectedVersionsArray, this.releaseList);
+                    if(!affectedVersionsList.isEmpty()
+                            && openingVersion!=null
+                            && fixedVersion!=null
+                            //Check that OV<=AV0 where AV0 is the first affected version
+                            && (!affectedVersionsList.get(0).getReleaseDate().isBefore(openingVersion.getReleaseDate())
+                            // Check that FV > OV
+                            || openingVersion.getReleaseDate().isAfter(fixedVersion.getReleaseDate()))){
+                        continue;
+                    }
+                    if(openingVersion != null && fixedVersion != null && openingVersion.id()!=releaseList.get(0).id()){
+                        //At this point should be true that OV < FV
+                        ticketsList.add(new Ticket(key, creationDate, resolutionDate, openingVersion, fixedVersion, affectedVersionsList));
+                    }
                 }
             } while (i < total);
 
             return ticketsList;
 
         }
+
+
 
 }

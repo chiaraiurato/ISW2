@@ -1,4 +1,4 @@
-package org.example;
+package org.uniroma2;
 
 public class Main {
 
