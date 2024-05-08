@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CommitRetriever {
     private final Repository repo;
@@ -28,35 +29,18 @@ public class CommitRetriever {
     private List<Ticket> ticketList;
 
     private final List<Release> releaseList;
-    public CommitRetriever(String projName,String projURL, List<Release> releaseList) throws IOException, GitAPIException {
-        File directory = new File("temp/" + projName); //Create the directory where to clone repo
-
-        if (directory.exists()) {
-            this.repo = new FileRepository("temp/" + projName + "/.git");
-            this.git = new Git(this.repo);
-        } else {
-
-            this.git = Git.cloneRepository()
-                    .setURI(projURL)
-                    .setDirectory(
-                            directory)
-                    .call();
-
-            this.repo = git.getRepository();
-        }
+    /**
+     * This is the constructor that you have to use for retrieve commits.
+     *
+     * @param projName The project name from which retrieve commits.
+     * @param projURL The project URL where to clone
+     * @param releaseList The releases.
+     */
+    public CommitRetriever(String projName,Git git, Repository repository, List<Release> releaseList) throws IOException, GitAPIException {
+        this.repo = repository;
+        this.git = git;
         this.releaseList = releaseList;
         this.ticketList = null;
-    }
-
-    public List<Ticket> getTicketList() {
-        return ticketList;
-    }
-    public void setTicketList(List<Ticket> ticketList) {
-        this.ticketList = ticketList;
-    }
-
-    public List<Release> getReleaseList() {
-        return releaseList;
     }
 
     public List<Commit> extractAllCommits() throws IOException, GitAPIException, ParseException {
@@ -95,6 +79,33 @@ public class CommitRetriever {
         //order commitList by new date
         commitList.sort(Comparator.comparing(o -> o.getRevCommit().getCommitterIdent().getWhen()));
         return commitList;
+    }
+    public List<Commit> filterCommits(List<Commit> commitList) {
+        List<Commit> filteredCommitList = new ArrayList<>();
+        for (Commit commit : commitList) {
+            String commitFullMessage = commit.getRevCommit().getFullMessage();
+            for (Ticket ticket : ticketList) {
+                String ticketKey = ticket.getTicketKey();
+                Pattern pattern = Pattern.compile( ticketKey + "\\b");
+                if (pattern.matcher(commitFullMessage).find()) {
+                    filteredCommitList.add(commit);
+                    ticket.addCommit(commit);
+                    commit.setTicket(ticket);
+                }
+            }
+        }
+        return filteredCommitList;
+    }
+
+    public List<Ticket> getTicketList() {
+        return ticketList;
+    }
+    public void setTicketList(List<Ticket> ticketList) {
+        this.ticketList = ticketList;
+    }
+
+    public List<Release> getReleaseList() {
+        return releaseList;
     }
 
 }

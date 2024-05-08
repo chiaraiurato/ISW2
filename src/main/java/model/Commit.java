@@ -28,4 +28,8 @@ public class Commit {
     public Release getVersion() {
         return release;
     }
+
+    public Release getRelease() {
+        return release;
+    }
 }
