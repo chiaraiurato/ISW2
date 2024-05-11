@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Ticket {
@@ -75,6 +76,19 @@ public class Ticket {
     public LocalDate getResolutionDate() {
         return resolutionDate;
     }
+    public static boolean isNotEmpty(Ticket ticket) {
+        return !ticket.getAffectedVersions().isEmpty();
+    }
+    public static List<Ticket> getCorrectTickets(List<Ticket> ticketsList){
+        List<Ticket> correctTickets = new ArrayList<>();
+        for (Ticket ticket : ticketsList) {
+            if (isNotEmpty(ticket)) {
+                correctTickets.add(ticket);
+            }
+        }
+        correctTickets.sort(Comparator.comparing(Ticket::getResolutionDate));
+        return correctTickets;
+    }
     @Override
     public String toString() {
         return "Ticket{" +
@@ -86,4 +100,6 @@ public class Ticket {
                 ", affectedReleases=" + affectedReleases +
                 '}';
     }
+
+
 }

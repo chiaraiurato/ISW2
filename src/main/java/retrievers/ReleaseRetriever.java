@@ -4,6 +4,7 @@ package retrievers;
 import model.Release;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import utilities.CSV;
 import utilities.JSON;
 
 import java.io.*;
@@ -13,17 +14,17 @@ import java.util.*;
 
 public class ReleaseRetriever {
 
-    public ReleaseRetriever(String projName) throws IOException, URISyntaxException {
+    private final String projName ;
 
-        getVersions(projName);
-
+    public ReleaseRetriever(String projName){
+        this.projName = projName;
     }
 
-    public List<Release> getVersions(String projName) throws IOException, URISyntaxException {
+    public List<Release> getVersions() throws IOException, URISyntaxException {
 
         List<Release> releases = new ArrayList<>();
         int i;
-        String url = "https://issues.apache.org/jira/rest/api/2/project/" + projName;
+        String url = "https://issues.apache.org/jira/rest/api/2/project/" + this.projName;
         JSONObject json = JSON.readJsonFromUrl(url);
         JSONArray versions = json.getJSONArray("versions");
         for (i = 0; i < versions.length(); i++ ) {
@@ -40,6 +41,7 @@ public class ReleaseRetriever {
         }
         releases.sort(Comparator.comparing(Release::getReleaseDate));
         setId(releases);
+        CSV.createFileCSVForVersion(projName,releases);
         return releases;
     }
     private void setId(List<Release> releases){
@@ -48,7 +50,5 @@ public class ReleaseRetriever {
             release.setId(++i);
         }
     }
-
-
 
 }

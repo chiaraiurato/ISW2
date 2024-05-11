@@ -93,20 +93,21 @@ public class ClassProjectRetriever {
         //Set the class as buggy based on the commit and IV
         for(Ticket ticket: ticketList) {
             List<Commit> commitsInsideTicket = ticket.getCommitList();
-            System.out.println(commitsInsideTicket.size());
             Release injectedVersion = ticket.getInjectedVersion();
-            for (Commit commit : commitsInsideTicket) {
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                RevCommit revCommit = commit.getRevCommit();
-                LocalDate commitDate = LocalDate.parse(formatter.format(revCommit.getCommitterIdent().getWhen()));
-                if (!commitDate.isAfter(ticket.getResolutionDate())
-                        && !commitDate.isBefore(ticket.getCreationDate())) {
-                    List<String> modifiedClassesNames = getTouchedClassesNames(revCommit);
-                    Release fixedVersion= commit.getRelease();
-                    for (String modifiedClass : modifiedClassesNames) {
-                        for(ClassProject projectClass: allProjectClasses){
-                            if(projectClass.getKey().equals(modifiedClass) && projectClass.getRelease().id() < fixedVersion.id() && projectClass.getRelease().id() >= injectedVersion.id()){
-                                projectClass.getMetric().setBuggyness(true);
+            if(injectedVersion != null) {
+                for (Commit commit : commitsInsideTicket) {
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    RevCommit revCommit = commit.getRevCommit();
+                    LocalDate commitDate = LocalDate.parse(formatter.format(revCommit.getCommitterIdent().getWhen()));
+                    if (!commitDate.isAfter(ticket.getResolutionDate())
+                            && !commitDate.isBefore(ticket.getCreationDate())) {
+                        List<String> modifiedClassesNames = getTouchedClassesNames(revCommit);
+                        Release fixedVersion = commit.getRelease();
+                        for (String modifiedClass : modifiedClassesNames) {
+                            for (ClassProject projectClass : allProjectClasses) {
+                                if (projectClass.getKey().equals(modifiedClass) && projectClass.getRelease().id() < fixedVersion.id() && projectClass.getRelease().id() >= injectedVersion.id()) {
+                                    projectClass.getMetric().setBuggyness(true);
+                                }
                             }
                         }
                     }

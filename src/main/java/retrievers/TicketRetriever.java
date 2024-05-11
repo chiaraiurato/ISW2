@@ -1,9 +1,11 @@
 package retrievers;
 
+import controllers.SetProportion;
 import model.Release;
 import model.Ticket;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import utilities.CSV;
 import utilities.JSON;
 
 import java.io.*;
@@ -11,12 +13,15 @@ import java.net.URISyntaxException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+
+import static java.lang.Math.max;
 
 public class TicketRetriever {
 
     private final String projName;
-    public List<Release> releaseList;
+    private final List<Release> releaseList;
 
 
     /**
@@ -82,34 +87,74 @@ public class TicketRetriever {
                 }
             }
         } while (i < total);
-
-        //return fixTicketList(ticketsList, this.releaseList);
+        ticketsList.sort(Comparator.comparing(Ticket::getResolutionDate));
         return ticketsList;
+    }
+    private static void fixAffectedVersion(Ticket ticket, List<Release> releasesList, float proportion) {
+        List<Release> affectedVersionsList = new ArrayList<>();
+        int injectedVersionId;
+        //IV = max(1; FV-(FV-OV)*PROPORTION)
+        if(ticket.getFixedVersion().id() == ticket.getOpeningVersion().id()){
+            injectedVersionId = max(1, (int) (ticket.getFixedVersion().id()-proportion));
+        }else{
+            injectedVersionId = max(1, (int) (ticket.getFixedVersion().id()-((ticket.getFixedVersion().id()-ticket.getOpeningVersion().id())*proportion)));
+        }
+        for (Release release : releasesList){
+            if(release.id() == injectedVersionId){
+                affectedVersionsList.add(new Release(release.id(), release.getReleaseName(), release.getReleaseDate()));
+                break;
+            }
+        }
+
+        if(!affectedVersionsList.isEmpty()){
+            affectedVersionsList.sort(Comparator.comparing(Release::getReleaseDate));
+            ticket.setAffectedVersions(affectedVersionsList);
+            ticket.setInjectedVersion(affectedVersionsList.get(0));
+        }
 
     }
+    private static void completeAffectedVersionsList(Ticket ticket, List<Release> releasesList) {
+        List<Release> completeAffectedVersionsList = new ArrayList<>();
+        if(ticket.getInjectedVersion() != null) {
+            for (int i = ticket.getInjectedVersion().id(); i < ticket.getFixedVersion().id(); i++) {
+                for (Release release : releasesList) {
+                    if (release.id() == i) {
+                        completeAffectedVersionsList.add(new Release(release.id(), release.getReleaseName(), release.getReleaseDate()));
+                        break;
+                    }
+                }
+            }
+            completeAffectedVersionsList.sort(Comparator.comparing(Release::getReleaseDate));
+            ticket.setAffectedVersions(completeAffectedVersionsList);
+        }
+    }
 
-//    private List<Ticket> fixTicketList(List<Ticket> ticketsList, List<Release> releasesList) throws URISyntaxException {
-//        List<Ticket> ticketsForProportionList = new ArrayList<>();
-//        List<Ticket> finalTicketsList = new ArrayList<>();
-//
-//        for (Ticket ticket : ticketsList) {
-//            if (!ticket.getAffectedVersions().isEmpty()) {
-//                float proportion = ComputeProportion.computeProportion(ticketsForProportionList, this.projName, ticket, true);
-//                fixTicketWithProportion(ticket, releasesList, proportion);
-//                completeAffectedVersionsList(ticket, releasesList);
-//            } else {
-//                ComputeProportion.computeProportion(ticketsForProportionList, this.projName, ticket, false);
-//                completeAffectedVersionsList(ticket, releasesList);
-//            }
-//            ticketsForProportionList.add(ticket);
-//            finalTicketsList.add(ticket);
-//        }
-//
-//        finalTicketsList.sort(Comparator.comparing(Ticket::getResolutionDate));
-//        return finalTicketsList;
-//    }
+    public List<Ticket> doProportion(List<Ticket> ticketsList, List<Release> releasesList) throws URISyntaxException {
+        List<Ticket> ticketsForProportionList = new ArrayList<>();
+        List<Ticket> finalTicketsList = new ArrayList<>();
+        for (Ticket ticket : ticketsList) {
+            if (!Ticket.isNotEmpty(ticket)) {
+                float proportion = SetProportion.apply(ticketsForProportionList, this.projName, ticket, true);
+                fixAffectedVersion(ticket, releasesList, proportion);
+                completeAffectedVersionsList(ticket, releasesList);
+            } else {
+                SetProportion.apply(ticketsForProportionList, this.projName, ticket, false);
+                completeAffectedVersionsList(ticket, releasesList);
+            }
+            ticketsForProportionList.add(ticket);
+            finalTicketsList.add(ticket);
+        }
 
+        finalTicketsList.sort(Comparator.comparing(Ticket::getResolutionDate));
+        CSV.createFileCSVForTicket(projName,finalTicketsList);
+        return finalTicketsList;
+    }
 
+    public static <T> void printListHead(List<T> list) {
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).toString());
+        }
+    }
 
 
 }
