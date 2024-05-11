@@ -3,7 +3,6 @@ package retrievers;
 import model.Release;
 import model.Ticket;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import utilities.JSON;
 
@@ -12,7 +11,6 @@ import java.net.URISyntaxException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class TicketRetriever {

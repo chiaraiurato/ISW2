@@ -45,20 +45,8 @@ public class ClassProjectRetriever {
 
 
     public List<ClassProject> extractAllProjectClasses() throws IOException {
-        List<Commit> lastCommitList = new ArrayList<>();
+        List<Commit> lastCommitList = getLastCommitList();
         List<ClassProject> allProjectClasses = new ArrayList<>();
-
-        for (int i = 1; i <= numberOfRelease; i++) {
-            List<Commit> tempCommits = new ArrayList<>(commitList);
-
-            int releaseId = i;
-            tempCommits.removeIf(commit -> (commit.getRelease().id() != releaseId));
-            if (tempCommits.isEmpty()) {
-                continue;
-            }
-            lastCommitList.add(tempCommits.get(tempCommits.size() - 1));
-        }
-
         lastCommitList.sort(Comparator.comparing(o -> o.getRevCommit().getCommitterIdent().getWhen()));
         for(Commit lastCommit: lastCommitList){
             //Create a map that stores the name of the class along with its content.
@@ -87,7 +75,20 @@ public class ClassProjectRetriever {
         allProjectClasses.sort(Comparator.comparing(ClassProject::getKey));
         return allProjectClasses;
     }
+    private List<Commit> getLastCommitList(){
+        List<Commit> lastCommitList = new ArrayList<>();
+        for (int i = 1; i <= numberOfRelease; i++) {
+            List<Commit> tempCommits = new ArrayList<>(commitList);
 
+            int releaseId = i;
+            tempCommits.removeIf(commit -> (commit.getRelease().id() != releaseId));
+            if (tempCommits.isEmpty()) {
+                continue;
+            }
+            lastCommitList.add(tempCommits.get(tempCommits.size() - 1));
+        }
+        return lastCommitList;
+    }
     private void setBuggyClass(List<Ticket> ticketList, List<ClassProject> allProjectClasses) throws IOException {
         //Set the class as buggy based on the commit and IV
         for(Ticket ticket: ticketList) {

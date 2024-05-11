@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CSV {
 
-    private static final Logger logger = LoggerFactory.getLogger(Execute.class);
+    private static final Logger logger = LoggerFactory.getLogger(CSV.class);
     private static FileWriter fileWriter = null;
 
     public static void createFileCSV(String projName, List<Release> releaseList) {

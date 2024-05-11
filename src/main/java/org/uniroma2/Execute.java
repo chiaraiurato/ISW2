@@ -32,27 +32,27 @@ public class Execute {
         Repository repository = setRepository.getRepo();
         Git git = setRepository.getGit();
 
-        logger.info("----------" + projName + "----------");
+        logger.info(String.format("---------- %s ----------", projName));
         //Retrieve release
         logger.info("Retrieving releases...");
         ReleaseRetriever releaseRetriever = new ReleaseRetriever(projName);
         List<Release> releaseList = releaseRetriever.getVersions(projName);
         printListHead(releaseList, 3);
         logger.info(DONE);
-        logger.info("Number of releases " + releaseList.size());
+        logger.info(String.format("Number of releases %d",releaseList.size()));
 
         //Retrieve commit
         logger.info("Retrieving commit...");
         CommitRetriever commitRetriever = new CommitRetriever(git,repository, releaseList);
         List<Commit> commitList = commitRetriever.extractAllCommits();
-        logger.info("Number of commit " + commitList.size());
+        logger.info(String.format("Number of commit %d", commitList.size()));
         logger.info(DONE);
 
         //Retrieve ticket
         logger.info("Retrieving tickets...");
         TicketRetriever ticketRetriever = new TicketRetriever(projName, releaseList);
         List<Ticket> ticketList = ticketRetriever.getTickets();
-        logger.info("Number of ticket " + ticketList.size());
+        logger.info(String.format("Number of ticket %d", ticketList.size()));
         logger.info(DONE);
 
         //Filter commit that have ticket id inside their message
@@ -64,7 +64,7 @@ public class Execute {
         logger.info("Retrieving class project...");
         ClassProjectRetriever classProjectRetriever = new ClassProjectRetriever(repository, commitList, ticketList);
         List<ClassProject> classProjects = classProjectRetriever.extractAllProjectClasses();
-        logger.info("Number of class  " + classProjects.size());
+        logger.info(String.format("Number of class  %d",classProjects.size()));
         logger.info(DONE);
 
     }

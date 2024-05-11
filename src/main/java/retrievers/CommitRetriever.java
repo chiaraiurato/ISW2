@@ -34,7 +34,7 @@ public class CommitRetriever {
      @param repository The Repository object representing the project repository URL.
      @param releaseList The list of releases associated with the project.
      */
-    public CommitRetriever(Git git, Repository repository, List<Release> releaseList) throws IOException, GitAPIException {
+    public CommitRetriever(Git git, Repository repository, List<Release> releaseList){
         this.repo = repository;
         this.git = git;
         this.releaseList = releaseList;

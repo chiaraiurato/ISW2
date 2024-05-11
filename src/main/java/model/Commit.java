@@ -25,10 +25,6 @@ public class Commit {
         this.ticket = ticket;
     }
 
-    public Release getVersion() {
-        return release;
-    }
-
     public Release getRelease() {
         return release;
     }
