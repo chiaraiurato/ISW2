@@ -7,12 +7,10 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ListBranchCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
-import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,11 +30,11 @@ public class CommitRetriever {
     /**
      * This is the constructor that you have to use for retrieve commits.
      *
-     * @param projName The project name from which retrieve commits.
-     * @param projURL The project URL where to clone
-     * @param releaseList The releases.
+     @param git The Git object representing the project repository URL to clone.
+     @param repository The Repository object representing the project repository URL.
+     @param releaseList The list of releases associated with the project.
      */
-    public CommitRetriever(String projName,Git git, Repository repository, List<Release> releaseList) throws IOException, GitAPIException {
+    public CommitRetriever(Git git, Repository repository, List<Release> releaseList) throws IOException, GitAPIException {
         this.repo = repository;
         this.git = git;
         this.releaseList = releaseList;
@@ -80,11 +78,12 @@ public class CommitRetriever {
         commitList.sort(Comparator.comparing(o -> o.getRevCommit().getCommitterIdent().getWhen()));
         return commitList;
     }
-    public List<Commit> filterCommits(List<Commit> commitList) {
+    public List<Commit> filterCommits(List<Commit> commitList, List<Ticket> ticketList) {
+        this.ticketList = ticketList;
         List<Commit> filteredCommitList = new ArrayList<>();
         for (Commit commit : commitList) {
             String commitFullMessage = commit.getRevCommit().getFullMessage();
-            for (Ticket ticket : ticketList) {
+            for (Ticket ticket : this.ticketList) {
                 String ticketKey = ticket.getTicketKey();
                 Pattern pattern = Pattern.compile( ticketKey + "\\b");
                 if (pattern.matcher(commitFullMessage).find()) {

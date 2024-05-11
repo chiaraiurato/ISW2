@@ -75,4 +75,15 @@ public class Ticket {
     public LocalDate getResolutionDate() {
         return resolutionDate;
     }
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticketID='" + ticketID + '\'' +
+                ", creationDate=" + creationDate +
+                ", injectedRelease=" + injectedRelease +
+                ", openingRelease=" + openingRelease +
+                ", fixedRelease=" + fixedRelease +
+                ", affectedReleases=" + affectedReleases +
+                '}';
+    }
 }

@@ -32,4 +32,14 @@ public class Commit {
     public Release getRelease() {
         return release;
     }
+
+    @Override
+    public String toString() {
+        return "Commit{" +
+                "revCommit=" + revCommit +
+                ", ticket=" + ticket +
+                ", release=" + release +
+                '}';
+    }
+
 }

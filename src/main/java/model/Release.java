@@ -80,5 +80,8 @@ public class Release {
         existingAffectedVersions.sort(Comparator.comparing(Release::getReleaseDate));
         return existingAffectedVersions;
     }
-
+    @Override
+    public String toString() {
+        return "Release{name='" + releaseName + "', id=" + id + "}";
+    }
 }

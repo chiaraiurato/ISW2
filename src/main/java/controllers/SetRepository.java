@@ -1,4 +1,4 @@
-package model.controllers;
+package controllers;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;

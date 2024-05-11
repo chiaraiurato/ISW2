@@ -4,10 +4,9 @@ import model.ClassProject;
 import model.Commit;
 import model.Release;
 import model.Ticket;
-import model.controllers.SetRepository;
+import controllers.SetRepository;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.lib.Repository;
 import org.slf4j.LoggerFactory;
 import retrievers.ClassProjectRetriever;
@@ -16,7 +15,6 @@ import retrievers.TicketRetriever;
 import retrievers.ReleaseRetriever;
 import org.slf4j.Logger;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.ParseException;
@@ -39,12 +37,13 @@ public class Execute {
         logger.info("Retrieving releases...");
         ReleaseRetriever releaseRetriever = new ReleaseRetriever(projName);
         List<Release> releaseList = releaseRetriever.getVersions(projName);
+        printListHead(releaseList, 3);
         logger.info(DONE);
         logger.info("Number of releases " + releaseList.size());
 
         //Retrieve commit
         logger.info("Retrieving commit...");
-        CommitRetriever commitRetriever = new CommitRetriever(projName, git,repository, releaseList);
+        CommitRetriever commitRetriever = new CommitRetriever(git,repository, releaseList);
         List<Commit> commitList = commitRetriever.extractAllCommits();
         logger.info("Number of commit " + commitList.size());
         logger.info(DONE);
@@ -52,21 +51,29 @@ public class Execute {
         //Retrieve ticket
         logger.info("Retrieving tickets...");
         TicketRetriever ticketRetriever = new TicketRetriever(projName, releaseList);
-        List<Ticket> ticketList = ticketRetriever.getBugTickets();
+        List<Ticket> ticketList = ticketRetriever.getTickets();
         logger.info("Number of ticket " + ticketList.size());
         logger.info(DONE);
 
         //Filter commit that have ticket id inside their message
         logger.info("Filtering commits...");
-        List<Commit> filterCommits =commitRetriever.filterCommits(commitList);
+        List<Commit> filterCommits = commitRetriever.filterCommits(commitList, ticketList);
         logger.info(DONE);
 
         //Now we can retrieve the touched classes
         logger.info("Retrieving class project...");
-        ClassProjectRetriever classProjectRetriever = new ClassProjectRetriever(repository, commitList);
+        ClassProjectRetriever classProjectRetriever = new ClassProjectRetriever(repository, commitList, ticketList);
         List<ClassProject> classProjects = classProjectRetriever.extractAllProjectClasses();
+        logger.info("Number of class  " + classProjects.size());
         logger.info(DONE);
 
+    }
+
+    private static <T> void printListHead(List<T> list, int numRows) {
+        logger.info("Printing head of list:");
+        for (int i = 0; i < Math.min(numRows, list.size()); i++) {
+            logger.info(list.get(i).toString());
+        }
     }
 
 

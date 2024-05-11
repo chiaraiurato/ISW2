@@ -39,7 +39,7 @@ public class ReleaseRetriever {
             }
         }
         releases.sort(Comparator.comparing(Release::getReleaseDate));
-
+        setId(releases);
         return releases;
     }
     private void setId(List<Release> releases){
