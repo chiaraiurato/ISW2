@@ -45,70 +45,75 @@ public class CalculateMetrics {
         //The addedLOC, removedLOC, churn, touchedLOC
         calculateLOCMetrics();
     }
-    private void calculateLOCMetrics() throws IOException {
-
-        for(ClassProject classProject : allClasses) {
+    public void calculateLOCMetrics() throws IOException {
+        for (ClassProject classProject : allClasses) {
             int totalAdded = 0;
-            int totalRemoved = 0 ;
+            int totalRemoved = 0;
             int totalChurn = 0;
             int totalTouched = 0;
 
-            int maxAdded = 0 ;
+            int maxAdded = 0;
             int maxRemoved = 0;
             int maxChurn = 0;
             int maxTouched = 0;
 
-            //First extract LOC from git
-            extractAddedOrRemovedLOC(classProject);
-            //Get the related added and removed LOC
-            List<Integer> locAddedByClass = classProject.getLOCAddedByClass();
-            List<Integer> locRemovedByClass = classProject.getLOCRemovedByClass();
-            for(int i = 0; i < locAddedByClass.size(); i++) {
-                totalAdded += locAddedByClass.get(i);
-                totalRemoved += locRemovedByClass.get(i);
-                totalChurn += Math.abs(locAddedByClass.get(i) - locRemovedByClass.get(i));
-                totalTouched += locAddedByClass.get(i) + locRemovedByClass.get(i);
+            extractLOC(classProject, totalAdded, totalRemoved, totalChurn, totalTouched, maxAdded, maxRemoved, maxChurn, maxTouched);
+        }
+    }
 
-                if (maxAdded < totalAdded) {
-                    maxAdded = totalAdded;
-                }
-                if (maxRemoved < totalRemoved) {
-                    maxRemoved = totalRemoved ;
-                }
-                if(maxChurn < totalChurn) {
-                    maxChurn = totalChurn;
-                }
-                if(maxTouched < totalTouched){
-                    maxTouched = totalTouched;
-                }
-            }
-            int nRevisions = classProject.getMetric().getNumberOfRevisions();
-            setMetricForRemoved(nRevisions,totalRemoved, maxRemoved, classProject,locRemovedByClass);
-            //setMetricsForAdded(nRevisions,totalAdded, maxAdded, classProject,locAddedByClass);
-            //setMetricsForChurn(totalChurn, maxChurn, classProject, locAddedByClass,locRemovedByClass);
-           // setMetricsForTouched(totalTouched,maxTouched,classProject,locAddedByClass,locRemovedByClass);
+    private void extractLOC(ClassProject classProject, int totalAdded, int totalRemoved, int totalChurn,
+                                               int totalTouched, int maxAdded, int maxRemoved, int maxChurn, int maxTouched) throws IOException {
+        // First extract LOC from git
+        extractAddedOrRemovedLOC(classProject);
 
+        List<Integer> locAddedByClass = classProject.getLOCAddedByClass();
+        List<Integer> locRemovedByClass = classProject.getLOCRemovedByClass();
+
+        for (int i = 0; i < locAddedByClass.size(); i++) {
+            totalAdded += locAddedByClass.get(i);
+            totalRemoved += locRemovedByClass.get(i);
+            totalChurn += Math.abs(locAddedByClass.get(i) - locRemovedByClass.get(i));
+            totalTouched += locAddedByClass.get(i) + locRemovedByClass.get(i);
+
+            maxAdded = Math.max(maxAdded, totalAdded);
+            maxRemoved = Math.max(maxRemoved, totalRemoved);
+            maxChurn = Math.max(maxChurn, totalChurn);
+            maxTouched = Math.max(maxTouched, totalTouched);
+        }
+
+        int nRevisions = classProject.getMetric().getNumberOfRevisions();
+        if (nRevisions > 0) {
+            setMetricsForRemovedLOC(nRevisions,totalRemoved, maxRemoved, classProject);
+            setMetricsForAddedLOC(nRevisions, totalAdded, maxAdded, classProject);
+            setMetricsForTouchedLoc(nRevisions, totalTouched, maxTouched, classProject);
+            setMetricsForChurn(nRevisions,totalChurn, maxChurn,classProject);
         }
 
     }
 
-//    private void setMetricsForAdded(int nRevisions, int totalAdded, int maxAdded, ClassProject classProject, List<Integer> locAddedByClass) {
-//        float avgAdded = 0;
-//        if(!locAddedByClass.isEmpty()) {
-//            avgAdded = ((float) totalAdded) / nRevisions ;
-//        }
-//        classProject.getMetric().setAddedLOCMetrics(totalAdded, maxAdded, avgA);
-//    }
-//    }
+    private void setMetricsForChurn(int nRevisions, int totalChurn, int maxChurn, ClassProject classProject) {
+        float avgChurn = (float) totalChurn / nRevisions;
+        classProject.getMetric().setChurnMetrics(totalChurn,maxChurn,avgChurn);
+    }
 
-    private void setMetricForRemoved(int nRevisions,int totalRemoved, int maxRemoved, ClassProject classProject, List<Integer> locRemovedByClass) {
+    private void setMetricsForTouchedLoc(int nRevisions, int totalTouched, int maxTouched, ClassProject classProject) {
+        float avgTouched = ((float) totalTouched) / nRevisions;
+        classProject.getMetric().setTouchedLOCMetrics(totalTouched,maxTouched,avgTouched);
+    }
 
+    private void setMetricsForAddedLOC(int nRevisions, int totalAdded, int maxAdded, ClassProject classProject) {
+        float avgAdded = ((float) totalAdded) / nRevisions;
+        classProject.getMetric().setAddedLOCMetrics(totalAdded, maxAdded, avgAdded);
+    }
+
+    private void setMetricsForRemovedLOC(int nRevisions, int totalRemoved, int maxRemoved, ClassProject classProject) {
         float avgRemoved = 0;
-        if(!locRemovedByClass.isEmpty()) {
-            avgRemoved = ((float) totalRemoved) / nRevisions ;
+        if (nRevisions != 0) {
+            avgRemoved = ((float) totalRemoved) / nRevisions;
         }
         classProject.getMetric().setRemovedLOCMetrics(totalRemoved, maxRemoved, avgRemoved);
     }
+
 
     public void extractAddedOrRemovedLOC(ClassProject classProject) throws IOException {
         for(Commit commit : classProject.getCommitsOfTheTouchedClass()) {

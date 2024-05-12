@@ -1,15 +1,23 @@
 package model;
 
 public class Metric{
+    //Metrics for RemovedLOC
     private int maxRemovedLOCMetrics;
     private float avgRemovedLOCMetrics;
     private int removedLOCMetrics;
+    //Metrics for Churn
     private int churnMetrics;
-
+    private float avgChurnMetrics;
+    private int maxChurnMetrics;
+    //Metrics for AddedLOC
     private int addedLOCMetrics;
     private int maxAddedLOCMetrics;
     private float avgAddedLOCMetrics;
+    //Metrics for touchedLOC
     private int touchedLOCMetrics;
+    private int maxTouchedLOCMetrics;
+    private float avgTouchedLOCMetrics;
+
     private boolean bugged;
     private int size;
     private int numberOfRevisions;
@@ -94,18 +102,22 @@ public class Metric{
         this.avgRemovedLOCMetrics= avgRemovedLOCMetrics;
     }
 
-    public void setChurnMetrics(int churnMetrics) {
+    public void setChurnMetrics(int churnMetrics, int maxChurnMetrics, float avgChurnMetrics) {
         this.churnMetrics = churnMetrics;
+        this.maxChurnMetrics = maxChurnMetrics;
+        this.avgChurnMetrics = avgChurnMetrics;
     }
 
-    public void setTouchedLOCMetrics(int touchedLOCMetrics) {
+    public void setTouchedLOCMetrics(int touchedLOCMetrics,int maxTouchedLOCMetrics, float avgTouchedLOCMetrics) {
         this.touchedLOCMetrics = touchedLOCMetrics;
+        this.maxTouchedLOCMetrics = maxTouchedLOCMetrics;
+        this.avgTouchedLOCMetrics = avgTouchedLOCMetrics;
     }
 
     public void setAddedLOCMetrics(int addedLOCMetrics, int maxAddedLOCMetrics, float avgAddedLOCMetrics) {
         this.addedLOCMetrics = addedLOCMetrics;
-        this.avgRemovedLOCMetrics=avgAddedLOCMetrics;
-        this.maxRemovedLOCMetrics = maxAddedLOCMetrics;
+        this.avgAddedLOCMetrics=avgAddedLOCMetrics;
+        this.maxAddedLOCMetrics = maxAddedLOCMetrics;
     }
 
     @Override
