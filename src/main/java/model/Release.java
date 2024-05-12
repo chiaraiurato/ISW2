@@ -15,6 +15,13 @@ public class Release {
     private final LocalDate releaseDate;
     private final List<Commit> commitList;
 
+    /**
+     * Constructs a Release object with the given release name and release date.
+     *
+     * @param releaseName The name of the release.
+     * @param releaseDate The date of the release.
+     */
+
     public Release(String releaseName, LocalDate releaseDate) {
         this.releaseName = releaseName;
         this.releaseDate = releaseDate;

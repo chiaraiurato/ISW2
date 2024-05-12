@@ -24,6 +24,19 @@ public class Metric{
     private int numberOfDefectFixes;
     private int numberOfAuthors;
 
+    /**
+     * Metric class represents metrics associated with a software project.
+     * It includes metrics such as lines of code added, removed, churn, and touched, as well as other project-related metrics.
+     * The class provides methods to initialize, set, and retrieve these metrics.
+     * Metrics include:
+     * - Removed Lines of Code (LOC) metrics: total removed LOC, maximum removed LOC, and average removed LOC.
+     * - Churn metrics: total churn, maximum churn, and average churn.
+     * - Added Lines of Code (LOC) metrics: total added LOC, maximum added LOC, and average added LOC.
+     * - Touched Lines of Code (LOC) metrics: total touched LOC, maximum touched LOC, and average touched LOC.
+     * - Project-related metrics: buggyness, size, number of revisions, number of defect fixes, and number of authors.
+     * Additionally, the class overrides the toString() method to provide a string representation of the metrics.
+     */
+
     public Metric() {
         initializeMetrics();
     }

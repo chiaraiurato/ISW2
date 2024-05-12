@@ -109,12 +109,15 @@ public class ClassProjectRetriever {
                     && !commitDate.isBefore(ticket.getCreationDate())) {
                 List<String> modifiedClassesNames = getTouchedClassesNames(revCommit);
                 Release fixedVersion = commit.getRelease();
-                for (String modifiedClass : modifiedClassesNames) {
-                    for (ClassProject projectClass : allProjectClasses) {
-                        if (projectClass.getKey().equals(modifiedClass) && projectClass.getRelease().id() < fixedVersion.id() && projectClass.getRelease().id() >= injectedVersion.id()) {
-                            projectClass.getMetric().setBuggyness(true);
-                        }
-                    }
+                markAsBuggy(modifiedClassesNames, allProjectClasses, fixedVersion, injectedVersion);
+            }
+        }
+    }
+    private void markAsBuggy(List<String> modifiedClassesNames, List<ClassProject> allProjectClasses, Release fixedVersion, Release injectedVersion){
+        for (String modifiedClass : modifiedClassesNames) {
+            for (ClassProject projectClass : allProjectClasses) {
+                if (projectClass.getKey().equals(modifiedClass) && projectClass.getRelease().id() < fixedVersion.id() && projectClass.getRelease().id() >= injectedVersion.id()) {
+                    projectClass.getMetric().setBuggyness(true);
                 }
             }
         }

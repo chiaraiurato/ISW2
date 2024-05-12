@@ -28,6 +28,12 @@ public class SetProportion {
     private enum OtherProjects {
         ZOOKEEPER
     }
+    /**
+     * Controller class for computing proportions related to tickets and releases.
+     * This class provides methods for calculating incremental proportions, cold-start proportions,
+     * and applying these proportions to a list of tickets.
+     * It also contains constants and helper methods for writing information to files.
+     */
 
     private SetProportion() {}
 

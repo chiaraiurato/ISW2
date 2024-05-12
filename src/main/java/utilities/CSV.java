@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.util.List;
 
 public class CSV {
-
+    /**
+     * Utility class to generate CSV files
+     */
     private static final Logger logger = LoggerFactory.getLogger(CSV.class);
 
     private static FileWriter fileWriter = null;

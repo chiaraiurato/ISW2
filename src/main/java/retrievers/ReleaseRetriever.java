@@ -16,6 +16,12 @@ public class ReleaseRetriever {
 
     private final String projName ;
 
+    /**
+     * Constructs a ReleaseRetriever object with the provided project name.
+     *
+     * @param projName The name of the project.
+     */
+
     public ReleaseRetriever(String projName){
         this.projName = projName;
     }

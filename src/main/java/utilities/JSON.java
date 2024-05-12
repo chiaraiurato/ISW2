@@ -8,6 +8,10 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 
 public class JSON {
+
+    /**
+     * Utility class to manage JSON Data
+     */
     private JSON(){}
 
     private static String readAll(Reader rd) throws IOException {
