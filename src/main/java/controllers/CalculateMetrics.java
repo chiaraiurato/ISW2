@@ -47,6 +47,7 @@ public class CalculateMetrics {
     }
     public void calculateLOCMetrics() throws IOException {
         for (ClassProject classProject : allClasses) {
+            //Initialize metrics
             int totalAdded = 0;
             int totalRemoved = 0;
             int totalChurn = 0;
@@ -57,38 +58,33 @@ public class CalculateMetrics {
             int maxChurn = 0;
             int maxTouched = 0;
 
-            extractLOC(classProject, totalAdded, totalRemoved, totalChurn, totalTouched, maxAdded, maxRemoved, maxChurn, maxTouched);
+            // Extract LOC from git
+            extractAddedOrRemovedLOC(classProject);
+
+            List<Integer> locAddedByClass = classProject.getLOCAddedByClass();
+            List<Integer> locRemovedByClass = classProject.getLOCRemovedByClass();
+
+            for (int i = 0; i < locAddedByClass.size(); i++) {
+                totalAdded += locAddedByClass.get(i);
+                totalRemoved += locRemovedByClass.get(i);
+                totalChurn += Math.abs(locAddedByClass.get(i) - locRemovedByClass.get(i));
+                totalTouched += locAddedByClass.get(i) + locRemovedByClass.get(i);
+
+                maxAdded = Math.max(maxAdded, totalAdded);
+                maxRemoved = Math.max(maxRemoved, totalRemoved);
+                maxChurn = Math.max(maxChurn, totalChurn);
+                maxTouched = Math.max(maxTouched, totalTouched);
+            }
+
+            int nRevisions = classProject.getMetric().getNumberOfRevisions();
+            if (nRevisions > 0) {
+                setMetricsForRemovedLOC(nRevisions,totalRemoved, maxRemoved, classProject);
+                setMetricsForAddedLOC(nRevisions, totalAdded, maxAdded, classProject);
+                setMetricsForTouchedLoc(nRevisions, totalTouched, maxTouched, classProject);
+                setMetricsForChurn(nRevisions,totalChurn, maxChurn,classProject);
+            }
+
         }
-    }
-
-    private void extractLOC(ClassProject classProject, int totalAdded, int totalRemoved, int totalChurn,
-                                               int totalTouched, int maxAdded, int maxRemoved, int maxChurn, int maxTouched) throws IOException {
-        // First extract LOC from git
-        extractAddedOrRemovedLOC(classProject);
-
-        List<Integer> locAddedByClass = classProject.getLOCAddedByClass();
-        List<Integer> locRemovedByClass = classProject.getLOCRemovedByClass();
-
-        for (int i = 0; i < locAddedByClass.size(); i++) {
-            totalAdded += locAddedByClass.get(i);
-            totalRemoved += locRemovedByClass.get(i);
-            totalChurn += Math.abs(locAddedByClass.get(i) - locRemovedByClass.get(i));
-            totalTouched += locAddedByClass.get(i) + locRemovedByClass.get(i);
-
-            maxAdded = Math.max(maxAdded, totalAdded);
-            maxRemoved = Math.max(maxRemoved, totalRemoved);
-            maxChurn = Math.max(maxChurn, totalChurn);
-            maxTouched = Math.max(maxTouched, totalTouched);
-        }
-
-        int nRevisions = classProject.getMetric().getNumberOfRevisions();
-        if (nRevisions > 0) {
-            setMetricsForRemovedLOC(nRevisions,totalRemoved, maxRemoved, classProject);
-            setMetricsForAddedLOC(nRevisions, totalAdded, maxAdded, classProject);
-            setMetricsForTouchedLoc(nRevisions, totalTouched, maxTouched, classProject);
-            setMetricsForChurn(nRevisions,totalChurn, maxChurn,classProject);
-        }
-
     }
 
     private void setMetricsForChurn(int nRevisions, int totalChurn, int maxChurn, ClassProject classProject) {
@@ -107,10 +103,9 @@ public class CalculateMetrics {
     }
 
     private void setMetricsForRemovedLOC(int nRevisions, int totalRemoved, int maxRemoved, ClassProject classProject) {
-        float avgRemoved = 0;
-        if (nRevisions != 0) {
-            avgRemoved = ((float) totalRemoved) / nRevisions;
-        }
+
+        float avgRemoved = ((float) totalRemoved) / nRevisions;
+
         classProject.getMetric().setRemovedLOCMetrics(totalRemoved, maxRemoved, avgRemoved);
     }
 

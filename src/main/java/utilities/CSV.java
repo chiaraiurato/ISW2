@@ -17,59 +17,60 @@ public class CSV {
     private static FileWriter fileWriter = null;
 
     public static void createFileCSVForVersion(String projName, List<Release> releaseList) {
-        createCSVFile(projName + "VersionInfo.csv", "Index,Version ID,Version Name,Date",
-                releaseList, (release, i) -> {
-                    try {
-                        fileWriter.append(Integer.toString(i + 1));
-                        fileWriter.append(",");
-                        fileWriter.append(String.valueOf(release.id()));
-                        fileWriter.append(",");
-                        fileWriter.append(release.getReleaseName());
-                        fileWriter.append(",");
-                        fileWriter.append(release.getReleaseDate().toString());
-                        fileWriter.append("\n");
-                    } catch (IOException e) {
-                        logger.error("Error writing CSV file", e);
-                    }
-                });
-    }
+        String output = projName + "VersionInfo.csv";
 
-    public static void createFileCSVForTicket(String projName, List<Ticket> ticketList) {
-        createCSVFile(projName + "TicketInfo.csv", "TicketKey,CreationDate,ResolutionDate, OV,FV,AV",
-                ticketList, (ticket, i) -> {
-                    try {
-                        fileWriter.append(ticket.getTicketKey());
-                        fileWriter.append(",");
-                        fileWriter.append(String.valueOf(ticket.getCreationDate()));
-                        fileWriter.append(",");
-                        fileWriter.append(ticket.getResolutionDate().toString());
-                        fileWriter.append(",");
-                        fileWriter.append(Integer.toString(ticket.getOpeningVersion().id()));
-                        fileWriter.append(",");
-                        fileWriter.append(Integer.toString(ticket.getFixedVersion().id()));
-                        fileWriter.append(",");
-                        fileWriter.append(Integer.toString(ticket.getAffectedVersions().size()));
-                        fileWriter.append("\n");
-                    } catch (IOException e) {
-                        logger.error("Error writing CSV file", e);
-                    }
-                });
-    }
-
-    private static <T> void createCSVFile(String filename, String header, List<T> dataList, CSVLineWriter<T> lineWriter) {
-        try {
-            fileWriter = new FileWriter(filename);
-            fileWriter.append(header);
+        try (FileWriter fileWriter = new FileWriter(output)) {
+            fileWriter.append("Index,Version ID,Version Name,Date");
             fileWriter.append("\n");
-            for (int i = 0; i < dataList.size(); i++) {
-                lineWriter.write(dataList.get(i), i);
+
+            for (int i = 0; i < releaseList.size(); i++) {
+                int index = i + 1;
+                Release release = releaseList.get(i);
+
+                fileWriter.append(Integer.toString(index));
+                fileWriter.append(",");
+                fileWriter.append(String.valueOf(release.id()));
+                fileWriter.append(",");
+                fileWriter.append(release.getReleaseName());
+                fileWriter.append(",");
+                fileWriter.append(release.getReleaseDate().toString());
+                fileWriter.append("\n");
             }
         } catch (IOException e) {
-            logger.error("Error creating CSV file", e);
-        } finally {
-            closeFileWriter();
+            logger.error("Error writing CSV file", e);
         }
     }
+
+
+    public static void createFileCSVForTicket(String projName, List<Ticket> ticketList) {
+        String output = projName + "TicketInfo.csv";
+
+        try (FileWriter fileWriter = new FileWriter(output)) {
+            fileWriter.append("TicketKey,CreationDate,ResolutionDate, OV,FV,AV");
+            fileWriter.append("\n");
+
+            for (int i = 0; i < ticketList.size(); i++) {
+                Ticket ticket = ticketList.get(i);
+
+                fileWriter.append(ticket.getTicketKey());
+                fileWriter.append(",");
+                fileWriter.append(String.valueOf(ticket.getCreationDate()));
+                fileWriter.append(",");
+                fileWriter.append(ticket.getResolutionDate().toString());
+                fileWriter.append(",");
+                fileWriter.append(Integer.toString(ticket.getOpeningVersion().id()));
+                fileWriter.append(",");
+                fileWriter.append(Integer.toString(ticket.getFixedVersion().id()));
+                fileWriter.append(",");
+                fileWriter.append(Integer.toString(ticket.getAffectedVersions().size()));
+                fileWriter.append("\n");
+            }
+        } catch (IOException e) {
+            logger.error("Error writing CSV file", e);
+        }
+    }
+
+
 
     private static void closeFileWriter() {
         try {
@@ -80,10 +81,6 @@ public class CSV {
         } catch (IOException e) {
             logger.error("Error while flushing/closing fileWriter", e);
         }
-    }
-
-    private interface CSVLineWriter<T> {
-        void write(T item, int index) throws IOException;
     }
 }
 

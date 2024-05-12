@@ -26,7 +26,7 @@ public class CommitRetriever {
     private final Git git;
     private List<Ticket> ticketList;
 
-    public List<Release> releaseList;
+    public final List<Release> releaseList;
     /**
      * This is the constructor that you have to use for retrieve commits.
      *
@@ -39,11 +39,6 @@ public class CommitRetriever {
         this.git = git;
         this.releaseList = releaseList;
         this.ticketList = null;
-    }
-    public static <T> void printListHead(List<T> list) {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).toString());
-        }
     }
     public List<Commit> extractAllCommits() throws IOException, GitAPIException, ParseException {
         List<RevCommit> revCommitList = new ArrayList<>();

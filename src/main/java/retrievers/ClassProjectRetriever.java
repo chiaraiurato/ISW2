@@ -55,7 +55,7 @@ public class ClassProjectRetriever {
                 allProjectClasses.add(new ClassProject(nameAndContentOfClass.getKey(), nameAndContentOfClass.getValue(), lastCommit.getRelease()));
             }
         }
-        setBuggyClass(ticketList, allProjectClasses);
+        injectBuggyClassProjectsForTicketList(ticketList, allProjectClasses);
 
         //Store commit that touched a class
         List<ClassProject> tmpClassProj;
@@ -89,26 +89,30 @@ public class ClassProjectRetriever {
         }
         return lastCommitList;
     }
-    private void setBuggyClass(List<Ticket> ticketList, List<ClassProject> allProjectClasses) throws IOException {
+    private void injectBuggyClassProjectsForTicketList(List<Ticket> ticketList, List<ClassProject> allProjectClasses) throws IOException {
         //Set the class as buggy based on the commit and IV
         for(Ticket ticket: ticketList) {
             List<Commit> commitsInsideTicket = ticket.getCommitList();
             Release injectedVersion = ticket.getInjectedVersion();
             if(injectedVersion != null) {
-                for (Commit commit : commitsInsideTicket) {
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                    RevCommit revCommit = commit.getRevCommit();
-                    LocalDate commitDate = LocalDate.parse(formatter.format(revCommit.getCommitterIdent().getWhen()));
-                    if (!commitDate.isAfter(ticket.getResolutionDate())
-                            && !commitDate.isBefore(ticket.getCreationDate())) {
-                        List<String> modifiedClassesNames = getTouchedClassesNames(revCommit);
-                        Release fixedVersion = commit.getRelease();
-                        for (String modifiedClass : modifiedClassesNames) {
-                            for (ClassProject projectClass : allProjectClasses) {
-                                if (projectClass.getKey().equals(modifiedClass) && projectClass.getRelease().id() < fixedVersion.id() && projectClass.getRelease().id() >= injectedVersion.id()) {
-                                    projectClass.getMetric().setBuggyness(true);
-                                }
-                            }
+                setClassProjectsBuggy(commitsInsideTicket, injectedVersion, ticket, allProjectClasses);
+            }
+        }
+    }
+
+    private void setClassProjectsBuggy(List<Commit> commitsInsideTicket,Release injectedVersion, Ticket ticket, List<ClassProject> allProjectClasses) throws IOException {
+        for (Commit commit : commitsInsideTicket) {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            RevCommit revCommit = commit.getRevCommit();
+            LocalDate commitDate = LocalDate.parse(formatter.format(revCommit.getCommitterIdent().getWhen()));
+            if (!commitDate.isAfter(ticket.getResolutionDate())
+                    && !commitDate.isBefore(ticket.getCreationDate())) {
+                List<String> modifiedClassesNames = getTouchedClassesNames(revCommit);
+                Release fixedVersion = commit.getRelease();
+                for (String modifiedClass : modifiedClassesNames) {
+                    for (ClassProject projectClass : allProjectClasses) {
+                        if (projectClass.getKey().equals(modifiedClass) && projectClass.getRelease().id() < fixedVersion.id() && projectClass.getRelease().id() >= injectedVersion.id()) {
+                            projectClass.getMetric().setBuggyness(true);
                         }
                     }
                 }
@@ -121,10 +125,8 @@ public class ClassProjectRetriever {
         List<String> touchedClassesNames = new ArrayList<>();
 
         // Initialize resources outside try-with-resources
-        DiffFormatter diffFormatter = new DiffFormatter(DisabledOutputStream.INSTANCE);
-        ObjectReader reader = repo.newObjectReader();
 
-        try {
+        try (DiffFormatter diffFormatter = new DiffFormatter(DisabledOutputStream.INSTANCE); ObjectReader reader = repo.newObjectReader()) {
             CanonicalTreeParser newTreeIter = new CanonicalTreeParser();
             ObjectId newTree = commit.getTree();
             newTreeIter.reset(reader, newTree);
@@ -144,13 +146,8 @@ public class ClassProjectRetriever {
             }
         } catch (ArrayIndexOutOfBoundsException ignored) {
             // Ignore it
-        } finally {
-            // Close resources in finally block
-            diffFormatter.close();
-            if (reader != null) {
-                reader.close();
-            }
         }
+        // Close resources in finally block
         return touchedClassesNames;
     }
 

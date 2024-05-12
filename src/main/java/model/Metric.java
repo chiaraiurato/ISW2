@@ -119,7 +119,21 @@ public class Metric{
         this.avgAddedLOCMetrics=avgAddedLOCMetrics;
         this.maxAddedLOCMetrics = maxAddedLOCMetrics;
     }
+    public int getMaxChurnMetrics() {
+        return maxChurnMetrics;
+    }
 
+    public float getAvgChurnMetrics() {
+        return avgChurnMetrics;
+    }
+
+    public int getMaxTouchedLOCMetrics() {
+        return maxTouchedLOCMetrics;
+    }
+
+    public float getAvgTouchedLOCMetrics() {
+        return avgTouchedLOCMetrics;
+    }
     @Override
     public String toString() {
         return "Metric{" +
