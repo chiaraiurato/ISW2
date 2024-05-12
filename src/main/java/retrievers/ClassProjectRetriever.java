@@ -66,8 +66,8 @@ public class ClassProjectRetriever {
             List<String> modifiedClassesNames = getTouchedClassesNames(commit.getRevCommit());
             for(String modifiedClass: modifiedClassesNames){
                 for(ClassProject projectClass: tmpClassProj){
-                    if(projectClass.getKey().equals(modifiedClass) && !projectClass.getCommitsThatTouchTheClass().contains(commit)) {
-                        projectClass.addCommitOfTheTouchedClass(commit);
+                    if(projectClass.getKey().equals(modifiedClass) && !projectClass.getCommitsOfTheTouchedClass().contains(commit)) {
+                        projectClass.addCommitsOfTheTouchedClass(commit);
                     }
                 }
             }

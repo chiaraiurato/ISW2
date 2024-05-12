@@ -4,6 +4,7 @@ import model.ClassProject;
 import model.Commit;
 import model.Release;
 import model.Ticket;
+import controllers.CalculateMetrics;
 import controllers.SetRepository;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -54,15 +55,15 @@ public class Execute {
         logger.info("Retrieving tickets...");
         TicketRetriever ticketRetriever = new TicketRetriever(projName, releaseList);
         List<Ticket> ticketList = ticketRetriever.getTickets();
-        printListToFile(ticketList, "ticketListBeforeProportion.txt");
+        //printListToFile(ticketList, "ticketListBeforeProportion.txt");
         ticketList = ticketRetriever.doProportion(ticketList, releaseList);
-        printListToFile(ticketList, "ticketListAfterProportion.txt");
+        //printListToFile(ticketList, "ticketListAfterProportion.txt");
         logger.info(String.format("Number of ticket %d", ticketList.size()));
         logger.info(DONE);
 
         //Filter commit that have ticket id inside their message
         logger.info("Filtering commits...");
-        List<Commit> filterCommits = commitRetriever.filterCommits(commitList, ticketList);
+        List<Commit> filteredCommits = commitRetriever.filterCommits(commitList, ticketList);
         ticketList = commitRetriever.getTicketList();
         logger.info(DONE);
 
@@ -72,6 +73,12 @@ public class Execute {
         List<ClassProject> classProjects = classProjectRetriever.extractAllProjectClasses();
         logger.info(String.format("Number of class  %d",classProjects.size()));
         logger.info(DONE);
+
+        //Calculate metrics
+        logger.info("Calculating metrics...");
+        CalculateMetrics calculateMetrics = new CalculateMetrics(classProjects, filteredCommits, repository);
+        calculateMetrics.calculateAllMetrics();
+        printListToFile(classProjects, "classProjectsMetrics.txt");
 
     }
     public static <T> void printListToFile(List<T> list, String filename) throws IOException {

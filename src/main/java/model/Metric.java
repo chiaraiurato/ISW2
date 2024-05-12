@@ -1,10 +1,15 @@
 package model;
 
-public class Metric implements AutoCloseable {
-   // private final LOCMetrics removedLOCMetrics;
-   // private final LOCMetrics churnMetrics;
-   // private final LOCMetrics addedLOCMetrics;
-  //  private final LOCMetrics touchedLOCMetrics;
+public class Metric{
+    private int maxRemovedLOCMetrics;
+    private float avgRemovedLOCMetrics;
+    private int removedLOCMetrics;
+    private int churnMetrics;
+
+    private int addedLOCMetrics;
+    private int maxAddedLOCMetrics;
+    private float avgAddedLOCMetrics;
+    private int touchedLOCMetrics;
     private boolean bugged;
     private int size;
     private int numberOfRevisions;
@@ -21,10 +26,10 @@ public class Metric implements AutoCloseable {
         numberOfRevisions = 0;
         numberOfDefectFixes = 0;
         numberOfAuthors = 0;
-//        removedLOCMetrics = new LOCMetrics();
-//        churnMetrics = new LOCMetrics();
-//        addedLOCMetrics = new LOCMetrics();
-//        touchedLOCMetrics = new LOCMetrics();
+        removedLOCMetrics = 0;
+        churnMetrics = 0;
+        addedLOCMetrics = 0;
+        touchedLOCMetrics = 0;
     }
 
     public boolean getBuggyness() {
@@ -43,52 +48,24 @@ public class Metric implements AutoCloseable {
         return size;
     }
 
-//    public LOCMetrics getRemovedLOCMetrics() {
-//        return removedLOCMetrics;
-//    }
-//
-//    public LOCMetrics getChurnMetrics() {
-//        return churnMetrics;
-//    }
-//
-//    public LOCMetrics getAddedLOCMetrics() {
-//        return addedLOCMetrics;
-//    }
-//
-//    public LOCMetrics getTouchedLOCMetrics() {
-//        return touchedLOCMetrics;
-//    }
-//
-//    public void setAddedLOCMetrics(int addedLOC, int maxAddedLOC, double avgAddedLOC) {
-//        this.addedLOCMetrics.setVal(addedLOC);
-//        this.addedLOCMetrics.setMaxVal(maxAddedLOC);
-//        this.addedLOCMetrics.setAvgVal(avgAddedLOC);
-//    }
-//
-//    public void setRemovedLOCMetrics(int removedLOC, int maxRemovedLOC, double avgRemovedLOC) {
-//        this.removedLOCMetrics.setVal(removedLOC);
-//        this.removedLOCMetrics.setMaxVal(maxRemovedLOC);
-//        this.removedLOCMetrics.setAvgVal(avgRemovedLOC);
-//    }
-//
-//    public void setChurnMetrics(int churn, int maxChurningFactor, double avgChurningFactor) {
-//        this.churnMetrics.setVal(churn);
-//        this.churnMetrics.setMaxVal(maxChurningFactor);
-//        this.churnMetrics.setAvgVal(avgChurningFactor);
-//    }
-//
-//    public void setTouchedLOCMetrics(int touchedLOC, int maxTouchedLOC, double avgTouchedLOC) {
-//        this.touchedLOCMetrics.setVal(touchedLOC);
-//        this.touchedLOCMetrics.setMaxVal(maxTouchedLOC);
-//        this.touchedLOCMetrics.setAvgVal(avgTouchedLOC);
-//    }
+    public int getRemovedLOCMetrics() {
+        return removedLOCMetrics;
+    }
+
+    public int getChurnMetrics() {
+        return churnMetrics;
+    }
+
+    public int getAddedLOCMetrics() {
+        return addedLOCMetrics;
+    }
+
+    public int getTouchedLOCMetrics() {
+        return touchedLOCMetrics;
+    }
 
     public void setNumberOfRevisions(int numberOfRevisions) {
         this.numberOfRevisions = numberOfRevisions;
-    }
-
-    public int getNumberOfRevisions() {
-        return numberOfRevisions;
     }
 
     public void setNumberOfDefectFixes(int numberOfDefectFixes) {
@@ -107,8 +84,48 @@ public class Metric implements AutoCloseable {
         return numberOfAuthors;
     }
 
-    @Override
-    public void close() {
-        // Add any resource cleanup code here if needed
+    public int getNumberOfRevisions() {
+        return numberOfRevisions;
     }
+
+    public void setRemovedLOCMetrics(int removedLOCMetrics, int maxRemovedLOCMetrics, float avgRemovedLOCMetrics) {
+        this.removedLOCMetrics = removedLOCMetrics;
+        this.maxRemovedLOCMetrics = maxRemovedLOCMetrics;
+        this.avgRemovedLOCMetrics= avgRemovedLOCMetrics;
+    }
+
+    public void setChurnMetrics(int churnMetrics) {
+        this.churnMetrics = churnMetrics;
+    }
+
+    public void setTouchedLOCMetrics(int touchedLOCMetrics) {
+        this.touchedLOCMetrics = touchedLOCMetrics;
+    }
+
+    public void setAddedLOCMetrics(int addedLOCMetrics, int maxAddedLOCMetrics, float avgAddedLOCMetrics) {
+        this.addedLOCMetrics = addedLOCMetrics;
+        this.avgRemovedLOCMetrics=avgAddedLOCMetrics;
+        this.maxRemovedLOCMetrics = maxAddedLOCMetrics;
+    }
+
+    @Override
+    public String toString() {
+        return "Metric{" +
+                "maxRemovedLOCMetrics=" + maxRemovedLOCMetrics +
+                ", avgRemovedLOCMetrics=" + avgRemovedLOCMetrics +
+                ", removedLOCMetrics=" + removedLOCMetrics +
+                ", churnMetrics=" + churnMetrics +
+                ", addedLOCMetrics=" + addedLOCMetrics +
+                ", maxAddedLOCMetrics=" + maxAddedLOCMetrics +
+                ", avgAddedLOCMetrics=" + avgAddedLOCMetrics +
+                ", touchedLOCMetrics=" + touchedLOCMetrics +
+                ", bugged=" + bugged +
+                ", size=" + size +
+                ", numberOfRevisions=" + numberOfRevisions +
+                ", numberOfDefectFixes=" + numberOfDefectFixes +
+                ", numberOfAuthors=" + numberOfAuthors +
+                '}';
+    }
+
+
 }
