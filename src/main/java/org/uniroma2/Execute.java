@@ -1,5 +1,6 @@
 package org.uniroma2;
 
+import controllers.ApplyWalkForward;
 import model.ClassProject;
 import model.Commit;
 import model.Release;
@@ -19,6 +20,7 @@ import utilities.CreateReportFile;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Execute {
@@ -78,7 +80,19 @@ public class Execute {
         //Summarize all info into report files
         createReportFile.begin(releaseList, commitList, ticketList, commitBuggy);
 
+        //Starting Walk-Forward approach
+        logger.info("Building training set...");
+        ApplyWalkForward applyWalkForward = new ApplyWalkForward(projName,releaseList, ticketList,classProjects,classProjectRetriever);
+        applyWalkForward.buildTrainingSet();
+        List<Release> halfRelease = applyWalkForward.getHalfReleases();
+        List<ClassProject> halfClassProject = applyWalkForward.getHalfClassProjects();
+        //createReportFile.
+        logger.info("Building testing set...");
+        applyWalkForward.buildTestingSet();
+        logger.info(DONE);
+
     }
+
 
 
 

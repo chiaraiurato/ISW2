@@ -65,25 +65,26 @@ public class Metric{
         this.size = size;
     }
 
-    public int getSize() {
-        return size;
+    public String getSize() {
+        return String.valueOf(size);
     }
 
-    public int getRemovedLOCMetrics() {
-        return removedLOCMetrics;
+    public String getRemovedLOCMetrics() {
+        return String.valueOf(removedLOCMetrics);
     }
 
-    public int getChurnMetrics() {
-        return churnMetrics;
+    public String getChurnMetrics() {
+        return String.valueOf(churnMetrics);
     }
 
-    public int getAddedLOCMetrics() {
-        return addedLOCMetrics;
+    public String getAddedLOCMetrics() {
+        return String.valueOf(addedLOCMetrics);
     }
 
-    public int getTouchedLOCMetrics() {
-        return touchedLOCMetrics;
+    public String getTouchedLOCMetrics() {
+        return String.valueOf(touchedLOCMetrics);
     }
+
 
     public void setNumberOfRevisions(int numberOfRevisions) {
         this.numberOfRevisions = numberOfRevisions;
@@ -96,6 +97,9 @@ public class Metric{
     public int getNumberOfDefectFixes() {
         return numberOfDefectFixes;
     }
+    public String getStringNumberOfDefectFixes() {
+        return String.valueOf(numberOfDefectFixes);
+    }
 
     public void setNumberOfAuthors(int numberOfAuthors) {
         this.numberOfAuthors = numberOfAuthors;
@@ -104,9 +108,15 @@ public class Metric{
     public int getNumberOfAuthors() {
         return numberOfAuthors;
     }
+    public String getStringNumberOfAuthors() {
+        return String.valueOf(numberOfAuthors);
+    }
 
     public int getNumberOfRevisions() {
         return numberOfRevisions;
+    }
+    public String getStringNumberOfRevisions() {
+        return String.valueOf(numberOfRevisions);
     }
 
     public void setRemovedLOCMetrics(int removedLOCMetrics, int maxRemovedLOCMetrics, float avgRemovedLOCMetrics) {
@@ -132,21 +142,37 @@ public class Metric{
         this.avgAddedLOCMetrics=avgAddedLOCMetrics;
         this.maxAddedLOCMetrics = maxAddedLOCMetrics;
     }
-    public int getMaxChurnMetrics() {
-        return maxChurnMetrics;
+    public String getMaxRemovedLOCMetrics() {
+        return String.valueOf(maxRemovedLOCMetrics);
+    }
+    public String getAvgRemovedLOCMetrics() {
+        return String.valueOf(avgRemovedLOCMetrics);
     }
 
-    public float getAvgChurnMetrics() {
-        return avgChurnMetrics;
+    public String getAvgChurnMetrics() {
+        return String.valueOf(avgChurnMetrics);
     }
 
-    public int getMaxTouchedLOCMetrics() {
-        return maxTouchedLOCMetrics;
+    public String getMaxChurnMetrics() {
+        return String.valueOf(maxChurnMetrics);
     }
 
-    public float getAvgTouchedLOCMetrics() {
-        return avgTouchedLOCMetrics;
+    public String getMaxAddedLOCMetrics() {
+        return String.valueOf(maxAddedLOCMetrics);
     }
+
+    public String getAvgAddedLOCMetrics() {
+        return String.valueOf(avgAddedLOCMetrics);
+    }
+
+    public String getMaxTouchedLOCMetrics() {
+        return String.valueOf(maxTouchedLOCMetrics);
+    }
+
+    public String getAvgTouchedLOCMetrics() {
+        return String.valueOf(avgTouchedLOCMetrics);
+    }
+
     @Override
     public String toString() {
         return "Metric{" +

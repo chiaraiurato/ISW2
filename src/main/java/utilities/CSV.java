@@ -1,11 +1,13 @@
 package utilities;
 
+import model.ClassProject;
 import model.Release;
 import model.Ticket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -15,8 +17,70 @@ public class CSV {
      * Utility class to generate CSV files
      */
     private static final Logger logger = LoggerFactory.getLogger(CSV.class);
+    private static File file;
 
-    private static FileWriter fileWriter = null;
+    public static void createFileCsv(String projName, List<Release> releaseList, List<ClassProject> classProjectList, String type, int i) {
+        String path ="output/csv/"+ projName+ "/"+type;
+        String filename = "/"+projName+"_"+type+i+".csv";
+        file = new File(path);
+        try{
+            if (!file.exists()) {
+                boolean created = file.mkdirs();
+                if (!created) {
+                    throw new IOException();
+                }
+            }
+            file = new File(path+filename);
+            try(FileWriter writer = new FileWriter(file)) {
+                writer.append("RELEASE_ID," +
+                        "FILE_NAME," +
+                        "SIZE," +
+                        "LOC_ADDED,LOC_ADDED_AVG,LOC_ADDED_MAX," +
+                        "LOC_REMOVED,LOC_REMOVED_AVG,LOC_REMOVED_MAX," +
+                        "LOC_TOUCHED,LOC_TOUCHED_AVG,LOC_TOUCHED_MAX," +
+                        "CHURN,CHURN_AVG,CHURN_MAX," +
+                        "NUMBER_OF_REVISIONS," +
+                        "NUMBER_OF_DEFECT_FIXES," +
+                        "NUMBER_OF_AUTHORS," +
+                        "IS_BUGGY").append("\n");
+                appendData(releaseList, classProjectList, writer);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private static void appendData(List<Release> releaseList, List<ClassProject> classProjectList, FileWriter fileWriter) throws IOException {
+        for (Release release : releaseList) {
+            for (ClassProject classProject : classProjectList) {
+                if (classProject.getRelease().id() == release.id()) {
+                    appendEntries(fileWriter, release, classProject);
+                }
+            }
+        }
+    }
+
+    private static void appendEntries(FileWriter fileWriter,Release release,ClassProject classProject) throws IOException {
+        String isClassBugged = classProject.getMetric().getBuggyness() ? "YES" : "NO" ;
+        fileWriter.append(String.valueOf(release.id())).append(",")
+                .append(classProject.getKey()).append(",")
+                .append(classProject.getMetric().getSize()).append(",")
+                .append(classProject.getMetric().getAddedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getAvgAddedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getMaxAddedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getRemovedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getAvgRemovedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getMaxRemovedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getTouchedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getAvgTouchedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getMaxTouchedLOCMetrics()).append(",")
+                .append(classProject.getMetric().getChurnMetrics()).append(",")
+                .append(classProject.getMetric().getAvgChurnMetrics()).append(",")
+                .append(classProject.getMetric().getMaxChurnMetrics()).append(",")
+                .append(classProject.getMetric().getStringNumberOfRevisions()).append(",")
+                .append(classProject.getMetric().getStringNumberOfDefectFixes()).append(",")
+                .append(classProject.getMetric().getStringNumberOfAuthors()).append(",")
+                .append(isClassBugged).append("\n");
+    }
 
     public static void createFileCSVForVersion(String projName, List<Release> releaseList) {
         String output = projName + "VersionInfo.csv";
@@ -72,9 +136,7 @@ public class CSV {
         }
     }
 
-
-
-    private static void closeFileWriter() {
+    private static void closeFileWriter(FileWriter fileWriter) {
         try {
             if (fileWriter != null) {
                 fileWriter.flush();

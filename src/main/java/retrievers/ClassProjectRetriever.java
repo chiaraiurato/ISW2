@@ -89,7 +89,13 @@ public class ClassProjectRetriever {
         }
         return lastCommitList;
     }
-    private void injectBuggyClassProjectsForTicketList(List<Ticket> ticketList, List<ClassProject> allProjectClasses) throws IOException {
+    public void initializeBuggyness(List<ClassProject> allProjectClasses) throws IOException {
+        for(ClassProject projectClass: allProjectClasses ){
+            projectClass.getMetric().setBuggyness(false);
+        }
+    }
+    public void injectBuggyClassProjectsForTicketList(List<Ticket> ticketList, List<ClassProject> allProjectClasses) throws IOException {
+        initializeBuggyness(allProjectClasses);
         //Set the class as buggy based on the commit and IV
         for(Ticket ticket: ticketList) {
             List<Commit> commitsInsideTicket = ticket.getCommitList();
@@ -100,7 +106,7 @@ public class ClassProjectRetriever {
         }
     }
 
-    private void setClassProjectsBuggy(List<Commit> commitsInsideTicket,Release injectedVersion, Ticket ticket, List<ClassProject> allProjectClasses) throws IOException {
+    public void setClassProjectsBuggy(List<Commit> commitsInsideTicket,Release injectedVersion, Ticket ticket, List<ClassProject> allProjectClasses) throws IOException {
         for (Commit commit : commitsInsideTicket) {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             RevCommit revCommit = commit.getRevCommit();
