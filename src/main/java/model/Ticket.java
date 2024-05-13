@@ -106,10 +106,11 @@ public class Ticket {
         return "Ticket{" +
                 "ticketID='" + ticketID + '\'' +
                 ", creationDate=" + creationDate +
-                ", injectedRelease=" + injectedVersion +
-                ", openingRelease=" + openingVersion +
-                ", fixedRelease=" + fixedVersion +
-                ", affectedReleases=" + affectedReleases +
+                ", resolutionDate=" + resolutionDate +
+                ", injectedVersion=" + injectedVersion +
+                ", openingVersion=" + openingVersion +
+                ", fixedVersion=" + fixedVersion +
+                ", affectedVersions=" + affectedReleases +
                 '}';
     }
 

@@ -73,11 +73,16 @@ public class CommitRetriever {
         }
         //remove the release without commit
         releaseList.removeIf(release -> release.getCommitList().isEmpty());
+        //reorder id
+        int i=0;
+        for (Release release : releaseList) {
+            release.setId(++i);
+        }
         //order commitList by new date
         commitList.sort(Comparator.comparing(o -> o.getRevCommit().getCommitterIdent().getWhen()));
         return commitList;
     }
-    public List<Commit> filterCommits(List<Commit> commitList, List<Ticket> ticketList) {
+    public List<Commit> filterBuggyCommits(List<Commit> commitList, List<Ticket> ticketList) {
         this.ticketList = ticketList;
         List<Commit> filteredCommitList = new ArrayList<>();
         for (Commit commit : commitList) {

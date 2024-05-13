@@ -938,14 +938,14 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-584}
 Size of filtered ticket: 155
-PROPORTION AVERAGE: 1.5419354
+PROPORTION AVERAGE: 1.5548387
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-577}
 Size of filtered ticket: 156
-PROPORTION AVERAGE: 1.5320513
+PROPORTION AVERAGE: 1.5576923
 ----------------------------------------------------------
 
 {BOOKKEEPER-603}
@@ -955,14 +955,14 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-617}
 Size of filtered ticket: 158
-PROPORTION AVERAGE: 1.5189873
+PROPORTION AVERAGE: 1.556962
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-544}
 Size of filtered ticket: 159
-PROPORTION AVERAGE: 1.509434
+PROPORTION AVERAGE: 1.5597484
 ----------------------------------------------------------
 
 {BOOKKEEPER-626}
@@ -978,7 +978,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-620}
 Size of filtered ticket: 163
-PROPORTION AVERAGE: 1.5010226
+PROPORTION AVERAGE: 1.5521473
 ----------------------------------------------------------
 
 {BOOKKEEPER-641}
@@ -997,7 +997,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-652}
 Size of filtered ticket: 168
-PROPORTION AVERAGE: 1.4801588
+PROPORTION AVERAGE: 1.5416666
 ----------------------------------------------------------
 
 {BOOKKEEPER-646}
@@ -1007,7 +1007,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-635}
 Size of filtered ticket: 170
-PROPORTION AVERAGE: 1.4686275
+PROPORTION AVERAGE: 1.5411764
 ----------------------------------------------------------
 
 {BOOKKEEPER-621}
@@ -1017,7 +1017,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-610}
 Size of filtered ticket: 172
-PROPORTION AVERAGE: 1.4573643
+PROPORTION AVERAGE: 1.5406977
 ----------------------------------------------------------
 
 {BOOKKEEPER-607}
@@ -1027,7 +1027,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-642}
 Size of filtered ticket: 174
-PROPORTION AVERAGE: 1.4463602
+PROPORTION AVERAGE: 1.5402299
 ----------------------------------------------------------
 
 {BOOKKEEPER-625}
@@ -1040,14 +1040,14 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-663}
 Size of filtered ticket: 177
-PROPORTION AVERAGE: 1.433145
+PROPORTION AVERAGE: 1.5367231
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-604}
 Size of filtered ticket: 178
-PROPORTION AVERAGE: 1.4250937
+PROPORTION AVERAGE: 1.5393258
 ----------------------------------------------------------
 
 {BOOKKEEPER-667}
@@ -1060,7 +1060,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-660}
 Size of filtered ticket: 181
-PROPORTION AVERAGE: 1.412523
+PROPORTION AVERAGE: 1.5359116
 ----------------------------------------------------------
 
 {BOOKKEEPER-624}
@@ -1073,77 +1073,77 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-649}
 Size of filtered ticket: 184
-PROPORTION AVERAGE: 1.4003624
+PROPORTION AVERAGE: 1.5326087
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-580}
 Size of filtered ticket: 185
-PROPORTION AVERAGE: 1.3927929
+PROPORTION AVERAGE: 1.5351351
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-679}
 Size of filtered ticket: 186
-PROPORTION AVERAGE: 1.3853048
+PROPORTION AVERAGE: 1.5376344
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-669}
 Size of filtered ticket: 187
-PROPORTION AVERAGE: 1.3778967
+PROPORTION AVERAGE: 1.5401069
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-446}
 Size of filtered ticket: 188
-PROPORTION AVERAGE: 1.3705674
+PROPORTION AVERAGE: 1.5425532
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-684}
 Size of filtered ticket: 189
-PROPORTION AVERAGE: 1.3721341
+PROPORTION AVERAGE: 1.5449735
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-683}
 Size of filtered ticket: 190
-PROPORTION AVERAGE: 1.3649124
+PROPORTION AVERAGE: 1.5473684
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-686}
 Size of filtered ticket: 191
-PROPORTION AVERAGE: 1.3577662
+PROPORTION AVERAGE: 1.5497382
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-685}
 Size of filtered ticket: 192
-PROPORTION AVERAGE: 1.3506945
+PROPORTION AVERAGE: 1.5520834
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-676}
 Size of filtered ticket: 193
-PROPORTION AVERAGE: 1.3436961
+PROPORTION AVERAGE: 1.5544041
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-673}
 Size of filtered ticket: 194
-PROPORTION AVERAGE: 1.347079
+PROPORTION AVERAGE: 1.5567011
 ----------------------------------------------------------
 
 {BOOKKEEPER-664}
@@ -1153,21 +1153,21 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-700}
 Size of filtered ticket: 196
-PROPORTION AVERAGE: 1.3537415
+PROPORTION AVERAGE: 1.5612245
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-698}
 Size of filtered ticket: 197
-PROPORTION AVERAGE: 1.357022
+PROPORTION AVERAGE: 1.5634518
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-678}
 Size of filtered ticket: 198
-PROPORTION AVERAGE: 1.3602694
+PROPORTION AVERAGE: 1.5656565
 ----------------------------------------------------------
 
 {BOOKKEEPER-712}
@@ -1180,126 +1180,126 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-709}
 Size of filtered ticket: 201
-PROPORTION AVERAGE: 1.3648425
+PROPORTION AVERAGE: 1.5671642
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-719}
 Size of filtered ticket: 202
-PROPORTION AVERAGE: 1.3679868
+PROPORTION AVERAGE: 1.569307
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-720}
 Size of filtered ticket: 203
-PROPORTION AVERAGE: 1.3711002
+PROPORTION AVERAGE: 1.5714285
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-708}
 Size of filtered ticket: 204
-PROPORTION AVERAGE: 1.374183
+PROPORTION AVERAGE: 1.5735294
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-727}
 Size of filtered ticket: 205
-PROPORTION AVERAGE: 1.3772358
+PROPORTION AVERAGE: 1.5756098
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-729}
 Size of filtered ticket: 206
-PROPORTION AVERAGE: 1.3802589
+PROPORTION AVERAGE: 1.5776699
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-728}
 Size of filtered ticket: 207
-PROPORTION AVERAGE: 1.3832529
+PROPORTION AVERAGE: 1.5797101
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-725}
 Size of filtered ticket: 208
-PROPORTION AVERAGE: 1.386218
+PROPORTION AVERAGE: 1.5817307
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-724}
 Size of filtered ticket: 209
-PROPORTION AVERAGE: 1.3891548
+PROPORTION AVERAGE: 1.583732
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-731}
 Size of filtered ticket: 210
-PROPORTION AVERAGE: 1.3920635
+PROPORTION AVERAGE: 1.5857143
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-654}
 Size of filtered ticket: 211
-PROPORTION AVERAGE: 1.3949448
+PROPORTION AVERAGE: 1.5876777
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-688}
 Size of filtered ticket: 212
-PROPORTION AVERAGE: 1.3954403
+PROPORTION AVERAGE: 1.5896226
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-730}
 Size of filtered ticket: 213
-PROPORTION AVERAGE: 1.3959312
+PROPORTION AVERAGE: 1.5915493
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-689}
 Size of filtered ticket: 214
-PROPORTION AVERAGE: 1.398754
+PROPORTION AVERAGE: 1.5934579
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-363}
 Size of filtered ticket: 215
-PROPORTION AVERAGE: 1.3992249
+PROPORTION AVERAGE: 1.5953488
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-740}
 Size of filtered ticket: 216
-PROPORTION AVERAGE: 1.3992285
+PROPORTION AVERAGE: 1.5949074
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-726}
 Size of filtered ticket: 217
-PROPORTION AVERAGE: 1.401997
+PROPORTION AVERAGE: 1.5967742
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-714}
 Size of filtered ticket: 218
-PROPORTION AVERAGE: 1.4047401
+PROPORTION AVERAGE: 1.5986239
 ----------------------------------------------------------
 
 {BOOKKEEPER-602}
@@ -1309,42 +1309,42 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-710}
 Size of filtered ticket: 220
-PROPORTION AVERAGE: 1.4078788
+PROPORTION AVERAGE: 1.6
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-743}
 Size of filtered ticket: 221
-PROPORTION AVERAGE: 1.4105581
+PROPORTION AVERAGE: 1.60181
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-742}
 Size of filtered ticket: 222
-PROPORTION AVERAGE: 1.4132133
+PROPORTION AVERAGE: 1.6036036
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-744}
 Size of filtered ticket: 223
-PROPORTION AVERAGE: 1.4158446
+PROPORTION AVERAGE: 1.6053811
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-755}
 Size of filtered ticket: 224
-PROPORTION AVERAGE: 1.4184524
+PROPORTION AVERAGE: 1.6071428
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-750}
 Size of filtered ticket: 225
-PROPORTION AVERAGE: 1.4210371
+PROPORTION AVERAGE: 1.6088889
 ----------------------------------------------------------
 
 {BOOKKEEPER-752}
@@ -1354,49 +1354,49 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-763}
 Size of filtered ticket: 227
-PROPORTION AVERAGE: 1.426138
+PROPORTION AVERAGE: 1.6123348
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-751}
 Size of filtered ticket: 228
-PROPORTION AVERAGE: 1.428655
+PROPORTION AVERAGE: 1.6140351
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-745}
 Size of filtered ticket: 229
-PROPORTION AVERAGE: 1.43115
+PROPORTION AVERAGE: 1.6157205
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-746}
 Size of filtered ticket: 230
-PROPORTION AVERAGE: 1.4336232
+PROPORTION AVERAGE: 1.6173913
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-766}
 Size of filtered ticket: 231
-PROPORTION AVERAGE: 1.4360751
+PROPORTION AVERAGE: 1.6190476
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-767}
 Size of filtered ticket: 232
-PROPORTION AVERAGE: 1.4385058
+PROPORTION AVERAGE: 1.6206896
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-765}
 Size of filtered ticket: 233
-PROPORTION AVERAGE: 1.4409156
+PROPORTION AVERAGE: 1.6223176
 ----------------------------------------------------------
 
 {BOOKKEEPER-768}
@@ -1406,77 +1406,77 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-739}
 Size of filtered ticket: 235
-PROPORTION AVERAGE: 1.4499291
+PROPORTION AVERAGE: 1.6297872
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-774}
 Size of filtered ticket: 236
-PROPORTION AVERAGE: 1.4522599
+PROPORTION AVERAGE: 1.6313559
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-780}
 Size of filtered ticket: 237
-PROPORTION AVERAGE: 1.454571
+PROPORTION AVERAGE: 1.6329114
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-779}
 Size of filtered ticket: 238
-PROPORTION AVERAGE: 1.4568628
+PROPORTION AVERAGE: 1.6344538
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-777}
 Size of filtered ticket: 239
-PROPORTION AVERAGE: 1.4591353
+PROPORTION AVERAGE: 1.6359832
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-778}
 Size of filtered ticket: 240
-PROPORTION AVERAGE: 1.461389
+PROPORTION AVERAGE: 1.6375
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-783}
 Size of filtered ticket: 241
-PROPORTION AVERAGE: 1.4636238
+PROPORTION AVERAGE: 1.6390041
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-785}
 Size of filtered ticket: 242
-PROPORTION AVERAGE: 1.4658402
+PROPORTION AVERAGE: 1.6404959
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-784}
 Size of filtered ticket: 243
-PROPORTION AVERAGE: 1.4680384
+PROPORTION AVERAGE: 1.6419753
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-786}
 Size of filtered ticket: 244
-PROPORTION AVERAGE: 1.4702185
+PROPORTION AVERAGE: 1.6434426
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-793}
 Size of filtered ticket: 245
-PROPORTION AVERAGE: 1.472381
+PROPORTION AVERAGE: 1.6448979
 ----------------------------------------------------------
 
 {BOOKKEEPER-797}
@@ -1486,7 +1486,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-798}
 Size of filtered ticket: 247
-PROPORTION AVERAGE: 1.4766532
+PROPORTION AVERAGE: 1.6477733
 ----------------------------------------------------------
 
 {BOOKKEEPER-815}
@@ -1496,7 +1496,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-800}
 Size of filtered ticket: 249
-PROPORTION AVERAGE: 1.4808568
+PROPORTION AVERAGE: 1.6506025
 ----------------------------------------------------------
 
 {BOOKKEEPER-813}
@@ -1515,14 +1515,14 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-799}
 Size of filtered ticket: 254
-PROPORTION AVERAGE: 1.4910761
+PROPORTION AVERAGE: 1.6574804
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-795}
 Size of filtered ticket: 255
-PROPORTION AVERAGE: 1.4930719
+PROPORTION AVERAGE: 1.6588235
 ----------------------------------------------------------
 
 {BOOKKEEPER-814}
@@ -1532,56 +1532,56 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-803}
 Size of filtered ticket: 257
-PROPORTION AVERAGE: 1.4970169
+PROPORTION AVERAGE: 1.6614786
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-801}
 Size of filtered ticket: 258
-PROPORTION AVERAGE: 1.4989665
+PROPORTION AVERAGE: 1.6627907
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-838}
 Size of filtered ticket: 259
-PROPORTION AVERAGE: 1.5009009
+PROPORTION AVERAGE: 1.6640927
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-839}
 Size of filtered ticket: 260
-PROPORTION AVERAGE: 1.5028205
+PROPORTION AVERAGE: 1.6653847
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-831}
 Size of filtered ticket: 261
-PROPORTION AVERAGE: 1.5047255
+PROPORTION AVERAGE: 1.6666666
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-840}
 Size of filtered ticket: 262
-PROPORTION AVERAGE: 1.5066158
+PROPORTION AVERAGE: 1.667939
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-834}
 Size of filtered ticket: 263
-PROPORTION AVERAGE: 1.5084918
+PROPORTION AVERAGE: 1.6692015
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-828}
 Size of filtered ticket: 264
-PROPORTION AVERAGE: 1.5103536
+PROPORTION AVERAGE: 1.6704545
 ----------------------------------------------------------
 
 {BOOKKEEPER-848}
@@ -1591,28 +1591,28 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-847}
 Size of filtered ticket: 266
-PROPORTION AVERAGE: 1.5140351
+PROPORTION AVERAGE: 1.6729324
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-833}
 Size of filtered ticket: 267
-PROPORTION AVERAGE: 1.5158552
+PROPORTION AVERAGE: 1.6741573
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-835}
 Size of filtered ticket: 268
-PROPORTION AVERAGE: 1.5176617
+PROPORTION AVERAGE: 1.6753731
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-854}
 Size of filtered ticket: 269
-PROPORTION AVERAGE: 1.5194548
+PROPORTION AVERAGE: 1.67658
 ----------------------------------------------------------
 
 {BOOKKEEPER-821}
@@ -1622,49 +1622,49 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-858}
 Size of filtered ticket: 271
-PROPORTION AVERAGE: 1.5230012
+PROPORTION AVERAGE: 1.6789668
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-823}
 Size of filtered ticket: 272
-PROPORTION AVERAGE: 1.5247549
+PROPORTION AVERAGE: 1.680147
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-863}
 Size of filtered ticket: 273
-PROPORTION AVERAGE: 1.5264957
+PROPORTION AVERAGE: 1.6813186
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-829}
 Size of filtered ticket: 274
-PROPORTION AVERAGE: 1.5282239
+PROPORTION AVERAGE: 1.6824818
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-802}
 Size of filtered ticket: 275
-PROPORTION AVERAGE: 1.5299394
+PROPORTION AVERAGE: 1.6836363
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-872}
 Size of filtered ticket: 276
-PROPORTION AVERAGE: 1.5316426
+PROPORTION AVERAGE: 1.6847826
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-884}
 Size of filtered ticket: 277
-PROPORTION AVERAGE: 1.5333333
+PROPORTION AVERAGE: 1.6859206
 ----------------------------------------------------------
 
 {BOOKKEEPER-893}
@@ -1674,7 +1674,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-891}
 Size of filtered ticket: 279
-PROPORTION AVERAGE: 1.5330944
+PROPORTION AVERAGE: 1.6845878
 ----------------------------------------------------------
 
 {BOOKKEEPER-890}
@@ -1684,14 +1684,14 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-883}
 Size of filtered ticket: 281
-PROPORTION AVERAGE: 1.5328588
+PROPORTION AVERAGE: 1.683274
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-897}
 Size of filtered ticket: 282
-PROPORTION AVERAGE: 1.5345154
+PROPORTION AVERAGE: 1.6843972
 ----------------------------------------------------------
 
 {BOOKKEEPER-900}
@@ -1707,21 +1707,21 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-902}
 Size of filtered ticket: 286
-PROPORTION AVERAGE: 1.5305362
+PROPORTION AVERAGE: 1.6783217
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-769}
 Size of filtered ticket: 287
-PROPORTION AVERAGE: 1.532172
+PROPORTION AVERAGE: 1.6794425
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-594}
 Size of filtered ticket: 288
-PROPORTION AVERAGE: 1.5326389
+PROPORTION AVERAGE: 1.6805556
 ----------------------------------------------------------
 
 {BOOKKEEPER-909}
@@ -1731,28 +1731,28 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-794}
 Size of filtered ticket: 290
-PROPORTION AVERAGE: 1.5312643
+PROPORTION AVERAGE: 1.6775862
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-578}
 Size of filtered ticket: 291
-PROPORTION AVERAGE: 1.5328751
+PROPORTION AVERAGE: 1.6786941
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-914}
 Size of filtered ticket: 292
-PROPORTION AVERAGE: 1.5333333
+PROPORTION AVERAGE: 1.6780822
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-913}
 Size of filtered ticket: 293
-PROPORTION AVERAGE: 1.5349259
+PROPORTION AVERAGE: 1.6791809
 ----------------------------------------------------------
 
 {BOOKKEEPER-910}
@@ -1762,7 +1762,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-919}
 Size of filtered ticket: 295
-PROPORTION AVERAGE: 1.5346892
+PROPORTION AVERAGE: 1.6779661
 ----------------------------------------------------------
 
 {BOOKKEEPER-911}
@@ -1772,7 +1772,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-925}
 Size of filtered ticket: 297
-PROPORTION AVERAGE: 1.5344555
+PROPORTION AVERAGE: 1.6767677
 ----------------------------------------------------------
 
 {BOOKKEEPER-926}
@@ -1785,7 +1785,7 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-939}
 Size of filtered ticket: 300
-PROPORTION AVERAGE: 1.5657777
+PROPORTION AVERAGE: 1.7033334
 ----------------------------------------------------------
 
 {BOOKKEEPER-908}
@@ -1795,7 +1795,7 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-933}
 Size of filtered ticket: 302
-PROPORTION AVERAGE: 1.5686533
+PROPORTION AVERAGE: 1.7052981
 ----------------------------------------------------------
 
 {BOOKKEEPER-924}
@@ -1805,70 +1805,70 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-952}
 Size of filtered ticket: 304
-PROPORTION AVERAGE: 1.5714911
+PROPORTION AVERAGE: 1.7072369
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-958}
 Size of filtered ticket: 305
-PROPORTION AVERAGE: 1.5728961
+PROPORTION AVERAGE: 1.7081968
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-957}
 Size of filtered ticket: 306
-PROPORTION AVERAGE: 1.5742918
+PROPORTION AVERAGE: 1.7091503
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-956}
 Size of filtered ticket: 307
-PROPORTION AVERAGE: 1.5756785
+PROPORTION AVERAGE: 1.7100977
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-903}
 Size of filtered ticket: 308
-PROPORTION AVERAGE: 1.5770562
+PROPORTION AVERAGE: 1.711039
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-955}
 Size of filtered ticket: 309
-PROPORTION AVERAGE: 1.5784249
+PROPORTION AVERAGE: 1.7119741
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-984}
 Size of filtered ticket: 310
-PROPORTION AVERAGE: 1.5797849
+PROPORTION AVERAGE: 1.7129033
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-988}
 Size of filtered ticket: 311
-PROPORTION AVERAGE: 1.581136
+PROPORTION AVERAGE: 1.7138264
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-986}
 Size of filtered ticket: 312
-PROPORTION AVERAGE: 1.5824785
+PROPORTION AVERAGE: 1.7147436
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-907}
 Size of filtered ticket: 313
-PROPORTION AVERAGE: 1.5838125
+PROPORTION AVERAGE: 1.715655
 ----------------------------------------------------------
 
 {BOOKKEEPER-959}
@@ -1881,7 +1881,7 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-1013}
 Size of filtered ticket: 316
-PROPORTION AVERAGE: 1.5814345
+PROPORTION AVERAGE: 1.7120253
 ----------------------------------------------------------
 
 {BOOKKEEPER-852}
@@ -1891,7 +1891,7 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-1018}
 Size of filtered ticket: 318
-PROPORTION AVERAGE: 1.5830188
+PROPORTION AVERAGE: 1.7127883
 ----------------------------------------------------------
 
 {BOOKKEEPER-1031}
@@ -1901,21 +1901,21 @@ PROPORTION: Denominator = 1
 
 {BOOKKEEPER-1061}
 Size of filtered ticket: 320
-PROPORTION AVERAGE: 1.5824999
+PROPORTION AVERAGE: 1.7114584
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1058}
 Size of filtered ticket: 321
-PROPORTION AVERAGE: 1.5838006
+PROPORTION AVERAGE: 1.7123573
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1047}
 Size of filtered ticket: 322
-PROPORTION AVERAGE: 1.585093
+PROPORTION AVERAGE: 1.7132506
 ----------------------------------------------------------
 
 {BOOKKEEPER-927}
@@ -1925,84 +1925,84 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-1075}
 Size of filtered ticket: 324
-PROPORTION AVERAGE: 1.5876542
+PROPORTION AVERAGE: 1.7150207
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1072}
 Size of filtered ticket: 325
-PROPORTION AVERAGE: 1.588923
+PROPORTION AVERAGE: 1.7158974
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1077}
 Size of filtered ticket: 326
-PROPORTION AVERAGE: 1.590184
+PROPORTION AVERAGE: 1.716769
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1021}
 Size of filtered ticket: 327
-PROPORTION AVERAGE: 1.5914372
+PROPORTION AVERAGE: 1.7176352
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1074}
 Size of filtered ticket: 328
-PROPORTION AVERAGE: 1.5926828
+PROPORTION AVERAGE: 1.718496
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1073}
 Size of filtered ticket: 329
-PROPORTION AVERAGE: 1.5939208
+PROPORTION AVERAGE: 1.7193516
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-989}
 Size of filtered ticket: 330
-PROPORTION AVERAGE: 1.5951514
+PROPORTION AVERAGE: 1.7202021
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1098}
 Size of filtered ticket: 331
-PROPORTION AVERAGE: 1.5963745
+PROPORTION AVERAGE: 1.7210474
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-980}
 Size of filtered ticket: 332
-PROPORTION AVERAGE: 1.5975902
+PROPORTION AVERAGE: 1.7218876
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1101}
 Size of filtered ticket: 333
-PROPORTION AVERAGE: 1.5987986
+PROPORTION AVERAGE: 1.7227228
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1044}
 Size of filtered ticket: 334
-PROPORTION AVERAGE: 1.5999999
+PROPORTION AVERAGE: 1.723553
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {BOOKKEEPER-1104}
 Size of filtered ticket: 335
-PROPORTION AVERAGE: 1.6011939
+PROPORTION AVERAGE: 1.7243782
 ----------------------------------------------------------
 
 {BOOKKEEPER-671}
@@ -2012,5 +2012,5 @@ PROPORTION: FX != OV
 
 {BOOKKEEPER-377}
 Size of filtered ticket: 337
-PROPORTION AVERAGE: 1.6009643
+PROPORTION AVERAGE: 1.7234175
 ----------------------------------------------------------

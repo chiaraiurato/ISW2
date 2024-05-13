@@ -15,9 +15,7 @@ import retrievers.CommitRetriever;
 import retrievers.TicketRetriever;
 import retrievers.ReleaseRetriever;
 import org.slf4j.Logger;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import utilities.CreateReportFile;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.ParseException;
@@ -35,35 +33,33 @@ public class Execute {
         Repository repository = setRepository.getRepo();
         Git git = setRepository.getGit();
 
+        //Create the instance for report
+        CreateReportFile createReportFile = new CreateReportFile(projName);
+
         logger.info(String.format("---------- %s ----------", projName));
         //Retrieve release
         logger.info("Retrieving releases...");
         ReleaseRetriever releaseRetriever = new ReleaseRetriever(projName);
         List<Release> releaseList = releaseRetriever.getVersions();
         logger.info(DONE);
-        logger.info(String.format("Number of releases %d",releaseList.size()));
 
         //Retrieve commit
         logger.info("Retrieving commit...");
         CommitRetriever commitRetriever = new CommitRetriever(git,repository, releaseList);
         List<Commit> commitList = commitRetriever.extractAllCommits();
         releaseList = commitRetriever.getReleaseList();
-        logger.info(String.format("Number of commit %d", commitList.size()));
         logger.info(DONE);
 
         //Retrieve ticket
         logger.info("Retrieving tickets...");
         TicketRetriever ticketRetriever = new TicketRetriever(projName, releaseList);
         List<Ticket> ticketList = ticketRetriever.getTickets();
-        //printListToFile(ticketList, "ticketListBeforeProportion.txt");
         ticketList = ticketRetriever.doProportion(ticketList, releaseList);
-        //printListToFile(ticketList, "ticketListAfterProportion.txt");
-        logger.info(String.format("Number of ticket %d", ticketList.size()));
         logger.info(DONE);
 
         //Filter commit that have ticket id inside their message
-        logger.info("Filtering commits...");
-        List<Commit> filteredCommits = commitRetriever.filterCommits(commitList, ticketList);
+        logger.info("Filtering commits that contains bug...");
+        List<Commit> commitBuggy = commitRetriever.filterBuggyCommits(commitList, ticketList);
         ticketList = commitRetriever.getTicketList();
         logger.info(DONE);
 
@@ -71,24 +67,19 @@ public class Execute {
         logger.info("Retrieving class project...");
         ClassProjectRetriever classProjectRetriever = new ClassProjectRetriever(repository, commitList, ticketList);
         List<ClassProject> classProjects = classProjectRetriever.extractAllProjectClasses();
-        logger.info(String.format("Number of class  %d",classProjects.size()));
         logger.info(DONE);
 
         //Calculate metrics
         logger.info("Calculating metrics...");
-        CalculateMetrics calculateMetrics = new CalculateMetrics(classProjects, filteredCommits, repository);
+        CalculateMetrics calculateMetrics = new CalculateMetrics(classProjects, commitBuggy, repository);
         calculateMetrics.calculateAllMetrics();
-        printListToFile(classProjects, "classProjectsMetrics.txt");
+        logger.info(DONE);
+
+        //Summarize all info into report files
+        createReportFile.begin(releaseList, commitList, ticketList, commitBuggy);
 
     }
-    public static <T> void printListToFile(List<T> list, String filename) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-            for (T item : list) {
-                writer.write(item.toString());
-                writer.newLine();
-            }
-        }
-    }
+
 
 
 }

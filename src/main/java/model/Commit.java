@@ -40,7 +40,7 @@ public class Commit {
     @Override
     public String toString() {
         return "Commit{" +
-                "revCommit=" + revCommit +
+                "id=" + revCommit.getName() +
                 ", ticket=" + ticket +
                 ", release=" + release +
                 '}';

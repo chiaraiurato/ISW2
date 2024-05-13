@@ -117,14 +117,14 @@ public class SetProportion {
     public static float apply(List<Ticket> ticketsList, String projName, Ticket ticket, boolean calculate) throws URISyntaxException {
         float proportion = 0;
         try {
-            File file = new File("output/report/" + projName);
+            File file = new File("output/reportProportion/" + projName);
             if (!file.exists()) {
                 boolean created = file.mkdirs();
                 if (!created) {
                     throw new IOException();
                 }
             }
-            file = new File("output/report/" + projName + "/Proportion.txt");
+            file = new File("output/reportProportion/" + projName + "/Proportion.txt");
             try(FileWriter fileWriter = new FileWriter(file)) {
                 if (ticketsList.size() >= THRESHOLD_FOR_COLD_START) {
                     proportion = incrementalProportion(ticketsList, ticket, true, calculate);
