@@ -1,5 +1,7 @@
 package controllers;
 
+import exception.ArffFileException;
+import exception.CsvFileException;
 import model.ClassProject;
 import model.Release;
 import model.Ticket;
@@ -34,7 +36,7 @@ public class ApplyWalkForward {
         this.classProjectRetriever = classProjectRetriever;
     }
 
-    public void buildTrainingSet() throws IOException {
+    public void buildTrainingSet() throws IOException, CsvFileException, ArffFileException {
         for (int i = 1; i <= id; i++) {
             halfReleases = filterReleases(this.releaseList, i);
             halfTickets = filterTickets(this.ticketList, halfReleases);

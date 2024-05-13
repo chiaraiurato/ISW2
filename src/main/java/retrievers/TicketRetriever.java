@@ -146,7 +146,6 @@ public class TicketRetriever {
         }
 
         finalTicketsList.sort(Comparator.comparing(Ticket::getResolutionDate));
-        CSV.createFileCSVForTicket(projName,finalTicketsList);
         return finalTicketsList;
     }
 

@@ -47,7 +47,6 @@ public class ReleaseRetriever {
         }
         releases.sort(Comparator.comparing(Release::getReleaseDate));
         setId(releases);
-        CSV.createFileCSVForVersion(projName,releases);
         return releases;
     }
     private void setId(List<Release> releases){

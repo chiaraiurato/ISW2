@@ -1,6 +1,8 @@
 package org.uniroma2;
 
 import controllers.ApplyWalkForward;
+import exception.ArffFileException;
+import exception.CsvFileException;
 import exception.TxtFileException;
 import model.ClassProject;
 import model.Commit;
@@ -29,7 +31,7 @@ public class Execute {
     private Execute() {
     }
 
-    public static void collectData(String projName, String projURL) throws IOException, URISyntaxException, GitAPIException, ParseException, TxtFileException {
+    public static void collectData(String projName, String projURL) throws IOException, URISyntaxException, GitAPIException, ParseException, TxtFileException, ArffFileException, CsvFileException {
         //Set the directory and clone the repo if not exists
         SetRepository setRepository = new SetRepository(projName,projURL);
         Repository repository = setRepository.getRepo();
