@@ -5,7 +5,6 @@ import model.Release;
 import model.Ticket;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import utilities.CSV;
 import utilities.JSON;
 
 import java.io.*;

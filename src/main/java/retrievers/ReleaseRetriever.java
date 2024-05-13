@@ -4,7 +4,6 @@ package retrievers;
 import model.Release;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import utilities.CSV;
 import utilities.JSON;
 
 import java.io.*;

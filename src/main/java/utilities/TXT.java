@@ -27,7 +27,7 @@ public class TXT {
                     throw new IOException();
                 }
             }
-            file = new File("output/list/" + projName + "/"+ filename);
+            file = new File("output/list/" + projName + File.separator + filename);
             try(FileWriter writer = new FileWriter(file)) {
                 writer.append("******** ").append(this.projName).append("/").append(filename).append(" ******");
                 writer.append("\nTOTAL NUMBER:").append(String.valueOf(list.size()));
@@ -42,7 +42,7 @@ public class TXT {
         }
     }
 
-    public void begin(List<Release> releaseList, List<Commit> commitList, List<Ticket> ticketList, List<Commit> filteredCommits) throws IOException, TxtFileException {
+    public void begin(List<Release> releaseList, List<Commit> commitList, List<Ticket> ticketList, List<Commit> filteredCommits) throws TxtFileException {
         printListToFile(releaseList, "ReleaseList.txt");
         printListToFile(commitList, "CommitList.txt");
         printListToFile(ticketList, "TicketList.txt");
