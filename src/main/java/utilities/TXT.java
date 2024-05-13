@@ -1,5 +1,6 @@
 package utilities;
 
+import exception.TxtFileException;
 import model.Commit;
 import model.Release;
 import model.Ticket;
@@ -8,17 +9,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class CreateReportFile {
+public class TXT {
 
     private final String projName;
     private File file;
 
-    public CreateReportFile(String projName) {
+    public TXT(String projName) {
     this.projName=projName;
     this.file = new File("output/list/" + projName);
     }
 
-    private  <T> void printListToFile(List<T> list, String filename){
+    private  <T> void printListToFile(List<T> list, String filename) throws TxtFileException {
         try{
             if (!file.exists()) {
                 boolean created = file.mkdirs();
@@ -37,11 +38,11 @@ public class CreateReportFile {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new TxtFileException("Txt file creation error:"+e);
         }
     }
 
-    public void begin(List<Release> releaseList, List<Commit> commitList, List<Ticket> ticketList, List<Commit> filteredCommits) throws IOException {
+    public void begin(List<Release> releaseList, List<Commit> commitList, List<Ticket> ticketList, List<Commit> filteredCommits) throws IOException, TxtFileException {
         printListToFile(releaseList, "ReleaseList.txt");
         printListToFile(commitList, "CommitList.txt");
         printListToFile(ticketList, "TicketList.txt");

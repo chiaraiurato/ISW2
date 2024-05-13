@@ -1,6 +1,7 @@
 package org.uniroma2;
 
 import controllers.ApplyWalkForward;
+import exception.TxtFileException;
 import model.ClassProject;
 import model.Commit;
 import model.Release;
@@ -16,11 +17,10 @@ import retrievers.CommitRetriever;
 import retrievers.TicketRetriever;
 import retrievers.ReleaseRetriever;
 import org.slf4j.Logger;
-import utilities.CreateReportFile;
+import utilities.TXT;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Execute {
@@ -29,14 +29,14 @@ public class Execute {
     private Execute() {
     }
 
-    public static void collectData(String projName, String projURL) throws IOException, URISyntaxException, GitAPIException, ParseException {
+    public static void collectData(String projName, String projURL) throws IOException, URISyntaxException, GitAPIException, ParseException, TxtFileException {
         //Set the directory and clone the repo if not exists
         SetRepository setRepository = new SetRepository(projName,projURL);
         Repository repository = setRepository.getRepo();
         Git git = setRepository.getGit();
 
         //Create the instance for report
-        CreateReportFile createReportFile = new CreateReportFile(projName);
+        TXT createReportFile = new TXT(projName);
 
         logger.info(String.format("---------- %s ----------", projName));
         //Retrieve release
@@ -84,11 +84,6 @@ public class Execute {
         logger.info("Building training set...");
         ApplyWalkForward applyWalkForward = new ApplyWalkForward(projName,releaseList, ticketList,classProjects,classProjectRetriever);
         applyWalkForward.buildTrainingSet();
-        List<Release> halfRelease = applyWalkForward.getHalfReleases();
-        List<ClassProject> halfClassProject = applyWalkForward.getHalfClassProjects();
-        //createReportFile.
-        logger.info("Building testing set...");
-        applyWalkForward.buildTestingSet();
         logger.info(DONE);
 
     }

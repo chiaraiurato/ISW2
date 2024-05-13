@@ -1,26 +1,30 @@
 package utilities;
 
+import exception.ArffFileException;
 import model.ClassProject;
 import model.Release;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
 public class ARFF {
+
+
     /**
      * Utility class to generate ARFF Files
      */
+    private ARFF() {
+    }
 
-    private static File file;
+    public static void createFileArff(String projName, List<Release> releaseList, List<ClassProject> classProjectList, String type, int i) throws ArffFileException {
+        //Build path
+        String[] pathComponents = {"output", "arff", projName, type};
+        String path = String.join(File.separator, pathComponents);
 
-    public static void createFileArff(String projName, List<Release> releaseList, List<ClassProject> classProjectList, String type, int i) {
-        String path ="output/arff/"+ projName+ "/"+type;
-        String filename = "/"+projName+"_"+type+i+".arff";
-        file = new File(path);
+        // Build filename
+        String filename = File.separator + projName + "_" + type + i + ".arff";
+        File file = new File(path);
         try{
             if (!file.exists()) {
                 boolean created = file.mkdirs();
@@ -55,7 +59,7 @@ public class ARFF {
                 appendData(releaseList, classProjectList, writer);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ArffFileException("Arff creation file error:"+ e);
         }
     }
     private static void appendData(List<Release> releaseList, List<ClassProject> classProjectList, FileWriter fileWriter) throws IOException {

@@ -1,5 +1,6 @@
 package utilities;
 
+import exception.CsvFileException;
 import model.ClassProject;
 import model.Release;
 import model.Ticket;
@@ -16,13 +17,19 @@ public class CSV {
     /**
      * Utility class to generate CSV files
      */
-    private static final Logger logger = LoggerFactory.getLogger(CSV.class);
-    private static File file;
+    private CSV(){
 
-    public static void createFileCsv(String projName, List<Release> releaseList, List<ClassProject> classProjectList, String type, int i) {
-        String path ="output/csv/"+ projName+ "/"+type;
-        String filename = "/"+projName+"_"+type+i+".csv";
-        file = new File(path);
+    }
+    private static final Logger logger = LoggerFactory.getLogger(CSV.class);
+
+    public static void createFileCsv(String projName, List<Release> releaseList, List<ClassProject> classProjectList, String type, int i) throws CsvFileException {
+        //Build path
+        String[] pathComponents = {"output", "csv", projName, type};
+        String path = String.join(File.separator, pathComponents);
+
+        // Build filename
+        String filename = File.separator + projName + "_" + type + i + ".csv";
+        File file = new File(path);
         try{
             if (!file.exists()) {
                 boolean created = file.mkdirs();
@@ -46,7 +53,7 @@ public class CSV {
                 appendData(releaseList, classProjectList, writer);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new CsvFileException("Csv file creation error" + e);
         }
     }
     private static void appendData(List<Release> releaseList, List<ClassProject> classProjectList, FileWriter fileWriter) throws IOException {

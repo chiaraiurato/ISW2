@@ -89,7 +89,7 @@ public class ClassProjectRetriever {
         }
         return lastCommitList;
     }
-    public void initializeBuggyness(List<ClassProject> allProjectClasses) throws IOException {
+    public void initializeBuggyness(List<ClassProject> allProjectClasses){
         for(ClassProject projectClass: allProjectClasses ){
             projectClass.getMetric().setBuggyness(false);
         }
