@@ -36,27 +36,38 @@ public class ApplyWalkForward {
         this.classProjectRetriever = classProjectRetriever;
     }
 
-    public void buildTrainingSet() throws IOException, CsvFileException, ArffFileException {
+    public void buildTrainingSetAndTestingSet() throws IOException, CsvFileException, ArffFileException {
         for (int i = 1; i <= id; i++) {
+            //Training building
             halfReleases = filterReleases(this.releaseList, i);
             halfTickets = filterTickets(this.ticketList, halfReleases);
             halfClassProjects = filterProjectClasses(this.classProjectList, halfReleases);
 
             classProjectRetriever.injectBuggyClassProjectsForTicketList(halfTickets, halfClassProjects);
-            ARFF.createFileArff(projName,halfReleases,halfClassProjects,"TRAINING-SET",i);
-            CSV.createFileCsv(projName,halfReleases,halfClassProjects,"TRAINING-SET",i);
+            writeTrainingSet(halfReleases,halfClassProjects,i);
+
+            //Testing building
+            List<Release> releaseListForTesting = new ArrayList<>();
+            for(Release release: releaseList){
+                if(release.id() == halfReleases.get(halfReleases.size()-1).id() + 1){
+                    releaseListForTesting.add(release);
+                    break;
+                }
+            }
+            List<ClassProject> classProjectForTesting = new ArrayList<>(classProjectList);
+            //Remove class project entries that have the release id different from the first element of releaseListForTesting
+            classProjectForTesting.removeIf(projectClass -> projectClass.getRelease().id() != releaseListForTesting.get(0).id());
+
+            writeTestingSet(releaseListForTesting, classProjectForTesting, i);
         }
     }
-    public void buildTestingSet(){
-        List<Release> testingSetReleaseList = new ArrayList<>();
-        for(Release release: releaseList){
-            if(release.id() == halfReleases.get(halfReleases.size()-1).id() + 1){
-                testingSetReleaseList.add(release);
-                break;
-            }
-        }
-        List<ClassProject> firstIProjectClassesTesting = new ArrayList<>(classProjectList);
-        firstIProjectClassesTesting.removeIf(projectClass -> projectClass.getRelease().id() != testingSetReleaseList.get(0).id());
+    public void writeTrainingSet(List<Release> halfReleases, List<ClassProject> halfClassProjects, int i) throws CsvFileException, ArffFileException {
+        ARFF.createFileArff(this.projName,halfReleases,halfClassProjects,"TRAINING-SET",i);
+        CSV.createFileCsv(this.projName,halfReleases,halfClassProjects,"TRAINING-SET",i);
+    }
+    public void writeTestingSet(List<Release> releaseListForTesting, List<ClassProject> classProjectForTesting, int i) throws ArffFileException, CsvFileException {
+        ARFF.createFileArff(this.projName,releaseListForTesting,classProjectForTesting,"TESTING-SET",i);
+        CSV.createFileCsv(this.projName,releaseListForTesting,classProjectForTesting,"TESTING-SET",i);
     }
 
     private List<Release> filterReleases(List<Release> releaseList, int threshold) {

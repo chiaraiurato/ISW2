@@ -83,9 +83,9 @@ public class Execute {
         createReportFile.begin(releaseList, commitList, ticketList, commitBuggy);
 
         //Starting Walk-Forward approach
-        logger.info("Building training set...");
+        logger.info("Building training set and testing set...");
         ApplyWalkForward applyWalkForward = new ApplyWalkForward(projName,releaseList, ticketList,classProjects,classProjectRetriever);
-        applyWalkForward.buildTrainingSet();
+        applyWalkForward.buildTrainingSetAndTestingSet();
         logger.info(DONE);
 
     }
