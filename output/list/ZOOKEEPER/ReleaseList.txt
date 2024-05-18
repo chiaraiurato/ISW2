@@ -1,0 +1,107 @@
+******** ZOOKEEPER/ReleaseList.txt ******
+TOTAL NUMBER:52
+
+Release{id=1, releaseName='3.0.0', releaseDate=2008-10-27, size commitList=276}
+
+Release{id=2, releaseName='3.0.1', releaseDate=2008-12-04, size commitList=15}
+
+Release{id=3, releaseName='3.1.0', releaseDate=2009-02-13, size commitList=51}
+
+Release{id=4, releaseName='3.1.1', releaseDate=2009-03-27, size commitList=12}
+
+Release{id=5, releaseName='3.2.0', releaseDate=2009-07-08, size commitList=106}
+
+Release{id=6, releaseName='3.2.1', releaseDate=2009-09-04, size commitList=29}
+
+Release{id=7, releaseName='3.1.2', releaseDate=2009-12-14, size commitList=52}
+
+Release{id=8, releaseName='3.3.0', releaseDate=2010-03-25, size commitList=87}
+
+Release{id=9, releaseName='3.3.1', releaseDate=2010-05-17, size commitList=22}
+
+Release{id=10, releaseName='3.3.2', releaseDate=2010-11-11, size commitList=60}
+
+Release{id=11, releaseName='3.3.3', releaseDate=2011-02-27, size commitList=21}
+
+Release{id=12, releaseName='3.4.0', releaseDate=2011-11-22, size commitList=149}
+
+Release{id=13, releaseName='3.4.1', releaseDate=2011-12-16, size commitList=13}
+
+Release{id=14, releaseName='3.4.2', releaseDate=2011-12-29, size commitList=9}
+
+Release{id=15, releaseName='3.4.3', releaseDate=2012-02-13, size commitList=21}
+
+Release{id=16, releaseName='3.3.5', releaseDate=2012-03-20, size commitList=18}
+
+Release{id=17, releaseName='3.3.6', releaseDate=2012-08-02, size commitList=29}
+
+Release{id=18, releaseName='3.4.4', releaseDate=2012-09-23, size commitList=16}
+
+Release{id=19, releaseName='3.4.5', releaseDate=2012-11-18, size commitList=6}
+
+Release{id=20, releaseName='3.4.6', releaseDate=2014-03-10, size commitList=161}
+
+Release{id=21, releaseName='3.5.0', releaseDate=2014-08-04, size commitList=104}
+
+Release{id=22, releaseName='3.5.1', releaseDate=2015-09-02, size commitList=107}
+
+Release{id=23, releaseName='3.4.7', releaseDate=2015-12-03, size commitList=23}
+
+Release{id=24, releaseName='3.4.8', releaseDate=2016-02-22, size commitList=19}
+
+Release{id=25, releaseName='3.5.2', releaseDate=2016-07-21, size commitList=37}
+
+Release{id=26, releaseName='3.4.9', releaseDate=2016-09-03, size commitList=13}
+
+Release{id=27, releaseName='3.4.10', releaseDate=2017-03-30, size commitList=70}
+
+Release{id=28, releaseName='3.5.3', releaseDate=2017-04-17, size commitList=2}
+
+Release{id=29, releaseName='3.4.11', releaseDate=2017-11-09, size commitList=68}
+
+Release{id=30, releaseName='3.4.12', releaseDate=2018-05-01, size commitList=43}
+
+Release{id=31, releaseName='3.5.4', releaseDate=2018-05-17, size commitList=7}
+
+Release{id=32, releaseName='3.4.13', releaseDate=2018-07-17, size commitList=26}
+
+Release{id=33, releaseName='3.4.14', releaseDate=2019-04-02, size commitList=168}
+
+Release{id=34, releaseName='3.5.5', releaseDate=2019-05-20, size commitList=42}
+
+Release{id=35, releaseName='3.5.6', releaseDate=2019-10-17, size commitList=130}
+
+Release{id=36, releaseName='3.5.7', releaseDate=2020-02-14, size commitList=80}
+
+Release{id=37, releaseName='3.6.1', releaseDate=2020-04-30, size commitList=38}
+
+Release{id=38, releaseName='3.5.8', releaseDate=2020-05-11, size commitList=10}
+
+Release{id=39, releaseName='3.6.2', releaseDate=2020-09-09, size commitList=43}
+
+Release{id=40, releaseName='3.5.9', releaseDate=2021-01-14, size commitList=72}
+
+Release{id=41, releaseName='3.7.0', releaseDate=2021-03-27, size commitList=44}
+
+Release{id=42, releaseName='3.6.3', releaseDate=2021-04-13, size commitList=14}
+
+Release{id=43, releaseName='3.8.0', releaseDate=2022-03-07, size commitList=86}
+
+Release{id=44, releaseName='3.7.1', releaseDate=2022-05-12, size commitList=18}
+
+Release{id=45, releaseName='3.5.10', releaseDate=2022-06-04, size commitList=4}
+
+Release{id=46, releaseName='3.6.4', releaseDate=2022-12-22, size commitList=22}
+
+Release{id=47, releaseName='3.8.1', releaseDate=2023-01-30, size commitList=9}
+
+Release{id=48, releaseName='3.8.2', releaseDate=2023-07-18, size commitList=50}
+
+Release{id=49, releaseName='3.9.0', releaseDate=2023-08-03, size commitList=2}
+
+Release{id=50, releaseName='3.7.2', releaseDate=2023-10-09, size commitList=16}
+
+Release{id=51, releaseName='3.8.4', releaseDate=2024-03-05, size commitList=28}
+
+Release{id=52, releaseName='3.9.2', releaseDate=2024-03-12, size commitList=1}
+

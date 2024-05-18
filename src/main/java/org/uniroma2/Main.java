@@ -4,7 +4,7 @@ public class Main {
 
         public static void main(String[] args) throws Exception {
                 Execute.collectData("BOOKKEEPER", "https://github.com/chiaraiurato/bookkeeper.git");
-                // Execute.collectData("ZOOKKEPEER");
+                Execute.collectData("ZOOKEEPER", "https://github.com/chiaraiurato/zookeeper.git");
         }
 }
 

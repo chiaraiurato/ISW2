@@ -1,7 +1,5 @@
 package retrievers;
 
-
-import exception.JsonException;
 import model.Release;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,7 +9,6 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.jar.JarException;
 
 public class ReleaseRetriever {
 
