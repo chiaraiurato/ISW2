@@ -1,28 +1,17 @@
 package org.uniroma2;
 
-import controllers.ApplyWalkForward;
-import exception.ArffFileException;
-import exception.CsvFileException;
-import exception.TxtFileException;
-import model.ClassProject;
-import model.Commit;
-import model.Release;
-import model.Ticket;
-import controllers.CalculateMetrics;
+import controllers.WalkForwardController;
+import model.*;
+import controllers.MetricsController;
 import controllers.SetRepository;
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.slf4j.LoggerFactory;
-import retrievers.ClassProjectRetriever;
-import retrievers.CommitRetriever;
-import retrievers.TicketRetriever;
-import retrievers.ReleaseRetriever;
+import retrievers.*;
 import org.slf4j.Logger;
+import utilities.CSV;
 import utilities.TXT;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.text.ParseException;
+
 import java.util.List;
 
 public class Execute {
@@ -31,7 +20,7 @@ public class Execute {
     private Execute() {
     }
 
-    public static void collectData(String projName, String projURL) throws IOException, URISyntaxException, GitAPIException, ParseException, TxtFileException, ArffFileException, CsvFileException {
+    public static void collectData(String projName, String projURL) throws Exception {
         //Set the directory and clone the repo if not exists
         SetRepository setRepository = new SetRepository(projName,projURL);
         Repository repository = setRepository.getRepo();
@@ -75,18 +64,31 @@ public class Execute {
 
         //Calculate metrics
         logger.info("Calculating metrics...");
-        CalculateMetrics calculateMetrics = new CalculateMetrics(classProjects, commitBuggy, repository);
-        calculateMetrics.calculateAllMetrics();
+        MetricsController metricsController = new MetricsController(classProjects, commitBuggy, repository);
+        metricsController.calculateAllMetrics();
         logger.info(DONE);
 
         //Summarize all info into report files
         createReportFile.begin(releaseList, commitList, ticketList, commitBuggy);
 
+        //To avoid snoring discard the most recent release (50%)
+        int half_size = (releaseList.size() / 2);
+
         //Starting Walk-Forward approach
         logger.info("Building training set and testing set...");
-        ApplyWalkForward applyWalkForward = new ApplyWalkForward(projName,releaseList, ticketList,classProjects,classProjectRetriever);
-        applyWalkForward.buildTrainingSetAndTestingSet();
+        WalkForwardController walkForwardController = new WalkForwardController(projName, half_size,releaseList, ticketList,classProjects,classProjectRetriever);
+        walkForwardController.buildTrainingSetAndTestingSet();
         logger.info(DONE);
+
+        //Now that the dataset is ready we can do ML
+        logger.info("Do some magic prediction...");
+        WekaRetriever wekaRetriever = new WekaRetriever(projName,half_size);
+        List<ResultOfClassifier> resultsOfClassifierList= wekaRetriever.computeAllClassifier();
+        logger.info(DONE);
+
+        //Write a final csv
+        logger.info("Printing out info...");
+        CSV.createFinalCsv(projName,resultsOfClassifierList);
 
     }
 

@@ -13,22 +13,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApplyWalkForward {
+public class WalkForwardController {
 
     private final String projName;
-    private final int id;
+    private final int lenOfHalfRelease;
     private final List<Release> releaseList;
     private final List<Ticket> ticketList;
     private final List<ClassProject> classProjectList;
     private final ClassProjectRetriever classProjectRetriever;
 
-    private List<Release> halfReleases;
-    private List<Ticket> halfTickets;
-    private List<ClassProject> halfClassProjects;
-
-    public ApplyWalkForward(String projName,List<Release> releaseList, List<Ticket> ticketList, List<ClassProject> classProjectList, ClassProjectRetriever classProjectRetriever) {
-        //To avoid snoring discard the most recent release (50%)
-        this.id = releaseList.get((releaseList.size() / 2) - 1).id();
+    public WalkForwardController(String projName, int half_size, List<Release> releaseList, List<Ticket> ticketList, List<ClassProject> classProjectList, ClassProjectRetriever classProjectRetriever) {
+        this.lenOfHalfRelease = half_size;
         this.projName = projName;
         this.releaseList = releaseList;
         this.ticketList = ticketList;
@@ -37,14 +32,14 @@ public class ApplyWalkForward {
     }
 
     public void buildTrainingSetAndTestingSet() throws IOException, CsvFileException, ArffFileException {
-        for (int i = 1; i <= id; i++) {
+        for (int i = 1; i <= lenOfHalfRelease; i++) {
             //Training building
-            halfReleases = filterReleases(this.releaseList, i);
-            halfTickets = filterTickets(this.ticketList, halfReleases);
-            halfClassProjects = filterProjectClasses(this.classProjectList, halfReleases);
+            List<Release> halfReleases = filterReleases(this.releaseList, i);
+            List<Ticket> halfTickets = filterTickets(this.ticketList, halfReleases);
+            List<ClassProject> halfClassProjects = filterProjectClasses(this.classProjectList, halfReleases);
 
             classProjectRetriever.injectBuggyClassProjectsForTicketList(halfTickets, halfClassProjects);
-            writeTrainingSet(halfReleases,halfClassProjects,i);
+            writeTrainingSet(halfReleases, halfClassProjects,i);
 
             //Testing building
             List<Release> releaseListForTesting = new ArrayList<>();
@@ -88,17 +83,5 @@ public class ApplyWalkForward {
         List<ClassProject> filteredProjectClasses = new ArrayList<>(projClasses);
         filteredProjectClasses.removeIf(projectClass -> projectClass.getRelease().id() > lastReleaseId);
         return filteredProjectClasses;
-    }
-
-    public List<Release> getHalfReleases() {
-        return halfReleases;
-    }
-
-    public List<Ticket> getHalfTickets() {
-        return halfTickets;
-    }
-
-    public List<ClassProject> getHalfClassProjects() {
-        return halfClassProjects;
     }
 }

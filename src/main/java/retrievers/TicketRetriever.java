@@ -1,6 +1,6 @@
 package retrievers;
 
-import controllers.SetProportion;
+import controllers.ProportionController;
 import model.Release;
 import model.Ticket;
 import org.json.JSONArray;
@@ -133,11 +133,11 @@ public class TicketRetriever {
         List<Ticket> finalTicketsList = new ArrayList<>();
         for (Ticket ticket : ticketsList) {
             if (!Ticket.isNotEmpty(ticket)) {
-                float proportion = SetProportion.apply(ticketsForProportionList, this.projName, ticket, true);
+                float proportion = ProportionController.apply(ticketsForProportionList, this.projName, ticket, true);
                 fixAffectedVersion(ticket, releasesList, proportion);
                 completeAffectedVersionsList(ticket, releasesList);
             } else {
-                SetProportion.apply(ticketsForProportionList, this.projName, ticket, false);
+                ProportionController.apply(ticketsForProportionList, this.projName, ticket, false);
                 completeAffectedVersionsList(ticket, releasesList);
             }
             ticketsForProportionList.add(ticket);

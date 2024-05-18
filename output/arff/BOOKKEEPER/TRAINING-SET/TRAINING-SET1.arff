@@ -1,4 +1,4 @@
-@relation /BOOKKEEPER_TRAINING-SET1.arff
+@relation /TRAINING-SET1.arff
 
 @attribute SIZE numeric
 @attribute LOC_ADDED numeric

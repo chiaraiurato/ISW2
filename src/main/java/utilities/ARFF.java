@@ -23,7 +23,7 @@ public class ARFF {
         String path = String.join(File.separator, pathComponents);
 
         // Build filename
-        String filename = File.separator + projName + "_" + type + i + ".arff";
+        String filename = File.separator+ type + i + ".arff";
         File file = new File(path);
         try{
             if (!file.exists()) {

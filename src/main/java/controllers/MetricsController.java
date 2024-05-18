@@ -15,7 +15,7 @@ import model.ClassProject;
 import model.Commit;
 import org.eclipse.jgit.util.io.DisabledOutputStream;
 
-public class CalculateMetrics {
+public class MetricsController {
     private final List<ClassProject> allClasses;
     private final List<Commit> filteredCommits;
     private final Repository repo;
@@ -27,7 +27,7 @@ public class CalculateMetrics {
      * @param filteredCommits The list of filtered commits to be used for metric calculation.
      * @param repository The repo where to extract LOC.
      */
-    public CalculateMetrics(List<ClassProject> classProjects, List<Commit> filteredCommits, Repository repository) {
+    public MetricsController(List<ClassProject> classProjects, List<Commit> filteredCommits, Repository repository) {
         this.allClasses = classProjects;
         this.filteredCommits = filteredCommits;
         this.repo = repository;

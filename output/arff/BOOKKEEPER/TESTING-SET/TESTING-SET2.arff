@@ -1,4 +1,4 @@
-@relation /BOOKKEEPER_TESTING-SET2.arff
+@relation /TESTING-SET2.arff
 
 @attribute SIZE numeric
 @attribute LOC_ADDED numeric

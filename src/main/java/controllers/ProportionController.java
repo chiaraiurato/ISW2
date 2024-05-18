@@ -16,18 +16,16 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class SetProportion {
+public class ProportionController {
 
     public static final int THRESHOLD_FOR_COLD_START = 5;
     public static final String START_SEPARATOR = "\n{";
     private static final String END_SEPARATOR = "}\n";
     private static final String NEW_LINE = "\n";
     private static final StringBuilder writeToFile = new StringBuilder();
-    private static final Logger logger = LoggerFactory.getLogger(SetProportion.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProportionController.class);
     private static Float coldStartComputedProportion = null;
-    private enum OtherProjects {
-        ZOOKEEPER
-    }
+    private static final String[] PROJECT_NAMES = {"AVRO", "OPENJPA", "ZOOKEEPER", "SYNCOPE","TAJO"};
     /**
      * Controller class for computing proportions related to tickets and releases.
      * This class provides methods for calculating incremental proportions, cold-start proportions,
@@ -35,7 +33,7 @@ public class SetProportion {
      * It also contains constants and helper methods for writing information to files.
      */
 
-    private SetProportion() {}
+    private ProportionController() {}
 
     private static boolean writeUsedOrNot(Ticket ticket, boolean calculate) {
         //Writes information about whether a ticket is used or not to a file.
@@ -88,10 +86,10 @@ public class SetProportion {
         writeToFile.append("\n\nCOLD-START PROPORTION COMPUTATION STARTED -----------------  >\n");
         writeToFile.append(START_SEPARATOR).append(ticket.getTicketKey()).append(END_SEPARATOR);
         List<Float> proportionList = new ArrayList<>();
-        for(OtherProjects projName: OtherProjects.values()){
-            ReleaseRetriever releaseRetriever = new ReleaseRetriever(projName.toString());
+        for(int i=0; i<PROJECT_NAMES.length; i++){
+            ReleaseRetriever releaseRetriever = new ReleaseRetriever(PROJECT_NAMES[i]);
             List<Release> releaseList = releaseRetriever.getVersions();
-            TicketRetriever ticketRetriever = new TicketRetriever(projName.toString(), releaseList);
+            TicketRetriever ticketRetriever = new TicketRetriever(PROJECT_NAMES[i], releaseList);
             List<Ticket> ticketCompleteList = ticketRetriever.getTickets();
             List<Ticket> ticketCorrectList = Ticket.getCorrectTickets(ticketCompleteList);
             if(ticketCorrectList.size() >= THRESHOLD_FOR_COLD_START){

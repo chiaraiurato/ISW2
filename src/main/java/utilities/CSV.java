@@ -3,6 +3,7 @@ package utilities;
 import exception.CsvFileException;
 import model.ClassProject;
 import model.Release;
+import model.ResultOfClassifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,13 +21,76 @@ public class CSV {
     }
     private static final Logger logger = LoggerFactory.getLogger(CSV.class);
 
+    public static void createFinalCsv(String projName, List<ResultOfClassifier> finalResultsList){
+        try {
+            File file = new File("finalResults/" + projName );
+            if (!file.exists()) {
+                boolean success = file.mkdirs();
+                if (!success) {
+                    throw new IOException();
+                }
+            }
+            StringBuilder fileName = new StringBuilder();
+            fileName.append("/").append(projName).append("_finalReport").append(".csv");
+            file = new File("finalResults/" + projName + fileName);
+            try(FileWriter fileWriter = new FileWriter(file)) {
+                fileWriter.append("DATASET," +
+                        "#TRAINING_RELEASES," +
+                        "%TRAINING_INSTANCES," +
+                        "CLASSIFIER," +
+                        "FEATURE_SELECTION," +
+                        "BALANCING," +
+                        "COST_SENSITIVE," +
+                        "PRECISION," +
+                        "RECALL," +
+                        "AREA_UNDER_ROC," +
+                        "KAPPA," +
+                        "TRUE_POSITIVES," +
+                        "FALSE_POSITIVES," +
+                        "TRUE_NEGATIVES," +
+                        "FALSE_NEGATIVES").append("\n");
+                for(ResultOfClassifier resultOfClassifier: finalResultsList){
+                    fileWriter.append(projName).append(",")
+                            .append(String.valueOf(resultOfClassifier.getWalkForwardIteration())).append(",")
+                            .append(String.valueOf(resultOfClassifier.getTrainingPercent())).append(",")
+                            .append(resultOfClassifier.getClassifierName()).append(",");
+                    if(resultOfClassifier.hasFeatureSelection()){
+                        fileWriter.append(resultOfClassifier.getCustomClassifier().getFeatureSelectionFilterName()).append(",");
+                    }else {
+                        fileWriter.append("None").append(",");
+                    }
+                    if(resultOfClassifier.hasSampling()){
+                        fileWriter.append(resultOfClassifier.getCustomClassifier().getSamplingFilterName()).append(",");
+                    }else {
+                        fileWriter.append("None").append(",");
+                    }
+                    if (resultOfClassifier.hasCostSensitive()){
+                        fileWriter.append("SensitiveLearning").append(",");
+                    }else {
+                        fileWriter.append("None").append(",");
+                    }
+                    fileWriter.append(String.valueOf(resultOfClassifier.getPrecision())).append(",")
+                            .append(String.valueOf(resultOfClassifier.getRecall())).append(",")
+                            .append(String.valueOf(resultOfClassifier.getAreaUnderROC())).append(",")
+                            .append(String.valueOf(resultOfClassifier.getKappa())).append(",")
+                            .append(String.valueOf(resultOfClassifier.getTruePositives())).append(",")
+                            .append(String.valueOf(resultOfClassifier.getFalsePositives())).append(",")
+                            .append(String.valueOf(resultOfClassifier.getTrueNegatives())).append(",")
+                            .append(String.valueOf(resultOfClassifier.getFalseNegatives())).append("\n");
+                }
+                closeFileWriter(fileWriter);
+            }
+        } catch (IOException e) {
+            logger.info("Error in .csv creation when trying to create directory");
+        }
+    }
     public static void createFileCsv(String projName, List<Release> releaseList, List<ClassProject> classProjectList, String type, int i) throws CsvFileException {
         //Build path
         String[] pathComponents = {"output", "csv", projName, type};
         String path = String.join(File.separator, pathComponents);
 
         // Build filename
-        String filename = File.separator + projName + "_" + type + i + ".csv";
+        String filename = File.separator + type + i + ".csv";
         File file = new File(path);
         try{
             if (!file.exists()) {
