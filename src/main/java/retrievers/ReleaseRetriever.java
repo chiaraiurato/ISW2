@@ -1,6 +1,7 @@
 package retrievers;
 
 
+import exception.JsonException;
 import model.Release;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -10,6 +11,7 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.jar.JarException;
 
 public class ReleaseRetriever {
 
@@ -30,7 +32,8 @@ public class ReleaseRetriever {
         List<Release> releases = new ArrayList<>();
         int i;
         String url = "https://issues.apache.org/jira/rest/api/2/project/" + this.projName;
-        JSONObject json = JSON.readJsonFromUrl(url);
+        JSONObject json = null;
+        json = JSON.readJsonFromUrl(url);
         JSONArray versions = json.getJSONArray("versions");
         for (i = 0; i < versions.length(); i++ ) {
             String name = "";

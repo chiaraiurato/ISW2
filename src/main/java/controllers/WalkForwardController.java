@@ -22,8 +22,8 @@ public class WalkForwardController {
     private final List<ClassProject> classProjectList;
     private final ClassProjectRetriever classProjectRetriever;
 
-    public WalkForwardController(String projName, int half_size, List<Release> releaseList, List<Ticket> ticketList, List<ClassProject> classProjectList, ClassProjectRetriever classProjectRetriever) {
-        this.lenOfHalfRelease = half_size;
+    public WalkForwardController(String projName, int halfSize, List<Release> releaseList, List<Ticket> ticketList, List<ClassProject> classProjectList, ClassProjectRetriever classProjectRetriever) {
+        this.lenOfHalfRelease = halfSize;
         this.projName = projName;
         this.releaseList = releaseList;
         this.ticketList = ticketList;

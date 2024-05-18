@@ -1,10 +1,12 @@
 package org.uniroma2;
 
 import controllers.WalkForwardController;
+import exception.*;
 import model.*;
 import controllers.MetricsController;
 import controllers.SetRepository;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.slf4j.LoggerFactory;
 import retrievers.*;
@@ -12,6 +14,9 @@ import org.slf4j.Logger;
 import utilities.CSV;
 import utilities.TXT;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.text.ParseException;
 import java.util.List;
 
 public class Execute {
@@ -20,7 +25,7 @@ public class Execute {
     private Execute() {
     }
 
-    public static void collectData(String projName, String projURL) throws Exception {
+    public static void collectData(String projName, String projURL) throws IOException, GitAPIException, ParseException, URISyntaxException, ArffFileException, CsvFileException, ClassifierException, TxtFileException {
         //Set the directory and clone the repo if not exists
         SetRepository setRepository = new SetRepository(projName,projURL);
         Repository repository = setRepository.getRepo();
@@ -29,7 +34,9 @@ public class Execute {
         //Create the instance for report
         TXT createReportFile = new TXT(projName);
 
-        logger.info(String.format("---------- %s ----------", projName));
+        if (logger.isInfoEnabled()) {
+            logger.info(String.format("---------- %s ----------", projName));
+        }
         //Retrieve release
         logger.info("Retrieving releases...");
         ReleaseRetriever releaseRetriever = new ReleaseRetriever(projName);
@@ -72,17 +79,17 @@ public class Execute {
         createReportFile.begin(releaseList, commitList, ticketList, commitBuggy);
 
         //To avoid snoring discard the most recent release (50%)
-        int half_size = (releaseList.size() / 2);
+        int halfSize = (releaseList.size() / 2);
 
         //Starting Walk-Forward approach
         logger.info("Building training set and testing set...");
-        WalkForwardController walkForwardController = new WalkForwardController(projName, half_size,releaseList, ticketList,classProjects,classProjectRetriever);
+        WalkForwardController walkForwardController = new WalkForwardController(projName, halfSize,releaseList, ticketList,classProjects,classProjectRetriever);
         walkForwardController.buildTrainingSetAndTestingSet();
         logger.info(DONE);
 
         //Now that the dataset is ready we can do ML
         logger.info("Do some magic prediction...");
-        WekaRetriever wekaRetriever = new WekaRetriever(projName,half_size);
+        WekaRetriever wekaRetriever = new WekaRetriever(projName, halfSize);
         List<ResultOfClassifier> resultsOfClassifierList= wekaRetriever.computeAllClassifier();
         logger.info(DONE);
 

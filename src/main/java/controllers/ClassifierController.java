@@ -43,7 +43,7 @@ public class ClassifierController {
      *
      **/
 
-    public List<WekaClassifier> wekaClassifiersList;
+    private final List<WekaClassifier> wekaClassifiersList;
     public static final String NO_SELECTION = "NoSelection";
     public static final String NO_SAMPLING = "NoSampling";
 

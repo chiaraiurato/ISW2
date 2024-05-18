@@ -22,15 +22,23 @@ public class SetRepository {
      * @param projURL  The project URL
      */
 
-    public SetRepository(String projName, String projURL) throws IOException, GitAPIException {
+    public SetRepository(String projName, String projURL){
 
         File directory = new File("temp/" + projName); //Create the directory where to clone repo
         if (directory.exists()) {
-            this.repo = new FileRepository("temp/" + projName + "/.git");
+            try {
+                this.repo = new FileRepository("temp/" + projName + "/.git");
+            } catch (IOException e) {
+                throw new SecurityException("Failed to initialize Git repository", e);
+            }
             this.git = new Git(this.repo);
         }else{
-        git = Git.cloneRepository().setURI(projURL).setDirectory(directory).call();
-        repo = git.getRepository();
+            try {
+                git = Git.cloneRepository().setURI(projURL).setDirectory(directory).call();
+            } catch (GitAPIException e) {
+                throw new SecurityException("Failed to clone Git repository", e);
+            }
+            repo = git.getRepository();
     }
     }
     public Repository getRepo() {
