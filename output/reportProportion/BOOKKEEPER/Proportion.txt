@@ -23,8 +23,8 @@ PROPORTION AVERAGE: 2.276738
 ----------------------------------------------------------
 
 *** PROPORTION ***
-Size of filtered ticket: 603
-PROPORTION AVERAGE: 1.5389323
+Size of filtered ticket: 612
+PROPORTION AVERAGE: 1.5424447
 ----------------------------------------------------------
 
 *** PROPORTION ***
@@ -33,8 +33,8 @@ PROPORTION AVERAGE: 1.4395162
 ----------------------------------------------------------
 
 PROPORTION LIST:  -----------------------------------------------
-[1.4261853, 1.4395162, 1.5389323, 2.276738, 2.4666321]
-MEDIAN PROPORTION OUT OF ALL PROJECTS FOR COLD START: 1.5389323
+[1.4261853, 1.4395162, 1.5424447, 2.276738, 2.4666321]
+MEDIAN PROPORTION OUT OF ALL PROJECTS FOR COLD START: 1.5424447
 -----------------------------------------------------------------
 
 
@@ -50,7 +50,7 @@ PROPORTION: Denominator = 1
 *** COLD START ***
 
 {BOOKKEEPER-161}
-PROPORTION: 1.5389323
+PROPORTION: 1.5424447
 
 {BOOKKEEPER-167}
 PROPORTION: Denominator = 1 

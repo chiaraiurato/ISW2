@@ -23,8 +23,8 @@ PROPORTION AVERAGE: 2.276738
 ----------------------------------------------------------
 
 *** PROPORTION ***
-Size of filtered ticket: 603
-PROPORTION AVERAGE: 1.5389323
+Size of filtered ticket: 612
+PROPORTION AVERAGE: 1.5424447
 ----------------------------------------------------------
 
 *** PROPORTION ***
@@ -33,8 +33,8 @@ PROPORTION AVERAGE: 1.4395162
 ----------------------------------------------------------
 
 PROPORTION LIST:  -----------------------------------------------
-[1.4261853, 1.4395162, 1.5389323, 2.276738, 2.4666321]
-MEDIAN PROPORTION OUT OF ALL PROJECTS FOR COLD START: 1.5389323
+[1.4261853, 1.4395162, 1.5424447, 2.276738, 2.4666321]
+MEDIAN PROPORTION OUT OF ALL PROJECTS FOR COLD START: 1.5424447
 -----------------------------------------------------------------
 
 
@@ -50,7 +50,7 @@ PROPORTION: Denominator = 1
 *** COLD START ***
 
 {BOOKKEEPER-161}
-PROPORTION: 1.5389323
+PROPORTION: 1.5424447
 
 {BOOKKEEPER-167}
 PROPORTION: Denominator = 1 
@@ -5348,21 +5348,28 @@ PROPORTION: FX != OV
 {ZOOKEEPER-3306}
 PROPORTION: FX != OV 
 
+*** PROPORTION ***
+
+{ZOOKEEPER-3331}
+Size of filtered ticket: 763
+PROPORTION AVERAGE: 2.0546257
+----------------------------------------------------------
+
 {ZOOKEEPER-2694}
 PROPORTION: FX != OV 
 
 *** PROPORTION ***
 
 {ZOOKEEPER-3399}
-Size of filtered ticket: 764
-PROPORTION AVERAGE: 2.054227
+Size of filtered ticket: 765
+PROPORTION AVERAGE: 2.0554633
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-3404}
-Size of filtered ticket: 765
-PROPORTION AVERAGE: 2.0554633
+Size of filtered ticket: 766
+PROPORTION AVERAGE: 2.0566964
 ----------------------------------------------------------
 
 {ZOOKEEPER-3405}
@@ -5377,8 +5384,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3440}
-Size of filtered ticket: 769
-PROPORTION AVERAGE: 2.0551748
+Size of filtered ticket: 770
+PROPORTION AVERAGE: 2.056402
 ----------------------------------------------------------
 
 {ZOOKEEPER-2418}
@@ -5411,8 +5418,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3510}
-Size of filtered ticket: 779
-PROPORTION AVERAGE: 2.0552263
+Size of filtered ticket: 780
+PROPORTION AVERAGE: 2.0564375
 ----------------------------------------------------------
 
 {ZOOKEEPER-3518}
@@ -5424,8 +5431,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3540}
-Size of filtered ticket: 782
-PROPORTION AVERAGE: 2.0554407
+Size of filtered ticket: 783
+PROPORTION AVERAGE: 2.056647
 ----------------------------------------------------------
 
 {ZOOKEEPER-3145}
@@ -5437,8 +5444,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3559}
-Size of filtered ticket: 785
-PROPORTION AVERAGE: 2.0565026
+Size of filtered ticket: 786
+PROPORTION AVERAGE: 2.057703
 ----------------------------------------------------------
 
 {ZOOKEEPER-2282}
@@ -5453,15 +5460,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3471}
-Size of filtered ticket: 789
-PROPORTION AVERAGE: 2.0666726
+Size of filtered ticket: 790
+PROPORTION AVERAGE: 2.067854
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-3605}
-Size of filtered ticket: 790
-PROPORTION AVERAGE: 2.067854
+Size of filtered ticket: 791
+PROPORTION AVERAGE: 2.0690324
 ----------------------------------------------------------
 
 {ZOOKEEPER-3590}
@@ -5476,8 +5483,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3641}
-Size of filtered ticket: 794
-PROPORTION AVERAGE: 2.0750687
+Size of filtered ticket: 795
+PROPORTION AVERAGE: 2.0762322
 ----------------------------------------------------------
 
 {ZOOKEEPER-3651}
@@ -5486,15 +5493,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-2307}
-Size of filtered ticket: 796
-PROPORTION AVERAGE: 2.0748801
+Size of filtered ticket: 797
+PROPORTION AVERAGE: 2.076041
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-3653}
-Size of filtered ticket: 797
-PROPORTION AVERAGE: 2.0748827
+Size of filtered ticket: 798
+PROPORTION AVERAGE: 2.076042
 ----------------------------------------------------------
 
 {ZOOKEEPER-3644}
@@ -5503,8 +5510,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3656}
-Size of filtered ticket: 799
-PROPORTION AVERAGE: 2.0746953
+Size of filtered ticket: 800
+PROPORTION AVERAGE: 2.075852
 ----------------------------------------------------------
 
 {ZOOKEEPER-3667}
@@ -5519,8 +5526,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3698}
-Size of filtered ticket: 803
-PROPORTION AVERAGE: 2.073078
+Size of filtered ticket: 804
+PROPORTION AVERAGE: 2.0742307
 ----------------------------------------------------------
 
 {ZOOKEEPER-1936}
@@ -5529,8 +5536,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3710}
-Size of filtered ticket: 805
-PROPORTION AVERAGE: 2.072979
+Size of filtered ticket: 806
+PROPORTION AVERAGE: 2.0741293
 ----------------------------------------------------------
 
 {ZOOKEEPER-3716}
@@ -5557,8 +5564,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3746}
-Size of filtered ticket: 813
-PROPORTION AVERAGE: 2.0748236
+Size of filtered ticket: 814
+PROPORTION AVERAGE: 2.0759602
 ----------------------------------------------------------
 
 {ZOOKEEPER-2164}
@@ -5567,29 +5574,29 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3748}
-Size of filtered ticket: 815
-PROPORTION AVERAGE: 2.0748854
-----------------------------------------------------------
-
-*** PROPORTION ***
-
-{ZOOKEEPER-3745}
 Size of filtered ticket: 816
 PROPORTION AVERAGE: 2.076019
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-3758}
+{ZOOKEEPER-3745}
 Size of filtered ticket: 817
 PROPORTION AVERAGE: 2.0771499
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-3739}
+{ZOOKEEPER-3758}
 Size of filtered ticket: 818
 PROPORTION AVERAGE: 2.078278
+----------------------------------------------------------
+
+*** PROPORTION ***
+
+{ZOOKEEPER-3739}
+Size of filtered ticket: 819
+PROPORTION AVERAGE: 2.0794036
 ----------------------------------------------------------
 
 {ZOOKEEPER-3756}
@@ -5598,8 +5605,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3654}
-Size of filtered ticket: 820
-PROPORTION AVERAGE: 2.0793066
+Size of filtered ticket: 821
+PROPORTION AVERAGE: 2.0804281
 ----------------------------------------------------------
 
 {ZOOKEEPER-3760}
@@ -5617,8 +5624,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3782}
-Size of filtered ticket: 825
-PROPORTION AVERAGE: 2.0777655
+Size of filtered ticket: 826
+PROPORTION AVERAGE: 2.078882
 ----------------------------------------------------------
 
 {ZOOKEEPER-3726}
@@ -5627,22 +5634,22 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3793}
-Size of filtered ticket: 827
-PROPORTION AVERAGE: 2.0787866
-----------------------------------------------------------
-
-*** PROPORTION ***
-
-{ZOOKEEPER-3738}
 Size of filtered ticket: 828
 PROPORTION AVERAGE: 2.079899
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-3579}
+{ZOOKEEPER-3738}
 Size of filtered ticket: 829
 PROPORTION AVERAGE: 2.0810091
+----------------------------------------------------------
+
+*** PROPORTION ***
+
+{ZOOKEEPER-3579}
+Size of filtered ticket: 830
+PROPORTION AVERAGE: 2.0821164
 ----------------------------------------------------------
 
 {ZOOKEEPER-3215}
@@ -5663,8 +5670,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3865}
-Size of filtered ticket: 835
-PROPORTION AVERAGE: 2.0831215
+Size of filtered ticket: 836
+PROPORTION AVERAGE: 2.0842183
 ----------------------------------------------------------
 
 {ZOOKEEPER-3803}
@@ -5673,8 +5680,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3878}
-Size of filtered ticket: 837
-PROPORTION AVERAGE: 2.0859098
+Size of filtered ticket: 838
+PROPORTION AVERAGE: 2.0870006
 ----------------------------------------------------------
 
 {ZOOKEEPER-3112}
@@ -5686,15 +5693,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3891}
-Size of filtered ticket: 840
-PROPORTION AVERAGE: 2.0859997
+Size of filtered ticket: 841
+PROPORTION AVERAGE: 2.0870867
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-3876}
-Size of filtered ticket: 841
-PROPORTION AVERAGE: 2.0870867
+Size of filtered ticket: 842
+PROPORTION AVERAGE: 2.0881708
 ----------------------------------------------------------
 
 {ZOOKEEPER-3885}
@@ -5706,8 +5713,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3801}
-Size of filtered ticket: 844
-PROPORTION AVERAGE: 2.0867772
+Size of filtered ticket: 845
+PROPORTION AVERAGE: 2.0878577
 ----------------------------------------------------------
 
 {ZOOKEEPER-3920}
@@ -5716,8 +5723,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3863}
-Size of filtered ticket: 846
-PROPORTION AVERAGE: 2.088345
+Size of filtered ticket: 847
+PROPORTION AVERAGE: 2.0894213
 ----------------------------------------------------------
 
 {ZOOKEEPER-3944}
@@ -5726,15 +5733,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3937}
-Size of filtered ticket: 848
-PROPORTION AVERAGE: 2.0881367
+Size of filtered ticket: 849
+PROPORTION AVERAGE: 2.0892107
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-3955}
-Size of filtered ticket: 849
-PROPORTION AVERAGE: 2.0892107
+Size of filtered ticket: 850
+PROPORTION AVERAGE: 2.0902822
 ----------------------------------------------------------
 
 {ZOOKEEPER-3954}
@@ -5746,8 +5753,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3992}
-Size of filtered ticket: 852
-PROPORTION AVERAGE: 2.0877228
+Size of filtered ticket: 853
+PROPORTION AVERAGE: 2.0887923
 ----------------------------------------------------------
 
 {ZOOKEEPER-3911}
@@ -5756,8 +5763,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3994}
-Size of filtered ticket: 854
-PROPORTION AVERAGE: 2.098056
+Size of filtered ticket: 855
+PROPORTION AVERAGE: 2.0991108
 ----------------------------------------------------------
 
 {ZOOKEEPER-3991}
@@ -5766,15 +5773,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3979}
-Size of filtered ticket: 856
-PROPORTION AVERAGE: 2.097827
+Size of filtered ticket: 857
+PROPORTION AVERAGE: 2.0988796
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4011}
-Size of filtered ticket: 857
-PROPORTION AVERAGE: 2.0988796
+Size of filtered ticket: 858
+PROPORTION AVERAGE: 2.0999298
 ----------------------------------------------------------
 
 {ZOOKEEPER-3642}
@@ -5792,15 +5799,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3426}
-Size of filtered ticket: 862
-PROPORTION AVERAGE: 2.0988863
+Size of filtered ticket: 863
+PROPORTION AVERAGE: 2.0999303
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4191}
-Size of filtered ticket: 863
-PROPORTION AVERAGE: 2.0990033
+Size of filtered ticket: 864
+PROPORTION AVERAGE: 2.1000462
 ----------------------------------------------------------
 
 {ZOOKEEPER-3943}
@@ -5809,8 +5816,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4007}
-Size of filtered ticket: 865
-PROPORTION AVERAGE: 2.0999305
+Size of filtered ticket: 866
+PROPORTION AVERAGE: 2.1009698
 ----------------------------------------------------------
 
 {ZOOKEEPER-2872}
@@ -5822,22 +5829,22 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4201}
-Size of filtered ticket: 868
-PROPORTION AVERAGE: 2.0988169
-----------------------------------------------------------
-
-*** PROPORTION ***
-
-{ZOOKEEPER-4200}
 Size of filtered ticket: 869
 PROPORTION AVERAGE: 2.099854
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4199}
+{ZOOKEEPER-4200}
 Size of filtered ticket: 870
 PROPORTION AVERAGE: 2.1008885
+----------------------------------------------------------
+
+*** PROPORTION ***
+
+{ZOOKEEPER-4199}
+Size of filtered ticket: 871
+PROPORTION AVERAGE: 2.1019208
 ----------------------------------------------------------
 
 {ZOOKEEPER-4222}
@@ -5846,8 +5853,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3877}
-Size of filtered ticket: 872
-PROPORTION AVERAGE: 2.101804
+Size of filtered ticket: 873
+PROPORTION AVERAGE: 2.1028328
 ----------------------------------------------------------
 
 {ZOOKEEPER-4220}
@@ -5856,29 +5863,29 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-3781}
-Size of filtered ticket: 874
-PROPORTION AVERAGE: 2.102143
+Size of filtered ticket: 875
+PROPORTION AVERAGE: 2.1031692
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4232}
-Size of filtered ticket: 875
-PROPORTION AVERAGE: 2.102312
-----------------------------------------------------------
-
-*** PROPORTION ***
-
-{ZOOKEEPER-4225}
 Size of filtered ticket: 876
 PROPORTION AVERAGE: 2.1033368
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4224}
+{ZOOKEEPER-4225}
 Size of filtered ticket: 877
 PROPORTION AVERAGE: 2.1043591
+----------------------------------------------------------
+
+*** PROPORTION ***
+
+{ZOOKEEPER-4224}
+Size of filtered ticket: 878
+PROPORTION AVERAGE: 2.1053793
 ----------------------------------------------------------
 
 {ZOOKEEPER-4223}
@@ -5893,15 +5900,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-4230}
-Size of filtered ticket: 881
-PROPORTION AVERAGE: 2.111831
+Size of filtered ticket: 882
+PROPORTION AVERAGE: 2.112838
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-3128}
-Size of filtered ticket: 882
-PROPORTION AVERAGE: 2.112838
+Size of filtered ticket: 883
+PROPORTION AVERAGE: 2.1138427
 ----------------------------------------------------------
 
 {ZOOKEEPER-4260}
@@ -5910,43 +5917,43 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4267}
-Size of filtered ticket: 884
-PROPORTION AVERAGE: 2.1139653
-----------------------------------------------------------
-
-*** PROPORTION ***
-
-{ZOOKEEPER-4269}
 Size of filtered ticket: 885
 PROPORTION AVERAGE: 2.1149664
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4266}
+{ZOOKEEPER-4269}
 Size of filtered ticket: 886
 PROPORTION AVERAGE: 2.1159654
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-3931}
+{ZOOKEEPER-4266}
 Size of filtered ticket: 887
 PROPORTION AVERAGE: 2.116962
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4278}
+{ZOOKEEPER-3931}
 Size of filtered ticket: 888
-PROPORTION AVERAGE: 2.1172056
+PROPORTION AVERAGE: 2.1179564
+----------------------------------------------------------
+
+*** PROPORTION ***
+
+{ZOOKEEPER-4278}
+Size of filtered ticket: 889
+PROPORTION AVERAGE: 2.1181986
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4265}
-Size of filtered ticket: 889
-PROPORTION AVERAGE: 2.1181986
+Size of filtered ticket: 890
+PROPORTION AVERAGE: 2.1191895
 ----------------------------------------------------------
 
 {ZOOKEEPER-4247}
@@ -5958,15 +5965,15 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4262}
-Size of filtered ticket: 892
-PROPORTION AVERAGE: 2.1200433
+Size of filtered ticket: 893
+PROPORTION AVERAGE: 2.1210287
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4246}
-Size of filtered ticket: 893
-PROPORTION AVERAGE: 2.1204689
+Size of filtered ticket: 894
+PROPORTION AVERAGE: 2.1214526
 ----------------------------------------------------------
 
 {ZOOKEEPER-4309}
@@ -5975,8 +5982,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-4311}
-Size of filtered ticket: 895
-PROPORTION AVERAGE: 2.1207583
+Size of filtered ticket: 896
+PROPORTION AVERAGE: 2.1217396
 ----------------------------------------------------------
 
 {ZOOKEEPER-4316}
@@ -5991,8 +5998,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-4345}
-Size of filtered ticket: 899
-PROPORTION AVERAGE: 2.1435802
+Size of filtered ticket: 900
+PROPORTION AVERAGE: 2.1445317
 ----------------------------------------------------------
 
 {ZOOKEEPER-4342}
@@ -6013,22 +6020,22 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-4372}
-Size of filtered ticket: 905
-PROPORTION AVERAGE: 2.155004
-----------------------------------------------------------
-
-*** PROPORTION ***
-
-{ZOOKEEPER-4406}
 Size of filtered ticket: 906
 PROPORTION AVERAGE: 2.1559367
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4362}
+{ZOOKEEPER-4406}
 Size of filtered ticket: 907
 PROPORTION AVERAGE: 2.1568673
+----------------------------------------------------------
+
+*** PROPORTION ***
+
+{ZOOKEEPER-4362}
+Size of filtered ticket: 908
+PROPORTION AVERAGE: 2.1577957
 ----------------------------------------------------------
 
 {ZOOKEEPER-3988}
@@ -6049,8 +6056,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-4452}
-Size of filtered ticket: 913
-PROPORTION AVERAGE: 2.1635034
+Size of filtered ticket: 914
+PROPORTION AVERAGE: 2.1644185
 ----------------------------------------------------------
 
 {ZOOKEEPER-3652}
@@ -6059,36 +6066,36 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4505}
-Size of filtered ticket: 915
-PROPORTION AVERAGE: 2.1632826
-----------------------------------------------------------
-
-*** PROPORTION ***
-
-{ZOOKEEPER-4504}
 Size of filtered ticket: 916
 PROPORTION AVERAGE: 2.164196
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4516}
+{ZOOKEEPER-4504}
 Size of filtered ticket: 917
 PROPORTION AVERAGE: 2.1651075
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4514}
+{ZOOKEEPER-4516}
 Size of filtered ticket: 918
 PROPORTION AVERAGE: 2.166017
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4515}
+{ZOOKEEPER-4514}
 Size of filtered ticket: 919
 PROPORTION AVERAGE: 2.1669245
+----------------------------------------------------------
+
+*** PROPORTION ***
+
+{ZOOKEEPER-4515}
+Size of filtered ticket: 920
+PROPORTION AVERAGE: 2.16783
 ----------------------------------------------------------
 
 {ZOOKEEPER-3908}
@@ -6100,8 +6107,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4537}
-Size of filtered ticket: 922
-PROPORTION AVERAGE: 2.1666968
+Size of filtered ticket: 923
+PROPORTION AVERAGE: 2.1675997
 ----------------------------------------------------------
 
 {ZOOKEEPER-4550}
@@ -6110,15 +6117,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-4549}
-Size of filtered ticket: 924
-PROPORTION AVERAGE: 2.1814876
+Size of filtered ticket: 925
+PROPORTION AVERAGE: 2.1823723
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4511}
-Size of filtered ticket: 925
-PROPORTION AVERAGE: 2.1823723
+Size of filtered ticket: 926
+PROPORTION AVERAGE: 2.1832554
 ----------------------------------------------------------
 
 {ZOOKEEPER-4565}
@@ -6130,29 +6137,29 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4460}
-Size of filtered ticket: 928
-PROPORTION AVERAGE: 2.1844769
+Size of filtered ticket: 929
+PROPORTION AVERAGE: 2.1853547
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4654}
-Size of filtered ticket: 929
-PROPORTION AVERAGE: 2.184637
-----------------------------------------------------------
-
-*** PROPORTION ***
-
-{ZOOKEEPER-4674}
 Size of filtered ticket: 930
 PROPORTION AVERAGE: 2.1855137
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
-{ZOOKEEPER-4647}
+{ZOOKEEPER-4674}
 Size of filtered ticket: 931
 PROPORTION AVERAGE: 2.1863887
+----------------------------------------------------------
+
+*** PROPORTION ***
+
+{ZOOKEEPER-4647}
+Size of filtered ticket: 932
+PROPORTION AVERAGE: 2.1872616
 ----------------------------------------------------------
 
 {ZOOKEEPER-4523}
@@ -6167,8 +6174,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4671}
-Size of filtered ticket: 935
-PROPORTION AVERAGE: 2.1868212
+Size of filtered ticket: 936
+PROPORTION AVERAGE: 2.18769
 ----------------------------------------------------------
 
 {ZOOKEEPER-4466}
@@ -6186,8 +6193,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-3996}
-Size of filtered ticket: 940
-PROPORTION AVERAGE: 2.2122104
+Size of filtered ticket: 941
+PROPORTION AVERAGE: 2.2130473
 ----------------------------------------------------------
 
 {ZOOKEEPER-4026}
@@ -6196,8 +6203,8 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4719}
-Size of filtered ticket: 942
-PROPORTION AVERAGE: 2.211229
+Size of filtered ticket: 943
+PROPORTION AVERAGE: 2.2120652
 ----------------------------------------------------------
 
 {ZOOKEEPER-4721}
@@ -6206,15 +6213,15 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-2623}
-Size of filtered ticket: 944
-PROPORTION AVERAGE: 2.22879
+Size of filtered ticket: 945
+PROPORTION AVERAGE: 2.229606
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-666}
-Size of filtered ticket: 945
-PROPORTION AVERAGE: 2.2286859
+Size of filtered ticket: 946
+PROPORTION AVERAGE: 2.229501
 ----------------------------------------------------------
 
 {ZOOKEEPER-4415}
@@ -6229,8 +6236,8 @@ PROPORTION: Denominator = 1
 *** PROPORTION ***
 
 {ZOOKEEPER-4532}
-Size of filtered ticket: 949
-PROPORTION AVERAGE: 2.2250376
+Size of filtered ticket: 950
+PROPORTION AVERAGE: 2.225853
 ----------------------------------------------------------
 
 {ZOOKEEPER-4456}
@@ -6239,29 +6246,29 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4761}
-Size of filtered ticket: 951
-PROPORTION AVERAGE: 2.2240133
+Size of filtered ticket: 952
+PROPORTION AVERAGE: 2.2248282
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-2590}
-Size of filtered ticket: 952
-PROPORTION AVERAGE: 2.2248285
+Size of filtered ticket: 953
+PROPORTION AVERAGE: 2.2256415
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4770}
-Size of filtered ticket: 953
-PROPORTION AVERAGE: 2.2246797
+Size of filtered ticket: 954
+PROPORTION AVERAGE: 2.2254922
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4236}
-Size of filtered ticket: 954
-PROPORTION AVERAGE: 2.2254925
+Size of filtered ticket: 955
+PROPORTION AVERAGE: 2.2263033
 ----------------------------------------------------------
 
 {ZOOKEEPER-4703}
@@ -6270,22 +6277,22 @@ PROPORTION: FX != OV
 *** PROPORTION ***
 
 {ZOOKEEPER-4730}
-Size of filtered ticket: 956
-PROPORTION AVERAGE: 2.2281241
+Size of filtered ticket: 957
+PROPORTION AVERAGE: 2.2289305
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4782}
-Size of filtered ticket: 957
-PROPORTION AVERAGE: 2.2284083
+Size of filtered ticket: 958
+PROPORTION AVERAGE: 2.2292135
 ----------------------------------------------------------
 
 *** PROPORTION ***
 
 {ZOOKEEPER-4804}
-Size of filtered ticket: 958
-PROPORTION AVERAGE: 2.2292137
+Size of filtered ticket: 959
+PROPORTION AVERAGE: 2.2300172
 ----------------------------------------------------------
 
 {ZOOKEEPER-4276}

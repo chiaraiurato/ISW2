@@ -1,8 +1,10 @@
 package retrievers;
 import controllers.ClassifierController;
 import exception.ClassifierException;
+import model.AcumeFile;
 import model.WekaClassifier;
 import model.ResultOfClassifier;
+import utilities.ACUME;
 import weka.attributeSelection.BestFirst;
 import weka.classifiers.Classifier;
 import weka.classifiers.evaluation.Evaluation;
@@ -57,13 +59,13 @@ public class WekaRetriever {
                 setClassIndex(testingSetInstance);
 
                 // Generate a list of all classifiers based on the attribute statistics of the class attribute
-                List<WekaClassifier> wekaClassifier = generateAllClassifiers(trainingSetInstance.attributeStats(trainingSetInstance.numAttributes() - 1));
+                List<WekaClassifier> wekaClassifiers = generateAllClassifiers(trainingSetInstance.attributeStats(trainingSetInstance.numAttributes() - 1));
 
                 // Evaluate each classifier
-                for (WekaClassifier customClassifier : wekaClassifier) {
+                for (WekaClassifier wekaClassifier : wekaClassifiers) {
                     // Initialize the evaluator with the testing set
                     Evaluation evaluator = new Evaluation(testingSetInstance);
-                    Classifier classifier = customClassifier.getClassifier();
+                    Classifier classifier = wekaClassifier.getClassifier();
 
                     // Train the classifier with the training set
                     classifier.buildClassifier(trainingSetInstance);
@@ -72,13 +74,39 @@ public class WekaRetriever {
                     evaluator.evaluateModel(classifier, testingSetInstance);
 
                     // Store the results of the evaluation
-                    ResultOfClassifier resultOfClassifier = new ResultOfClassifier(i, customClassifier, evaluator);
+                    ResultOfClassifier resultOfClassifier = new ResultOfClassifier(i, wekaClassifier, evaluator);
 
                     // Calculate and set the training percentage
                     resultOfClassifier.setTrainingPercent(100.0 * trainingSetInstance.numInstances() / (trainingSetInstance.numInstances() + testingSetInstance.numInstances()));
 
                     // Add the results to the list of all classifier results
                     allResultsOfClassifiers.add(resultOfClassifier);
+
+                    //ACUME
+
+                    String size = "SIZE";
+                    String isBuggy = "IS_BUGGY";
+
+                    List<AcumeFile> acumeUtilsList = new ArrayList<>();
+
+                    int sizeIndex = testingSetInstance.attribute(size).index();
+                    int isBuggyIndex = testingSetInstance.attribute(isBuggy).index();
+
+                    int trueClassifierIndex = testingSetInstance.classAttribute().indexOfValue("YES");
+
+                    if(trueClassifierIndex != -1){
+                        for (int j = 0; j < testingSetInstance.numInstances(); j++) {
+                            int sizeValue = (int) testingSetInstance.instance(j).value(sizeIndex);
+                            int valueIndex = (int) testingSetInstance.instance(j).value(isBuggyIndex);
+                            String buggyness =  testingSetInstance.attribute(isBuggyIndex).value(valueIndex);
+                            double[] distribution = classifier.distributionForInstance(testingSetInstance.instance(j));
+                            AcumeFile acumeUtils = new AcumeFile(i, sizeValue, distribution[trueClassifierIndex], buggyness);
+                            acumeUtilsList.add(acumeUtils);
+                        }
+                    }
+                    ACUME.createFileForAcume(projName,wekaClassifier,i,  acumeUtilsList);
+
+
                 }
             } catch (Exception e) {
                 // Handle any exceptions that occur during the process

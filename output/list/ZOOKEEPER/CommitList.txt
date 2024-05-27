@@ -3751,7 +3751,7 @@ Commit{id=bee2ef8da3c4a7a2a1925ac8fc5375a7dee702ae, ticket=null, release=Release
 
 Commit{id=3a25fe4b6c07937dc6859cafd94f3532b3a0befe, ticket=null, release=Release{id=34, releaseName='3.5.5', releaseDate=2019-05-20, size commitList=42}}
 
-Commit{id=c67760523492b8da033c7bc0ea3076ab4acf1a93, ticket=null, release=Release{id=34, releaseName='3.5.5', releaseDate=2019-05-20, size commitList=42}}
+Commit{id=c67760523492b8da033c7bc0ea3076ab4acf1a93, ticket=Ticket{ticketID='ZOOKEEPER-3331', creationDate=2019-03-22, resolutionDate=2019-05-06, injectedVersion=Release{id=31, releaseName='3.5.4', releaseDate=2018-05-17, size commitList=0}, openingVersion=Release{id=33, releaseName='3.4.14', releaseDate=2019-04-02, size commitList=168}, fixedVersion=Release{id=34, releaseName='3.5.5', releaseDate=2019-05-20, size commitList=42}, affectedVersions=[Release{id=31, releaseName='3.5.4', releaseDate=2018-05-17, size commitList=0}, Release{id=32, releaseName='3.4.13', releaseDate=2018-07-17, size commitList=0}, Release{id=33, releaseName='3.4.14', releaseDate=2019-04-02, size commitList=0}]}, release=Release{id=34, releaseName='3.5.5', releaseDate=2019-05-20, size commitList=42}}
 
 Commit{id=cb36d5a95fca6bc098890bde517ba76901adf43a, ticket=null, release=Release{id=34, releaseName='3.5.5', releaseDate=2019-05-20, size commitList=42}}
 
