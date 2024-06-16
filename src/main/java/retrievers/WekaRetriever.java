@@ -167,6 +167,7 @@ public class WekaRetriever {
 
     private List<AttributeSelection> getFeatureSelectionFilters() {
         BestFirst bestFirst = new BestFirst();
+        //2 -> BIDIRECTION
         bestFirst.setDirection(new SelectedTag(2, BestFirst.TAGS_SELECTION));
         AttributeSelection attributeSelection = new AttributeSelection();
         attributeSelection.setSearch(bestFirst);

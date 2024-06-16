@@ -25,8 +25,8 @@ public class WekaClassifier {
     public WekaClassifier(Classifier classifier, String classifierName, String featureSelectionFilterName, String bestFirstDirection, String samplingFilterName, boolean isCostSensitive) {
         this.classifier = classifier;
         switch (samplingFilterName) {
-            case "Resample" -> this.samplingFilterName = "OverSampling";
-            case "SpreadSubsample" -> this.samplingFilterName = "UnderSampling";
+            case "Resample" -> this.samplingFilterName = "OverSampl";
+            case "SpreadSubsample" -> this.samplingFilterName = "UnderSampl";
             case "SMOTE" -> this.samplingFilterName = "SMOTE";
             default -> this.samplingFilterName = samplingFilterName;
         }
@@ -35,6 +35,11 @@ public class WekaClassifier {
         } else {
             this.featureSelectionFilterName = featureSelectionFilterName;
         }
+//        if (featureSelectionFilterName.equals("BestFirst")) {
+//            this.featureSelectionFilterName = "true";
+//        } else {
+//            this.featureSelectionFilterName = "false";
+//        }
         this.isCostSensitive = isCostSensitive;
         this.classifierName = classifierName;
     }

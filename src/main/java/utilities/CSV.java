@@ -34,7 +34,7 @@ public class CSV {
             fileName.append("/").append(projName).append("_finalReport").append(".csv");
             file = new File("finalResults/" + projName + fileName);
             try(FileWriter fileWriter = new FileWriter(file)) {
-                fileWriter.append("DATASET," +
+                fileWriter.append(
                         "#TRAINING_RELEASES," +
                         "%TRAINING_INSTANCES," +
                         "CLASSIFIER," +
@@ -50,24 +50,25 @@ public class CSV {
                         "TRUE_NEGATIVES," +
                         "FALSE_NEGATIVES").append("\n");
                 for(ResultOfClassifier resultOfClassifier: finalResultsList){
-                    fileWriter.append(projName).append(",")
-                            .append(String.valueOf(resultOfClassifier.getWalkForwardIteration())).append(",")
+                    fileWriter.append(String.valueOf(resultOfClassifier.getWalkForwardIteration())).append(",")
                             .append(String.valueOf(resultOfClassifier.getTrainingPercent())).append(",")
                             .append(resultOfClassifier.getClassifierName()).append(",");
                     if(resultOfClassifier.hasFeatureSelection()){
-                        fileWriter.append(resultOfClassifier.getCustomClassifier().getFeatureSelectionFilterName()).append(",");
+                        //fileWriter.append(resultOfClassifier.getCustomClassifier().getFeatureSelectionFilterName()).append(",");
+                        fileWriter.append("true").append(",");
                     }else {
-                        fileWriter.append("None").append(",");
+                        fileWriter.append("false").append(",");
                     }
                     if(resultOfClassifier.hasSampling()){
                         fileWriter.append(resultOfClassifier.getCustomClassifier().getSamplingFilterName()).append(",");
                     }else {
-                        fileWriter.append("None").append(",");
+                        fileWriter.append("NotSet").append(",");
                     }
                     if (resultOfClassifier.hasCostSensitive()){
-                        fileWriter.append("SensitiveLearning").append(",");
+                        //fileWriter.append("SensitiveLearning").append(",");
+                        fileWriter.append("true").append(",");
                     }else {
-                        fileWriter.append("None").append(",");
+                        fileWriter.append("false").append(",");
                     }
                     fileWriter.append(String.valueOf(resultOfClassifier.getPrecision())).append(",")
                             .append(String.valueOf(resultOfClassifier.getRecall())).append(",")
