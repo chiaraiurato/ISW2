@@ -35,11 +35,6 @@ public class WekaClassifier {
         } else {
             this.featureSelectionFilterName = featureSelectionFilterName;
         }
-//        if (featureSelectionFilterName.equals("BestFirst")) {
-//            this.featureSelectionFilterName = "true";
-//        } else {
-//            this.featureSelectionFilterName = "false";
-//        }
         this.isCostSensitive = isCostSensitive;
         this.classifierName = classifierName;
     }

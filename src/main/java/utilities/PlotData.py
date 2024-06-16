@@ -192,19 +192,15 @@ def box_plot_data(project_name, dataset, classifier_list, filter, sampler, cost_
         data = get_data(dataset, None, classifier, filter, sampler, cost_sensitive)
 
         precision_data = data["PRECISION"].to_numpy()
-        #precision_data = precision_data[precision_data.notnull()]
         precision_data = precision_data[~np.isnan(precision_data)]
 
         recall_data = data["RECALL"].to_numpy()
-        #recall_data = recall_data[recall_data.notnull()]
         recall_data = recall_data[~np.isnan(recall_data)]
 
         roc_data = data["AREA_UNDER_ROC"].to_numpy()
-        #roc_data = roc_data[roc_data.notnull()]
         roc_data = roc_data[~np.isnan(roc_data)]
 
         kappa_data = data["KAPPA"].to_numpy()
-        #kappa_data = kappa_data[kappa_data.notnull()]
         kappa_data = kappa_data[~np.isnan(roc_data)]
 
         recall_list.append(recall_data)

@@ -54,7 +54,6 @@ public class CSV {
                             .append(String.valueOf(resultOfClassifier.getTrainingPercent())).append(",")
                             .append(resultOfClassifier.getClassifierName()).append(",");
                     if(resultOfClassifier.hasFeatureSelection()){
-                        //fileWriter.append(resultOfClassifier.getCustomClassifier().getFeatureSelectionFilterName()).append(",");
                         fileWriter.append("true").append(",");
                     }else {
                         fileWriter.append("false").append(",");
@@ -65,7 +64,6 @@ public class CSV {
                         fileWriter.append("NotSet").append(",");
                     }
                     if (resultOfClassifier.hasCostSensitive()){
-                        //fileWriter.append("SensitiveLearning").append(",");
                         fileWriter.append("true").append(",");
                     }else {
                         fileWriter.append("false").append(",");
