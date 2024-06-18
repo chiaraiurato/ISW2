@@ -89,12 +89,15 @@ public class ClassifierController {
     }
 
     public void addCostSensitiveClassifiers(NaiveBayes naiveBayesClassifier, RandomForest randomForestClassifier, IBk ibkClassifier) {
-        List<CostSensitiveClassifier> costSensitiveFilters = getCostSensitiveFilters();
-        for (CostSensitiveClassifier costSensitiveClassifier : costSensitiveFilters) {
-         setCostSensitiveClassifier(costSensitiveClassifier, naiveBayesClassifier);
-         setCostSensitiveClassifier(costSensitiveClassifier,randomForestClassifier);
-         setCostSensitiveClassifier(costSensitiveClassifier,ibkClassifier);
+        List<Classifier> classifierList = new ArrayList<>(List.of(naiveBayesClassifier, randomForestClassifier, ibkClassifier));
+        for (Classifier classifier : classifierList) {
+            List<CostSensitiveClassifier> costSensitiveFilters = getCostSensitiveFilters();
+            for (CostSensitiveClassifier costSensitiveClassifier : costSensitiveFilters) {
+                costSensitiveClassifier.setClassifier(classifier);
+                wekaClassifiersList.add(new WekaClassifier(costSensitiveClassifier, classifier.getClass().getSimpleName(),NO_SELECTION, null, NO_SAMPLING, true));
+            }
         }
+
     }
 
     private List<CostSensitiveClassifier> getCostSensitiveFilters() {
@@ -105,10 +108,6 @@ public class ClassifierController {
         return new ArrayList<>(List.of(costSensitiveClassifier));
     }
 
-    private void setCostSensitiveClassifier(CostSensitiveClassifier costSensitiveClassifier, Classifier classifier){
-        costSensitiveClassifier.setClassifier(classifier);
-        wekaClassifiersList.add(new WekaClassifier(costSensitiveClassifier, classifier.getClass().getSimpleName(),NO_SELECTION, null, NO_SAMPLING, true));
-    }
 
     /**
      * Creates a cost matrix for cost-sensitive learning with predefined costs.
@@ -125,13 +124,15 @@ public class ClassifierController {
      * indicating that the cost of misclassified a buggy class as non-buggy is 10.0.
      * <p>
      * The ratio of the cost of false positives to false negatives (FP/FN) is set to approximately
-     * 10:1, based on the context of bug prediction in software engineering. However, this value
+     * 1:10, based on the context of bug prediction in software engineering. However, this value
      * can be adjusted depending on the specific requirements and priorities of the problem domain.
      **/
     private CostMatrix createCostMatrix() {
         weka.classifiers.CostMatrix costMatrix = new CostMatrix(2);
-        costMatrix.setCell(0, 1, 1.0);
-        costMatrix.setCell(1, 0, 10.0);
+        costMatrix.setCell(0, 0, 0.0);
+        costMatrix.setCell(1, 0, 1.0);
+        costMatrix.setCell(0, 1, 10.0);
+        costMatrix.setCell(1, 1, 0.0);
         return costMatrix;
     }
 
@@ -157,24 +158,22 @@ public class ClassifierController {
     }
 
     public void addFeatureSelectionAndCostSensitiveClassifiers(NaiveBayes naiveBayesClassifier, RandomForest randomForestClassifier, IBk ibkClassifier, List<AttributeSelection> featureSelectionFilters) {
+        List<Classifier> classifierList = new ArrayList<>(List.of(naiveBayesClassifier, randomForestClassifier, ibkClassifier));
+        for (Classifier classifier : classifierList) {
             List<CostSensitiveClassifier> costSensitiveFilters = getCostSensitiveFilters();
             for(CostSensitiveClassifier costSensitiveClassifier: costSensitiveFilters){
                 for (AttributeSelection featureSelectionFilter : featureSelectionFilters) {
-                    setFeatureSelectionAndCostSensitiveClassifiers(costSensitiveClassifier, featureSelectionFilter,naiveBayesClassifier);
-                    setFeatureSelectionAndCostSensitiveClassifiers(costSensitiveClassifier, featureSelectionFilter,randomForestClassifier);
-                    setFeatureSelectionAndCostSensitiveClassifiers(costSensitiveClassifier, featureSelectionFilter, ibkClassifier);
+                    FilteredClassifier filteredClassifier = new FilteredClassifier();
+                    filteredClassifier.setFilter(featureSelectionFilter);
+                    costSensitiveClassifier.setClassifier(classifier);
+                    filteredClassifier.setClassifier(costSensitiveClassifier);
+
+                    wekaClassifiersList.add(new WekaClassifier(filteredClassifier, classifier.getClass().getSimpleName(), featureSelectionFilter.getSearch().getClass().getSimpleName(), ((BestFirst)featureSelectionFilter.getSearch()).getDirection().getSelectedTag().getReadable(), NO_SAMPLING, true));
                 }
             }
+        }
     }
 
-    private void setFeatureSelectionAndCostSensitiveClassifiers(CostSensitiveClassifier costSensitiveClassifier, AttributeSelection featureSelectionFilter, Classifier classifier){
-        FilteredClassifier filteredClassifier = new FilteredClassifier();
-        filteredClassifier.setFilter(featureSelectionFilter);
-        costSensitiveClassifier.setClassifier(classifier);
-        filteredClassifier.setClassifier(costSensitiveClassifier);
-
-        wekaClassifiersList.add(new WekaClassifier(filteredClassifier, classifier.getClass().getSimpleName(), featureSelectionFilter.getSearch().getClass().getSimpleName(), ((BestFirst)featureSelectionFilter.getSearch()).getDirection().getSelectedTag().getReadable(), NO_SAMPLING, true));
-    }
     public List<WekaClassifier> getCustomClassifiersList() {
         return wekaClassifiersList;
     }
